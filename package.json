@@ -1,23 +1,55 @@
 {
   "name": "log.theater",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
-  "description": "log.theater",
+  "description": "onesword0618's blog",
   "author": "onesword0618",
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "typecheck": "tsc",
+    "lint": "eslint 'src/**/*.{ts,tsx}' gatsby-*.ts && tsc --noEmit",
+    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' gatsby-*.ts && tsc --noEmit"
   },
   "dependencies": {
     "gatsby": "^3.9.1",
     "gatsby-plugin-gatsby-cloud": "^2.9.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "gatsby-plugin-typegen": "^2.2.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.3.2",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsdoc": "^35.4.3",
+    "eslint-plugin-json": "^3.0.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "gatsby-cli": "^3.9.0",
+    "lint-staged": "^11.0.1",
+    "prettier": "^2.3.2",
+    "simple-git-hooks": "^2.5.1",
+    "ts-node": "^10.1.0",
+    "tslib": "^1.14.1",
+    "typescript": "^4.3.5"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged && tsc --noEmit"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }
