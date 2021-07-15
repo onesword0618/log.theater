@@ -1,3 +1,33 @@
+# npm
 node_modules/
+
+# visual studio code
+.vscode/
+
+# GatsbyJS
 .cache/
-public
+public/
+types/graphql-types.d.ts
+
+# dotenv environment variable files
+.env*
+
+# Output of 'npm pack'
+*.tgz
+
+# Typescript v1 declaration files
+typings/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Logs
+logs
+*.log
+npm-debug.log*

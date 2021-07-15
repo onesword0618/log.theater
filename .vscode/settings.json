@@ -1,0 +1,30 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#232C4B",
+    "titleBar.activeBackground": "#313E69",
+    "titleBar.activeForeground": "#FBFBFD"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  // using https://github.com/doi/fileheadercomment
+  "fileHeaderComment.parameter": {
+    "*": {
+      "commentbegin": "/**",
+      "commentprefix": " *",
+      "commentend": " */",
+      "author": "Kenichi Inoue"
+    }
+  },
+  "fileHeaderComment.template": {
+    "*": [
+      "${commentbegin}",
+      "${commentprefix} describe",
+      "${commentprefix}",
+      "${commentprefix} Copyright (c) ${year}.",
+      "${commentprefix} ${author}.",
+      "${commentend}"
+    ]
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

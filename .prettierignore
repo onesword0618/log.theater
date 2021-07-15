@@ -1,0 +1,10 @@
+# GatsbyJS
+.cache/
+public/
+types/
+static/
+gatsby-config.js
+
+# Output
+build
+coverage
