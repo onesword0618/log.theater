@@ -1,0 +1,21 @@
+# npm
+package.json
+package-lock.json
+
+# GatsbyJS
+.cache/
+public/
+types/
+gatsby-config.js
+gatsby-node.js
+gatsby-node.esm.js
+gatsby-browser.js
+
+# local plugins
+plugins/
+
+# eslint
+.eslintrc.json
+
+# prettier
+.prettierrc.json

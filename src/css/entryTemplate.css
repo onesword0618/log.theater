@@ -1,0 +1,63 @@
+@charset "UTF-8";
+/** 記事で表示する際のスタイルを定義している. */
+
+*,
+*::before,
+*::marker,
+*::after {
+  box-sizing: inherit;
+}
+
+/** TODO: globalへ */
+html {
+  box-sizing: border-box;
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-variant: normal;
+  font-size: medium;
+  font-weight: 500;
+  text-transform: none;
+  text-decoration: none;
+  line-height: 1.5;
+  width: 100%;
+  /** TODO: 基準を決めたら相対にする. */
+  padding: 1.5em;
+}
+
+a {
+  outline: none;
+}
+
+a:link {
+  color: #a26900;
+}
+
+a:visited {
+  color: #c7dc68;
+}
+
+a:focus {
+  border-bottom: 1px solid;
+  background: #bce2e8;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+  background: #bce2e8;
+}
+
+a:active {
+  background: #a26900;
+  color: #c7dc68;
+}
+
+p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+code {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}

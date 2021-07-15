@@ -1,0 +1,9 @@
+# GatsbyJS
+.cache/
+public/
+types/
+gatsby-config.js
+
+# Output
+build
+coverage
