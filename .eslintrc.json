@@ -1,0 +1,63 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "generators": false,
+      "objectLiteralDuplicateProperties": false
+    },
+    "sourceType": "module",
+    "ecmaVersion": 12
+  },
+  "plugins": [
+    "import",
+    "react-hooks",
+    "jsx-a11y",
+    "jsdoc",
+    "json",
+    "react",
+    "@typescript-eslint"
+  ],
+  "extends": [
+    // base-rules
+    "airbnb-typescript",
+    // typescript
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    // react
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    // documentation
+    "plugin:jsdoc/recommended",
+    // json
+    "plugin:json/recommended",
+    // formatter-rules
+    "prettier"
+  ],
+  "settings": {
+    "json/sort-package-json": "standard",
+    "json/ignore-files": [
+      "**/package-lock.json"
+    ],
+    "json/json-with-comments-files": [
+      "**/tsconfig.json",
+      ".vscode/**"
+    ],
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "fragment": "Fragment",
+      "version": "detect",
+      "flowVersion": "0.53"
+    }
+  },
+  "globals": {}
+}
