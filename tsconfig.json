@@ -21,7 +21,7 @@
     "jsx": "react",
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "public",
     "composite": true,
     "noEmit": true,
     "importHelpers": true,
