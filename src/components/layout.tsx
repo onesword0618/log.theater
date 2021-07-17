@@ -1,9 +1,15 @@
-import { Header } from '../components/header';
 import React from 'react';
+import Header from './header';
 
-export const Layout: React.FC = ({ children }) => (
+type Props = {
+  children : React.ReactNode
+}
+
+const Layout: React.FC<Props> = (prop) => (
   <div className="wrapper">
     <Header />
-    <div className="content">{children}</div>
+    <div className="content">{prop}</div>
   </div>
-);
+  );
+
+export default Layout;
