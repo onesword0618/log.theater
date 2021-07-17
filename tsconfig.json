@@ -3,6 +3,7 @@
     "./src/**/*",
     "./gatsby-*.ts",
     "test/**/*",
+    "gatsby-config.js",
   ],
   "exclude": [
     "dist",
@@ -21,7 +22,7 @@
     "jsx": "react",
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "public",
     "composite": true,
     "noEmit": true,
     "importHelpers": true,
