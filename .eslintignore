@@ -3,3 +3,5 @@ package-lock.json
 .cache/
 public/
 types/
+.eslintrc.json
+gatsby-config.js
