@@ -1,9 +1,10 @@
+import { Layout } from '../components/layout';
 import React from 'react';
 
 const Page: React.FC = () => (
-  <div>
+  <Layout>
     <h1>Home</h1>
     <p>initial</p>
-  </div>
+  </Layout>
 );
 export default Page;
