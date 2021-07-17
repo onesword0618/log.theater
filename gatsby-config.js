@@ -1,10 +1,13 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://onesword0618.jp",
-    author: "onesword0618",
+    siteUrl: 'https://onesword0618.jp',
+    author: 'onesword0618',
     description: 'blog',
-    email: "ao.akua.leo@gmail.com",
-    title: "log.theater",
+    email: 'ao.akua.leo@gmail.com',
+    title: 'log.theater',
   },
-  plugins: ["gatsby-plugin-gatsby-cloud"],
-}
+  plugins: [
+    `gatsby-plugin-gatsby-cloud`,
+    `gatsby-plugin-typegen`
+  ],
+};

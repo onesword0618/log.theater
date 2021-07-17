@@ -14,7 +14,8 @@
       "objectLiteralDuplicateProperties": false
     },
     "sourceType": "module",
-    "ecmaVersion": 12
+    "ecmaVersion": 12,
+    "project": "./tsconfig.json"
   },
   "plugins": [
     "import",

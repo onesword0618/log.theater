@@ -11,8 +11,10 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc",
-    "lint": "eslint 'src/**/*.{ts,tsx}' gatsby-*.ts && tsc --noEmit",
-    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' gatsby-*.ts && tsc --noEmit"
+    "lint": "eslint 'src/**/*.{ts,tsx}' && tsc --noEmit",
+    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' && tsc --noEmit",
+    "check": "prettier --check src",
+    "check:fix": "prettier -w src"
   },
   "dependencies": {
     "gatsby": "^3.9.1",
@@ -49,7 +51,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix"
+      "npm run lint",
+      "npm run check"
     ]
   }
 }
