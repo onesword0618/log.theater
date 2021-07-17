@@ -7,7 +7,7 @@
   "scripts": {
     "develop": "ts-node ./node_modules/.bin/gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "ts-node ./node_modules/.bin/gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc",
