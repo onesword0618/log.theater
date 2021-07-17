@@ -4,3 +4,4 @@ node_modules/
 # GatsbyJS
 .cache/
 public
+__generated__

@@ -5,3 +5,4 @@ public/
 types/
 .eslintrc.json
 gatsby-config.js
+__generated__
