@@ -3,6 +3,7 @@
     "./src/**/*",
     "./gatsby-*.ts",
     "test/**/*",
+    "gatsby-config.js",
   ],
   "exclude": [
     "dist",
