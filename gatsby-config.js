@@ -1,6 +1,4 @@
-import type { GatsbyConfig } from 'gatsby';
-
-const config : GatsbyConfig = {
+module.exports = {
   siteMetadata: {
     siteUrl: "https://onesword0618.jp",
     author: "onesword0618",
@@ -9,6 +7,4 @@ const config : GatsbyConfig = {
     title: "log.theater",
   },
   plugins: ["gatsby-plugin-gatsby-cloud"],
-};
-
-export default config;
+}
