@@ -6,5 +6,12 @@
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": true
-  }
+  },
+  "fileHeaderComment.template": {
+    "*":[
+      "${commentbegin}",
+      "${commentprefix} Copyright (c) ${year} onesword0618",
+      "${commentend}"
+    ]
+  },
 }
