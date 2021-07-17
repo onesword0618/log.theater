@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "onesword0618's blog",
+  "license": "MIT",
   "author": "onesword0618",
   "scripts": {
     "develop": "ts-node ./node_modules/.bin/gatsby develop",
@@ -47,7 +48,8 @@
     "typescript": "^4.3.5"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged && tsc --noEmit"
+    "pre-commit": "npx lint-staged",
+    "preserveUnused":true
   },
   "lint-staged": {
     "*.{ts,tsx}": [
