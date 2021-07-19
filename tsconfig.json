@@ -1,12 +1,10 @@
 {
   "include": [
-    "./src/**/*",
-    "./gatsby-*.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
     "test/**/*",
-    "gatsby-config.js",
   ],
   "exclude": [
-    "dist",
     "node_modules",
     "public",
     "__generated__",
@@ -14,21 +12,21 @@
   "compileOnSave": false,
   "compilerOptions": {
     "incremental": true,
-    "target": "ES2021",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "ESNext",
     "lib": [
       "DOM",
-      "ES2021"
+      "ESNext"
     ],
-    "jsx": "react",
+    "jsx": "preserve",
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "public",
     "composite": true,
-    "noEmit": true,
+    "noEmit": false,
     "importHelpers": true,
     "downlevelIteration": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -51,12 +49,5 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "checkJs": true,
-    "types": ["gatsby"]
   },
-  "ts-node": {
-    "compilerOptions": {
-      "target": "ES2021",
-      "module": "CommonJS"
-    }
-  }
 }

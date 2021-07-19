@@ -6,16 +6,16 @@
   "license": "MIT",
   "author": "onesword0618",
   "scripts": {
-    "develop": "ts-node ./node_modules/.bin/gatsby develop",
+    "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "ts-node ./node_modules/.bin/gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc",
+    "typecheck": "tsc -p . --noEmit",
+    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx,js,jsx,json,md}'",
     "lint": "eslint 'src/**/*.{ts,tsx}' && tsc --noEmit",
-    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' && tsc --noEmit",
-    "check": "prettier --check src",
-    "check:fix": "prettier -w src"
+    "format:fix": "prettier -w '**/*.{ts,tsx,js,jsx,json,md}'",
+    "format": "prettier -c 'src/**/*.{ts,tsx,js,jsx,json,md}'"
   },
   "dependencies": {
     "gatsby": "^3.9.1",
@@ -54,7 +54,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run lint",
-      "npm run check"
+      "npm run format"
     ]
   }
 }
