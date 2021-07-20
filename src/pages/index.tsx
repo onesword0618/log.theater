@@ -1,10 +1,22 @@
-import React from 'react';
-import Layout from '../components/layout';
+/*
+ * Copyright (c) 2021 onesword0618
+ */
+import * as React from 'react';
+import { Layout } from '../components/layout';
 
-const Page: React.FC = () => (
-  <Layout>
-    <h1>Home</h1>
-    <p>initial</p>
-  </Layout>
-);
-export default Page;
+/**
+ * This Application EntryPoint.
+ *
+ * @returns {React.ReactElement} components
+ */
+export default function Page(): React.ReactElement {
+  return (
+    <div className="application">
+      <Layout>
+        <main>
+          <h2>Nothing</h2>
+        </main>
+      </Layout>
+    </div>
+  );
+}
