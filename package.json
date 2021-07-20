@@ -12,7 +12,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "typedoc": "typedoc --out ./docs/ ./src/",
+    "typedoc": "typedoc --hideGenerator --out ./docs/ ./src/",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "format:fix": "prettier -w './src/**/*.{ts,tsx}'",
