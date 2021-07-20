@@ -60,5 +60,8 @@
       "flowVersion": "0.53"
     }
   },
+  "rules": {
+    "import/prefer-default-export":"off"
+  },
   "globals": {}
 }

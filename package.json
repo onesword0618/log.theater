@@ -3,18 +3,20 @@
   "version": "0.0.1",
   "private": true,
   "description": "onesword0618's blog",
+  "license": "MIT",
   "author": "onesword0618",
   "scripts": {
-    "develop": "ts-node ./node_modules/.bin/gatsby develop",
+    "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "ts-node ./node_modules/.bin/gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc",
-    "lint": "eslint 'src/**/*.{ts,tsx}' && tsc --noEmit",
-    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' && tsc --noEmit",
-    "check": "prettier --check src",
-    "check:fix": "prettier -w src"
+    "typecheck": "tsc --noEmit",
+    "typedoc": "typedoc --hideGenerator --out ./docs/ ./src/",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "format:fix": "prettier -w './src/**/*.{ts,tsx}'",
+    "format": "prettier -c './src/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "gatsby": "^3.9.1",
@@ -42,17 +44,19 @@
     "lint-staged": "^11.0.1",
     "prettier": "^2.3.2",
     "simple-git-hooks": "^2.5.1",
-    "ts-node": "^10.1.0",
     "tslib": "^1.14.1",
+    "typedoc": "^0.21.4",
     "typescript": "^4.3.5"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged && tsc --noEmit"
+    "pre-commit": "npx lint-staged",
+    "preserveUnused": true
   },
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run lint",
-      "npm run check"
+      "npm run format",
+      "npm run typedoc"
     ]
   }
 }
