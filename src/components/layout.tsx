@@ -1,18 +1,27 @@
-import React from 'react';
-import Header from './header';
+/*
+ * Copyright (c) 2021 onesword0618
+ */
+import * as React from 'react';
+import { Header } from './header';
+import { Footer } from './footer';
 
 type Props = {
   children: React.ReactNode;
 };
 
-const Layout: React.FC<Props> = (prop) => {
+/**
+ *  Layout Components Parts.
+ *
+ * @param {Props} prop children: React.ReactNode
+ * @returns {React.ReactElement} components
+ */
+export const Layout: React.FC<Props> = (prop: Props): React.ReactElement => {
   const { children } = prop;
   return (
-    <div className="wrapper">
+    <div className="layout-container">
       <Header />
       <div className="content">{children}</div>
+      <Footer />
     </div>
   );
 };
-
-export default Layout;
