@@ -11,6 +11,9 @@ public
 # typescript
 __generated__
 
+# typedoc
+docs
+
 # dotenv environment variable files
 .env*
 
