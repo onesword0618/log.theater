@@ -1,13 +1,11 @@
 {
   "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "test/**/*",
   ],
   "exclude": [
     "node_modules",
-    "public",
-    "__generated__",
   ],
   "compileOnSave": false,
   "compilerOptions": {
@@ -18,12 +16,12 @@
       "DOM",
       "ESNext"
     ],
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "public",
     "composite": true,
-    "noEmit": false,
+    "noEmit": true,
     "importHelpers": true,
     "downlevelIteration": true,
     "isolatedModules": true,
@@ -48,6 +46,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
-    "checkJs": true,
+    "checkJs": false,
   },
 }
