@@ -1,5 +1,8 @@
-/*
- * Copyright (c) 2021 onesword0618
+/**
+ * Entry Point File.
+ *
+ * Copyright (c) 2021.
+ * Kenichi Inoue.
  */
 import * as React from 'react';
 import { Layout } from '../components/layout';

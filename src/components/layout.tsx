@@ -1,5 +1,8 @@
-/*
- * Copyright (c) 2021 onesword0618
+/**
+ * Blog Base Layout.
+ *
+ * Copyright (c) 2021.
+ * Kenichi Inoue.
  */
 import * as React from 'react';
 import { Header } from './header';
