@@ -7,10 +7,22 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
+  // using https://github.com/doi/fileheadercomment
+  "fileHeaderComment.parameter": {
+    "*":{
+      "commentbegin": "/**",
+      "commentprefix": " *",
+      "commentend": " */",
+      "author": "Kenichi Inoue"
+    }
+  },
   "fileHeaderComment.template": {
     "*":[
       "${commentbegin}",
-      "${commentprefix} Copyright (c) ${year} onesword0618",
+      "${commentprefix} describe",
+      "${commentprefix}",
+      "${commentprefix} Copyright (c) ${year}.",
+      "${commentprefix} ${author}.",
       "${commentend}"
     ]
   },
