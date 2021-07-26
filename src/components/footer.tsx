@@ -8,6 +8,7 @@ import * as React from 'react';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
 
 /**
  * Footer Components Parts.
@@ -46,9 +47,9 @@ export const Footer: React.FC = (): React.ReactElement => (
         >
           <h4 className="blog">Blog</h4>
 
-          <h5 className="about">About</h5>
+          <Link to="/about/">About</Link>
 
-          <h5 className="introduce">Introduce</h5>
+          <Link to="/introduce/">Introduce</Link>
         </div>
 
         <div
@@ -61,11 +62,11 @@ export const Footer: React.FC = (): React.ReactElement => (
         >
           <h4 className="products">Products</h4>
 
-          <h5 className="design">Design</h5>
+          <Link to="/design/">Design</Link>
 
-          <h5 className="code">Code</h5>
+          <Link to="/code/">Code</Link>
 
-          <h5 className="Activity">Activity</h5>
+          <Link to="/activity/">Activity</Link>
         </div>
 
         <div
@@ -78,11 +79,11 @@ export const Footer: React.FC = (): React.ReactElement => (
         >
           <h4 className="policy">Policy</h4>
 
-          <h5 className="privacy_policy">Privacy policy</h5>
+          <Link to="/terms/">Term of Service</Link>
 
-          <h5 className="term_of_service">Term of Service</h5>
+          <Link to="/policy/privacy/">Privacy policy</Link>
 
-          <h5 className="cookie_polocy">Cookie Policy</h5>
+          <Link to="/policy/cookie/">Cookie Policy</Link>
         </div>
       </div>
 
