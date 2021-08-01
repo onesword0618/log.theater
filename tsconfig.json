@@ -47,5 +47,10 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "checkJs": false,
+    "paths" : {
+      "@graphql-types": [
+        "types/graphql-types.d.ts"
+      ],
+    },
   },
 }

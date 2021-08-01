@@ -17,12 +17,10 @@ module.exports = {
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
     {
-      resolve: `gatsby-plugin-typegen`,
+      resolve: `gatsby-plugin-graphql-codegen`,
       options: {
-        emitSchema: {
-          './__generated__/gatsby-introspection.json': true,
-        },
-      }
+        fileName: `types/graphql-types.d.ts`,
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -32,6 +30,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
+        ignore: [`${__dirname}/types/*.ts`]
       },
     },
   ],
