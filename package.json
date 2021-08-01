@@ -16,7 +16,8 @@
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "format:fix": "prettier -w './src/**/*.{ts,tsx}'",
-    "format": "prettier -c './src/**/*.{ts,tsx}'"
+    "format": "prettier -c './src/**/*.{ts,tsx}'",
+    "generate": "graphql-codegen"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -26,15 +27,16 @@
     "gatsby": "^3.9.1",
     "gatsby-image": "^3.10.0",
     "gatsby-plugin-gatsby-cloud": "^2.9.1",
+    "gatsby-plugin-graphql-codegen": "^3.0.0",
     "gatsby-plugin-image": "^1.10.1",
     "gatsby-plugin-sharp": "^3.10.2",
-    "gatsby-plugin-typegen": "^2.2.4",
     "gatsby-source-filesystem": "^3.10.0",
     "gatsby-transformer-sharp": "^3.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@graphql-codegen/typescript": "^1.23.0",
     "@types/node": "^16.3.2",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",

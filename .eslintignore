@@ -6,3 +6,4 @@ types/
 .eslintrc.json
 gatsby-config.js
 __generated__
+types/graphql-types.d.ts
