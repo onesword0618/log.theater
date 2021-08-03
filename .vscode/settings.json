@@ -9,7 +9,7 @@
   },
   // using https://github.com/doi/fileheadercomment
   "fileHeaderComment.parameter": {
-    "*":{
+    "*": {
       "commentbegin": "/**",
       "commentprefix": " *",
       "commentend": " */",
@@ -17,7 +17,7 @@
     }
   },
   "fileHeaderComment.template": {
-    "*":[
+    "*": [
       "${commentbegin}",
       "${commentprefix} describe",
       "${commentprefix}",
@@ -26,5 +26,5 @@
       "${commentend}"
     ]
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

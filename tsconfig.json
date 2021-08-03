@@ -1,21 +1,12 @@
 {
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "test/**/*",
-  ],
-  "exclude": [
-    "node_modules",
-  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "test/**/*"],
+  "exclude": ["node_modules"],
   "compileOnSave": false,
   "compilerOptions": {
     "incremental": true,
     "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
+    "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
     "declarationMap": true,
     "sourceMap": true,
@@ -47,10 +38,8 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "checkJs": false,
-    "paths" : {
-      "@graphql-types": [
-        "types/graphql-types.d.ts"
-      ],
-    },
-  },
+    "paths": {
+      "@graphql-types": ["types/graphql-types.d.ts"]
+    }
+  }
 }

@@ -45,13 +45,8 @@
   ],
   "settings": {
     "json/sort-package-json": "standard",
-    "json/ignore-files": [
-      "**/package-lock.json"
-    ],
-    "json/json-with-comments-files": [
-      "**/tsconfig.json",
-      ".vscode/**"
-    ],
+    "json/ignore-files": ["**/package-lock.json"],
+    "json/json-with-comments-files": ["**/tsconfig.json", ".vscode/**"],
     "react": {
       "createClass": "createReactClass",
       "pragma": "React",
@@ -61,7 +56,7 @@
     }
   },
   "rules": {
-    "import/prefer-default-export":"off"
+    "import/prefer-default-export": "off"
   },
   "globals": {}
 }
