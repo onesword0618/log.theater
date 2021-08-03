@@ -30,7 +30,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
-        ignore: [`${__dirname}/types/*.ts`]
+        ignore: [`${__dirname}/types/*.ts`],
       },
     },
   ],
