@@ -9,7 +9,7 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StaticImage } from 'gatsby-plugin-image';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import { WriterQuery } from '@graphql-types';
+import { FooterComponentQuery } from '@graphql-types';
 
 /**
  * Footer Components Parts.
@@ -18,9 +18,9 @@ import { WriterQuery } from '@graphql-types';
  */
 export const Footer: React.FC = (): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const data: WriterQuery = useStaticQuery<WriterQuery>(
+  const fetchFooter = useStaticQuery<FooterComponentQuery>(
     graphql`
-      query Writer {
+      query FooterComponent {
         site {
           siteMetadata {
             author
@@ -31,7 +31,7 @@ export const Footer: React.FC = (): React.ReactElement => {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const author: string = data.site?.siteMetadata?.author as string;
+  const author: string = fetchFooter.site?.siteMetadata?.author as string;
 
   return (
     <div
@@ -109,19 +109,19 @@ export const Footer: React.FC = (): React.ReactElement => {
           </div>
         </div>
 
-        <h6 className="copyright">
-          Copyright(c) {new Date().getFullYear()} All Rights Reserved.
-        </h6>
-
-        <h6 className="author">
-          createdBy <a href="https://twitter.com/onesword0618">{author}</a>
-        </h6>
-
         <div className="sns_area">
           <a href="https://twitter.com/onesword0618">
             <FontAwesomeIcon icon={faTwitter} />
           </a>
         </div>
+
+        <h6 className="author">
+          createdBy <a href="https://twitter.com/onesword0618">{author}</a>
+        </h6>
+
+        <h6 className="copyright">
+          Copyright(c) {new Date().getFullYear()} All Rights Reserved.
+        </h6>
       </footer>
     </div>
   );
