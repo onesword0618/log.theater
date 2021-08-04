@@ -1,5 +1,5 @@
 /**
- * Blog Fotter Components Parts
+ * Blog Common Component Parts.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -12,7 +12,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import { FooterComponentQuery } from '@graphql-types';
 
 /**
- * Footer Components Parts.
+ * Footer Component Parts.
  *
  * @returns {React.ReactElement} components
  */

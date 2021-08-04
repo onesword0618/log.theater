@@ -1,5 +1,6 @@
 /**
  * Blog Base Layout.
+ * Common Component Parts.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -21,7 +22,7 @@ type Props = {
 export const Layout: React.FC<Props> = (prop: Props): React.ReactElement => {
   const { children } = prop;
   return (
-    <div className="layout-container">
+    <div className="layout">
       <Header />
       <div className="content">{children}</div>
       <Footer />
