@@ -35,7 +35,7 @@ export const Footer: React.FC = (): React.ReactElement => {
 
   return (
     <div
-      className="footer-container"
+      className="footer_container"
       style={{ display: 'flex', flexDirection: 'row' }}
     >
       <footer>
@@ -49,7 +49,7 @@ export const Footer: React.FC = (): React.ReactElement => {
         >
           <figure className="icon">
             <StaticImage
-              className="blog-icon"
+              className="blog_icon"
               layout="fixed"
               src="../images/icon.png"
               width={50}
@@ -104,8 +104,6 @@ export const Footer: React.FC = (): React.ReactElement => {
             <Link to="/terms/">Term of Service</Link>
 
             <Link to="/policy/privacy/">Privacy policy</Link>
-
-            <Link to="/policy/cookie/">Cookie Policy</Link>
           </div>
         </div>
 
