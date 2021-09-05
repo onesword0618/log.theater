@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import { Layout } from '../components/layout';
+import { Posts } from './posts';
 
 /**
  * This Application EntryPoint.
@@ -17,7 +18,8 @@ export default function Page(): React.ReactElement {
     <div className="application">
       <Layout>
         <main>
-          <h2>Nothing</h2>
+          <h2>Posts</h2>
+          <Posts />
         </main>
       </Layout>
     </div>

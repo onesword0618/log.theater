@@ -33,5 +33,13 @@ module.exports = {
         ignore: [`${__dirname}/types/*.ts`],
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `post`,
+        path: `${__dirname}/src/post`,
+        ignore: [`${__dirname}/types/*.ts`],
+      },
+    },
   ],
 };
