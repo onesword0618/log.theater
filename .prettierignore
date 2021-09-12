@@ -1,4 +1,9 @@
-# Ignore artifacts:
+# GatsbyJS
+.cache/
+public/
+types/
+gatsby-config.js
+
+# Output
 build
 coverage
-__generated__

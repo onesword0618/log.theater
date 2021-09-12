@@ -1,9 +1,12 @@
+# npm
 package.json
 package-lock.json
+
+# GatsbyJS
 .cache/
 public/
 types/
-.eslintrc.json
 gatsby-config.js
-__generated__
-types/graphql-types.d.ts
+
+# eslint
+.eslintrc.json
