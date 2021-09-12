@@ -6,8 +6,8 @@ node_modules/
 
 # GatsbyJS
 .cache/
-public
-types/graphql-types.d.ts
+public/
+types/
 
 # typedoc
 docs
@@ -34,5 +34,3 @@ typings/
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*

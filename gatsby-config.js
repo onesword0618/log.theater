@@ -30,16 +30,21 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
-        ignore: [`${__dirname}/types/*.ts`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `post`,
-        path: `${__dirname}/src/post`,
-        ignore: [`${__dirname}/types/*.ts`],
+        name: `entry`,
+        path: `${__dirname}/src/entry`,
       },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        footnotes: true,
+        gfm: true,
+      }
     },
   ],
 };
