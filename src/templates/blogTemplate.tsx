@@ -35,7 +35,6 @@ export default function BlogTemplate(
             <time dateTime={data.markdownRemark?.frontmatter?.entrytDate}>
               <FontAwesomeIcon icon={faClock} />
               <i className="clock">
-                {' '}
                 entry {data.markdownRemark?.frontmatter?.entrytDate}
               </i>
             </time>
@@ -43,7 +42,6 @@ export default function BlogTemplate(
             <time dateTime={data.markdownRemark?.frontmatter?.updated}>
               <FontAwesomeIcon icon={faClock} />
               <i className="clock">
-                {' '}
                 update {data.markdownRemark?.frontmatter?.updated}
               </i>
             </time>
@@ -93,6 +91,7 @@ export const query = graphql`
       excerpt(format: PLAIN, truncate: true)
       frontmatter {
         entrytDate: created(formatString: "YYYY.MM.DD")
+        created
         updated
         title
       }

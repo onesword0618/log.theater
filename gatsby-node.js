@@ -6,15 +6,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const entryResult = await graphql(`
     {
-      allMarkdownRemark {
-        nodes {
-          excerpt(format: PLAIN, truncate: true)
-          frontmatter {
-            path
-            title
+      posts:allMarkdownRemark(
+        sort: {order: DESC, fields: frontmatter___created}
+        filter: {fileAbsolutePath: {regex: "/src/entry/"}},
+        limit: 1000
+      ) {
+          nodes {
+            excerpt(format: PLAIN, truncate: true)
+            frontmatter {
+              title
+            }
+            id
           }
-          id
-        }
       }
     }
   `)
