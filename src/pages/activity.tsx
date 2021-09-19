@@ -1,5 +1,5 @@
 /**
- * Activity Explain.
+ * Activity Page.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -14,7 +14,7 @@ import { Layout } from '../components/layout';
  */
 export default function Activity(): React.ReactElement {
   return (
-    <div className="application">
+    <div className="activity">
       <Layout>
         <main>
           <h2>Activity</h2>

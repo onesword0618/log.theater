@@ -1,5 +1,5 @@
 /**
- * Design Explain.
+ * Design Page.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -14,7 +14,7 @@ import { Layout } from '../components/layout';
  */
 export default function Design(): React.ReactElement {
   return (
-    <div className="application">
+    <div className="design">
       <Layout>
         <main>
           <h2>Design</h2>

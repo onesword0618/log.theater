@@ -1,5 +1,5 @@
 /**
- * Code Explain.
+ * Code Page.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -14,7 +14,7 @@ import { Layout } from '../components/layout';
  */
 export default function Code(): React.ReactElement {
   return (
-    <div className="application">
+    <div className="code">
       <Layout>
         <main>
           <h2>Code</h2>
