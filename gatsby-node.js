@@ -27,7 +27,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  entryResult.posts.nodes.forEach(({ frontmatter, id }) => {
+  entryResult.data.posts.nodes.map(({ frontmatter, id }) => {
     createPage({
       path: frontmatter.path,
       component: path.resolve(`./src/templates/blogTemplate.tsx`),
