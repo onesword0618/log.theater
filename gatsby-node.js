@@ -23,6 +23,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   if(entryResult.errors) {
+    console.log(JSON.stringify(entryResult));
     reporter.panicOnBuild(`Build Error!`)
     return
   }
