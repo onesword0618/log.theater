@@ -1,5 +1,5 @@
 /**
- * Term Of Service Explain.
+ * Term Of Service Page.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -14,7 +14,7 @@ import { Layout } from '../components/layout';
  */
 export default function Terms(): React.ReactElement {
   return (
-    <div className="application">
+    <div className="terms">
       <Layout>
         <main>
           <h2>利用規約</h2>

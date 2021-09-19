@@ -1,5 +1,5 @@
 /**
- * Blog About Explain.
+ * About Page.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -14,7 +14,7 @@ import { Layout } from '../components/layout';
  */
 export default function About(): React.ReactElement {
   return (
-    <div className="application">
+    <div className="about">
       <Layout>
         <main>
           <h2>About</h2>
