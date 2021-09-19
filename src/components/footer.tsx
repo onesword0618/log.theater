@@ -5,7 +5,7 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StaticImage } from 'gatsby-plugin-image';
 import { graphql, Link, useStaticQuery } from 'gatsby';
@@ -17,7 +17,6 @@ import { FooterComponentQuery } from '@graphql-types';
  * @returns {React.ReactElement} components
  */
 export const Footer: React.FC = (): React.ReactElement => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const fetchFooter = useStaticQuery<FooterComponentQuery>(
     graphql`
       query FooterComponent {
@@ -30,7 +29,6 @@ export const Footer: React.FC = (): React.ReactElement => {
     `,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const author: string = fetchFooter.site?.siteMetadata?.author as string;
 
   return (
@@ -110,6 +108,10 @@ export const Footer: React.FC = (): React.ReactElement => {
         <div className="sns_area">
           <a href="https://twitter.com/onesword0618">
             <FontAwesomeIcon icon={faTwitter} />
+          </a>
+
+          <a href="https://www.facebook.com/profile.php?id=100023464906058">
+            <FontAwesomeIcon icon={faFacebook} />
           </a>
         </div>
 

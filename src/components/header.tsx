@@ -14,7 +14,6 @@ import { HeaderComponentQuery } from '@graphql-types';
  * @returns {React.ReactElement} components
  */
 export const Header: React.FC = (): React.ReactElement => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const fetchHeader = useStaticQuery<HeaderComponentQuery>(
     graphql`
       query HeaderComponent {
@@ -27,7 +26,6 @@ export const Header: React.FC = (): React.ReactElement => {
     `,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const title: string = fetchHeader.site?.siteMetadata?.title as string;
 
   return (
