@@ -6,23 +6,18 @@
  */
 import * as React from 'react';
 import { Link } from 'gatsby';
-import { EntriesQuery } from '@graphql-types';
-
-type Props = {
-  content: EntriesQuery;
-};
 
 /**
  * Entry List.
  *
- * @param {Props} props contents
+ * @param root0 contents
+ * @param root0.data contents
  * @returns {React.ReactElement} page
  */
-export default function Entry(props: Props): React.ReactElement {
-  const { content } = props;
+export default function Entry({ data }): React.ReactElement {
   return (
     <div className="entry">
-      {content.allMarkdownRemark.nodes.map(
+      {data.allMarkdownRemark.nodes.map(
         ({ frontmatter, id }) =>
           frontmatter && (
             <Link to={`${frontmatter.path || 'none'}`} key={id}>
