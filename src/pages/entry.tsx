@@ -17,14 +17,11 @@ import { Link } from 'gatsby';
 export default function Entry({ data }): React.ReactElement {
   return (
     <div className="entry">
-      {data.allMarkdownRemark.nodes.map(
-        ({ frontmatter, id }) =>
-          frontmatter && (
-            <Link to={`${frontmatter.path || 'none'}`} key={id}>
-              <article className="article">{frontmatter.title}</article>
-            </Link>
-          ),
-      )}
+      {data.allMarkdownRemark.nodes.map(({ frontmatter, id }) => (
+        <Link to={`${frontmatter.path || 'none'}`} key={id}>
+          <article className="article">{frontmatter.title}</article>
+        </Link>
+      ))}
     </div>
   );
 }

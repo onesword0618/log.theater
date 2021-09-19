@@ -22,7 +22,7 @@ export default function Page({ data }): React.ReactElement {
       <Layout>
         <main>
           <h2>Entries</h2>
-          <Entry content={data} />
+          <Entry data={data} />
         </main>
       </Layout>
     </div>
