@@ -23,12 +23,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   if(entryResult.errors) {
-    console.log(JSON.stringify(entryResult));
     reporter.panicOnBuild(`Build Error!`)
     return
   }
 
-  entryResult.data.allMarkdownRemark.nodes.forEach(({ frontmatter, id }) => {
+  entryResult.posts.nodes.forEach(({ frontmatter, id }) => {
     createPage({
       path: frontmatter.path,
       component: path.resolve(`./src/templates/blogTemplate.tsx`),
