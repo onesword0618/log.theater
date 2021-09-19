@@ -14,18 +14,15 @@ import {
   faClock,
   faFolderOpen,
 } from '@fortawesome/free-solid-svg-icons';
-import { BlogContentQuery } from '../type';
 
 /**
  *  Blog Contetnt Template Component.
  *
- * @param {BlogContentQuery} query contents
+ * @param query.data contents
+ * @param query.data.data contents
  * @returns {React.ReactElement} components
  */
-export default function BlogTemplate(
-  query: BlogContentQuery,
-): React.ReactElement {
-  const { data } = query.pageResources.json;
+export default function BlogTemplate({ data }): React.ReactElement {
   return (
     <Layout>
       <div className="container">

@@ -8,16 +8,15 @@ import * as React from 'react';
 import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
 import Entry from './entry';
-import { AllDataQuery } from '../type';
 
 /**
  * This Application EntryPoint.
  *
- * @param {AllDataQuery} query initialData
+ * @param root0 root
+ * @param root0.data data
  * @returns {React.ReactElement} components
  */
-export default function Page(query: AllDataQuery): React.ReactElement {
-  const { data } = query.pageResources.json;
+export default function Page({ data }): React.ReactElement {
   return (
     <div className="application">
       <Layout>
