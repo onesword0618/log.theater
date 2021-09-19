@@ -30,6 +30,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   entryResult.data.posts.nodes.map(({ frontmatter, id }) => {
     createPage({
       path: frontmatter.path,
+      ownerNodeId: id,
       component: path.resolve(`./src/templates/blogTemplate.tsx`),
       context: {
         id: id,
