@@ -9,7 +9,7 @@ import { Link } from 'gatsby';
 import { EntriesQuery } from '@graphql-types';
 
 type Props = {
-  content: EntriesQuery;
+  data: EntriesQuery;
 };
 
 /**
@@ -18,10 +18,10 @@ type Props = {
  * @param {EntriesQuery} props contents
  * @returns {React.FC} page
  */
-const Entry: React.FC<Props> = ({ content }) => {
+const Entry: React.FC<Props> = ({ data }) => {
   return (
     <div className="entry">
-      {content.allMarkdownRemark.nodes.map(({ frontmatter, id }) => (
+      {data.allMarkdownRemark.nodes.map(({ frontmatter, id }) => (
         <Link to={`${frontmatter?.path || 'none'}`} key={id}>
           <article className="article">{frontmatter?.title}</article>
         </Link>
