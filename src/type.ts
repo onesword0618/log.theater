@@ -12,7 +12,9 @@ export type AllDataQuery = {
     host: string;
     hostname: string;
     port: string;
-    state: null;
+    state: {
+      key: string;
+    };
     key: string;
   };
   pageResources: {
@@ -23,7 +25,7 @@ export type AllDataQuery = {
     page: {
       componentChunkName: string;
       path: string;
-      webpackCompilationHash: number;
+      webpackCompilationHash: string;
       staticQueryHashes: number[];
     };
     staticQueryResults: Record<string, unknown>;
@@ -46,24 +48,30 @@ export type BlogContentQuery = {
     host: string;
     hostname: string;
     port: string;
-    state: null;
+    state: {
+      key: string;
+    };
     key: string;
   };
   pageResources: {
     json: {
       data: TemplateContentsQuery;
-      pageContext: Record<string, unknown>;
+      pageContext: {
+        id: string;
+      };
     };
     page: {
       componentChunkName: string;
       path: string;
-      webpackCompilationHash: number;
+      webpackCompilationHash: string;
       staticQueryHashes: number[];
     };
     staticQueryResults: Record<string, unknown>;
     uri: string;
     data: TemplateContentsQuery;
-    pageContext: Record<string, unknown>;
+    pageContext: {
+      id: string;
+    };
     params: Record<string, unknown>;
   };
 };

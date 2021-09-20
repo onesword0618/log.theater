@@ -25,31 +25,31 @@ import { BlogContentQuery } from '../type';
 export default function BlogTemplate(
   query: BlogContentQuery,
 ): React.ReactElement {
-  const { data } = query.pageResources;
+  const { markdownRemark, tags } = query.pageResources.json.data;
   return (
     <Layout>
       <div className="container">
         <article className="entry">
-          <h1>{data.markdownRemark?.frontmatter?.title}</h1>
+          <h1>{markdownRemark?.frontmatter?.title}</h1>
           <aside className="meta">
-            <time dateTime={data.markdownRemark?.frontmatter?.entrytDate}>
+            <time dateTime={markdownRemark?.frontmatter?.entrytDate}>
               <FontAwesomeIcon icon={faClock} />
               <i className="clock">
-                entry {data.markdownRemark?.frontmatter?.entrytDate}
+                entry {markdownRemark?.frontmatter?.entrytDate}
               </i>
             </time>
 
-            <time dateTime={data.markdownRemark?.frontmatter?.updated}>
+            <time dateTime={markdownRemark?.frontmatter?.updated}>
               <FontAwesomeIcon icon={faClock} />
               <i className="clock">
-                update {data.markdownRemark?.frontmatter?.updated}
+                update {markdownRemark?.frontmatter?.updated}
               </i>
             </time>
 
             <div className="category">
               <FontAwesomeIcon icon={faFolderOpen} />
               <ul>
-                {data.tags.group.map((current, index) => (
+                {tags.group.map((current, index) => (
                   <li className={`${current.tag || 'none'}`} key={index}>
                     {current.tag}
                   </li>
@@ -61,7 +61,7 @@ export default function BlogTemplate(
           <div
             className="content"
             dangerouslySetInnerHTML={{
-              __html: `${data.markdownRemark?.html || 'no content'}`,
+              __html: `${markdownRemark?.html || 'no content'}`,
             }}
           />
 
