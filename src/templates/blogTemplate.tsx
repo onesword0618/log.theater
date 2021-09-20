@@ -14,88 +14,70 @@ import {
   faClock,
   faFolderOpen,
 } from '@fortawesome/free-solid-svg-icons';
-import { BlogContentQuery } from '../type';
+import { TemplateContentsQuery } from '@graphql-types';
+
+type Props = {
+  data: TemplateContentsQuery;
+};
 
 /**
  *  Blog Contetnt Template Component.
  *
- * @param {BlogContentQuery} query contents
- * @returns {React.ReactElement} components
+ * @param {TemplateContentsQuery} query contents
+ * @returns {React.FC} components
  */
-export default function BlogTemplate(
-  query: BlogContentQuery,
-): React.ReactElement {
-  const { pageResources } = query;
-  return (
-    <Layout>
-      <div className="container">
-        <article className="entry">
-          <h1>{pageResources.json.data.markdownRemark?.frontmatter?.title}</h1>
-          <aside className="meta">
-            <time
-              dateTime={
-                pageResources.json.data.markdownRemark?.frontmatter?.entrytDate
-              }
-            >
-              <FontAwesomeIcon icon={faClock} />
-              <i className="clock">
-                entry{' '}
-                {
-                  pageResources.json.data.markdownRemark?.frontmatter
-                    ?.entrytDate
-                }
-              </i>
-            </time>
+const Template: React.FC<Props> = ({ data }) => (
+  <Layout>
+    <div className="container">
+      <article className="entry">
+        <h1>{data.markdownRemark?.frontmatter?.title}</h1>
+        <aside className="meta">
+          <time dateTime={data.markdownRemark?.frontmatter?.entrytDate}>
+            <FontAwesomeIcon icon={faClock} />
+            <i className="clock">
+              {data.markdownRemark?.frontmatter?.entrytDate}
+            </i>
+          </time>
 
-            <time
-              dateTime={
-                pageResources.json.data.markdownRemark?.frontmatter?.updated
-              }
-            >
-              <FontAwesomeIcon icon={faClock} />
-              <i className="clock">
-                update{' '}
-                {pageResources.json.data.markdownRemark?.frontmatter?.updated}
-              </i>
-            </time>
+          <time dateTime={data.markdownRemark?.frontmatter?.updated}>
+            <FontAwesomeIcon icon={faClock} />
+            <i className="clock">{data.markdownRemark?.frontmatter?.updated}</i>
+          </time>
 
-            <div className="category">
-              <FontAwesomeIcon icon={faFolderOpen} />
-              <ul>
-                {pageResources.json.data.tags.group.map((current, index) => (
-                  <li className={`${current.tag || 'none'}`} key={index}>
-                    {current.tag}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
+          <div className="category">
+            <FontAwesomeIcon icon={faFolderOpen} />
+            <ul>
+              {data.tags.group.map((current, index) => (
+                <li className={`${current.tag || 'none'}`} key={index}>
+                  {current.tag}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
 
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{
-              __html: `${
-                pageResources.json.data.markdownRemark?.html || 'no content'
-              }`,
-            }}
-          />
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{
+            __html: `${data.markdownRemark?.html || 'no content'}`,
+          }}
+        />
 
-          <ul className="link">
-            <li className="preview">
-              <FontAwesomeIcon icon={faChevronLeft} />
-              <span>Preview Post</span>
-            </li>
+        <ul className="link">
+          <li className="preview">
+            <FontAwesomeIcon icon={faChevronLeft} />
+            <span>Preview Post</span>
+          </li>
 
-            <li className="next">
-              <FontAwesomeIcon icon={faChevronRight} />
-              <span>Next Post</span>
-            </li>
-          </ul>
-        </article>
-      </div>
-    </Layout>
-  );
-}
+          <li className="next">
+            <FontAwesomeIcon icon={faChevronRight} />
+            <span>Next Post</span>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </Layout>
+);
 
 /**
  * Template Contents,
@@ -120,3 +102,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Template;
