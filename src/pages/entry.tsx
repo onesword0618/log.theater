@@ -15,11 +15,10 @@ type Props = {
 /**
  * Entry List.
  *
- * @param {Props} props contents
- * @returns {React.ReactElement} page
+ * @param {EntriesQuery} props contents
+ * @returns {React.FC} page
  */
-export default function Entry(props: Props): React.ReactElement {
-  const { content } = props;
+const Entry: React.FC<Props> = ({ content }) => {
   return (
     <div className="entry">
       {content.allMarkdownRemark.nodes.map(
@@ -32,4 +31,6 @@ export default function Entry(props: Props): React.ReactElement {
       )}
     </div>
   );
-}
+};
+
+export default Entry;
