@@ -25,7 +25,7 @@ import { BlogContentQuery } from '../type';
 export default function BlogTemplate(
   query: BlogContentQuery,
 ): React.ReactElement {
-  const { data } = query.pageResources.json;
+  const { data } = query.pageResources;
   return (
     <Layout>
       <div className="container">
