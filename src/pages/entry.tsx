@@ -21,14 +21,11 @@ type Props = {
 const Entry: React.FC<Props> = ({ content }) => {
   return (
     <div className="entry">
-      {content.allMarkdownRemark.nodes.map(
-        ({ frontmatter, id }) =>
-          frontmatter && (
-            <Link to={`${frontmatter.path || 'none'}`} key={id}>
-              <article className="article">{frontmatter.title}</article>
-            </Link>
-          ),
-      )}
+      {content.allMarkdownRemark.nodes.map(({ frontmatter, id }) => (
+        <Link to={`${frontmatter?.path || 'none'}`} key={id}>
+          <article className="article">{frontmatter?.title}</article>
+        </Link>
+      ))}
     </div>
   );
 };
