@@ -7,33 +7,34 @@
 import * as React from 'react';
 import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
-import Entry from './entry';
-import { AllDataQuery } from '../type';
+import Entry from '../components/entry';
+import { EntriesQuery } from '@graphql-types';
+
+type Props = {
+  data: EntriesQuery;
+};
 
 /**
  * This Application EntryPoint.
  *
- * @param {AllDataQuery} query initialData
- * @returns {React.ReactElement} components
+ * @param {EntriesQuery} {data} initialData
+ * @returns {React.FC} components
  */
-export default function Page(query: AllDataQuery): React.ReactElement {
-  const { data } = query.pageResources.json;
-  return (
-    <div className="application">
-      <Layout>
-        <main>
-          <h2>Entries</h2>
-          <Entry content={data} />
-        </main>
-      </Layout>
-    </div>
-  );
-}
+const Component: React.FC<Props> = ({ data }) => (
+  <div className="application">
+    <Layout>
+      <main>
+        <h2>Entries</h2>
+        <Entry data={data} />
+      </main>
+    </Layout>
+  </div>
+);
 
 /**
- * All Entry,
+ * All Entry Page.
  */
-export const query = graphql`
+export const pageQuery = graphql`
   query Entries {
     allMarkdownRemark(
       filter: {fileAbsolutePath: {regex: "/(../entry)/.*\\.md$/"}}
@@ -50,3 +51,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Component;
