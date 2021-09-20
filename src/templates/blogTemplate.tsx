@@ -25,31 +25,44 @@ import { BlogContentQuery } from '../type';
 export default function BlogTemplate(
   query: BlogContentQuery,
 ): React.ReactElement {
-  const { markdownRemark, tags } = query.pageResources.json.data;
+  const { pageResources } = query;
   return (
     <Layout>
       <div className="container">
         <article className="entry">
-          <h1>{markdownRemark?.frontmatter?.title}</h1>
+          <h1>{pageResources.json.data.markdownRemark?.frontmatter?.title}</h1>
           <aside className="meta">
-            <time dateTime={markdownRemark?.frontmatter?.entrytDate}>
+            <time
+              dateTime={
+                pageResources.json.data.markdownRemark?.frontmatter?.entrytDate
+              }
+            >
               <FontAwesomeIcon icon={faClock} />
               <i className="clock">
-                entry {markdownRemark?.frontmatter?.entrytDate}
+                entry{' '}
+                {
+                  pageResources.json.data.markdownRemark?.frontmatter
+                    ?.entrytDate
+                }
               </i>
             </time>
 
-            <time dateTime={markdownRemark?.frontmatter?.updated}>
+            <time
+              dateTime={
+                pageResources.json.data.markdownRemark?.frontmatter?.updated
+              }
+            >
               <FontAwesomeIcon icon={faClock} />
               <i className="clock">
-                update {markdownRemark?.frontmatter?.updated}
+                update{' '}
+                {pageResources.json.data.markdownRemark?.frontmatter?.updated}
               </i>
             </time>
 
             <div className="category">
               <FontAwesomeIcon icon={faFolderOpen} />
               <ul>
-                {tags.group.map((current, index) => (
+                {pageResources.json.data.tags.group.map((current, index) => (
                   <li className={`${current.tag || 'none'}`} key={index}>
                     {current.tag}
                   </li>
@@ -61,7 +74,9 @@ export default function BlogTemplate(
           <div
             className="content"
             dangerouslySetInnerHTML={{
-              __html: `${markdownRemark?.html || 'no content'}`,
+              __html: `${
+                pageResources.json.data.markdownRemark?.html || 'no content'
+              }`,
             }}
           />
 
