@@ -116,7 +116,7 @@ export const Footer: React.FC = (): React.ReactElement => {
         </div>
 
         <h6 className="author">
-          createdBy <a href="https://twitter.com/onesword0618">{author}</a>
+          createdBy <a href="https://ja.gravatar.com/aoakuablog">{author}</a>
         </h6>
 
         <h6 className="copyright">
