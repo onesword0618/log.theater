@@ -7,7 +7,7 @@
 import * as React from 'react';
 import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
-import Entry from './entry';
+import Entry from '../components/entry';
 import { EntriesQuery } from '@graphql-types';
 
 type Props = {
