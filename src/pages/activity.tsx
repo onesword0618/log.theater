@@ -14,12 +14,10 @@ import { Layout } from '../components/layout';
  */
 export default function Activity(): React.ReactElement {
   return (
-    <div className="activity">
-      <Layout>
-        <main>
-          <h2>Activity</h2>
-        </main>
-      </Layout>
-    </div>
+    <Layout>
+      <article className="activity">
+        <h2>Activity</h2>
+      </article>
+    </Layout>
   );
 }

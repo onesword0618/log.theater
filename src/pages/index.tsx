@@ -21,14 +21,12 @@ type Props = {
  * @returns {React.FC} components
  */
 const Component: React.FC<Props> = ({ data }) => (
-  <div className="application">
-    <Layout>
-      <main>
-        <h2>Entries</h2>
-        <Entry data={data} />
-      </main>
-    </Layout>
-  </div>
+  <Layout>
+    <article className="application">
+      <h2>Entries</h2>
+      <Entry data={data} />
+    </article>
+  </Layout>
 );
 
 /**

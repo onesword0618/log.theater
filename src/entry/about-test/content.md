@@ -1,12 +1,12 @@
 ---
 path: /entry/about-test
 created: '2021-09-21'
-updated: '2021-09-21'
+updated: '2021-09-23'
 title: 'テストについての所感を述べる.'
 tags: [test, think]
 ---
 
-### 要件
+### 要点
 
 この記事では以下のことについて取り上げる.
 

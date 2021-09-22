@@ -14,12 +14,10 @@ import { Layout } from '../components/layout';
  */
 export default function Code(): React.ReactElement {
   return (
-    <div className="code">
-      <Layout>
-        <main>
-          <h2>Code</h2>
-        </main>
-      </Layout>
-    </div>
+    <Layout>
+      <article className="code">
+        <h2>Code</h2>
+      </article>
+    </Layout>
   );
 }
