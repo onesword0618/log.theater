@@ -14,12 +14,10 @@ import { Layout } from '../components/layout';
  */
 export default function Design(): React.ReactElement {
   return (
-    <div className="design">
-      <Layout>
-        <main>
-          <h2>Design</h2>
-        </main>
-      </Layout>
-    </div>
+    <Layout>
+      <article className="design">
+        <h2>Design</h2>
+      </article>
+    </Layout>
   );
 }

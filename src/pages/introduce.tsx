@@ -14,12 +14,10 @@ import { Layout } from '../components/layout';
  */
 export default function Introduce(): React.ReactElement {
   return (
-    <div className="introduce">
-      <Layout>
-        <main>
-          <h2>Introduce</h2>
-        </main>
-      </Layout>
-    </div>
+    <Layout>
+      <article className="introduce">
+        <h2>Introduce</h2>
+      </article>
+    </Layout>
   );
 }
