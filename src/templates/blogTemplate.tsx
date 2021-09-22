@@ -7,14 +7,20 @@
 import * as React from 'react';
 import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
+
+// look-ahead font
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false;
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
   faChevronRight,
-  faClock,
   faFolderOpen,
 } from '@fortawesome/free-solid-svg-icons';
 import { TemplateContentsQuery } from '@graphql-types';
+import { ClockDate } from '../components/clockDate';
 
 type Props = {
   data: TemplateContentsQuery;
@@ -31,29 +37,28 @@ const Template: React.FC<Props> = ({ data }) => (
     <div className="container">
       <article className="entry">
         <h1>{data.markdownRemark?.frontmatter?.title}</h1>
+
         <aside className="meta">
-          <time dateTime={data.markdownRemark?.frontmatter?.entrytDate}>
-            <FontAwesomeIcon icon={faClock} />
-            <i className="clock">
-              {data.markdownRemark?.frontmatter?.entrytDate}
-            </i>
-          </time>
+          <ClockDate
+            className="entryDate"
+            caption="投稿日"
+            date={data.markdownRemark?.frontmatter?.entrytDate}
+          />
 
-          <time dateTime={data.markdownRemark?.frontmatter?.updated}>
-            <FontAwesomeIcon icon={faClock} />
-            <i className="clock">{data.markdownRemark?.frontmatter?.updated}</i>
-          </time>
+          <ClockDate
+            className="updateDate"
+            caption="更新日"
+            date={data.markdownRemark?.frontmatter?.updateDate}
+          />
 
-          <div className="category">
-            <FontAwesomeIcon icon={faFolderOpen} />
-            <ul>
-              {data.tags.group.map((current, index) => (
-                <li className={`${current.tag || 'none'}`} key={index}>
-                  {current.tag}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FontAwesomeIcon icon={faFolderOpen} />
+          <ul className="category">
+            {data.tags.group.map((current, index) => (
+              <li className={`${current.tag || 'none'}`} key={index}>
+                {current.tag}
+              </li>
+            ))}
+          </ul>
         </aside>
 
         <div
@@ -63,17 +68,20 @@ const Template: React.FC<Props> = ({ data }) => (
           }}
         />
 
-        <ul className="link">
-          <li className="preview">
+        <div
+          className="link"
+          style={{ display: 'flex', flexDirection: 'column' }}
+        >
+          <i className="preview">
             <FontAwesomeIcon icon={faChevronLeft} />
             <span>Preview Post</span>
-          </li>
+          </i>
 
-          <li className="next">
+          <i className="next">
             <FontAwesomeIcon icon={faChevronRight} />
             <span>Next Post</span>
-          </li>
-        </ul>
+          </i>
+        </div>
       </article>
     </div>
   </Layout>
@@ -88,6 +96,7 @@ export const query = graphql`
       excerpt(format: PLAIN, truncate: true)
       frontmatter {
         entrytDate: created(formatString: "YYYY.MM.DD")
+        updateDate: updated(formatString: "YYYY.MM.DD")
         created
         updated
         title
