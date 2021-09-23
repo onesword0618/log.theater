@@ -35,8 +35,6 @@ export const Footer: React.FC = (): React.ReactElement => {
     `,
   );
 
-  const author: string = fetchFooter.site?.siteMetadata?.author as string;
-
   return (
     <div
       className="footer_container"
@@ -48,20 +46,21 @@ export const Footer: React.FC = (): React.ReactElement => {
           style={{
             display: 'flex',
             flexDirection: 'row',
-            alignItems: 'center',
           }}
         >
-          <figure className="icon">
-            <StaticImage
-              className="blog_icon"
-              layout="fixed"
-              src="../images/icon.png"
-              width={50}
-              height={50}
-              quality={95}
-              alt="Blog Icon"
-            />
-          </figure>
+          <Link to="/">
+            <figure className="icon">
+              <StaticImage
+                className="blog_icon"
+                layout="fixed"
+                src="../images/icon.png"
+                width={50}
+                height={50}
+                quality={95}
+                alt="Blog Icon"
+              />
+            </figure>
+          </Link>
 
           <div
             className="footer_item_blog"
@@ -111,7 +110,14 @@ export const Footer: React.FC = (): React.ReactElement => {
           </div>
         </div>
 
-        <div className="sns_area">
+        <div
+          className="sns_area"
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+          }}
+        >
           <a href="https://twitter.com/onesword0618">
             <FontAwesomeIcon icon={faTwitter} />
           </a>
@@ -122,7 +128,10 @@ export const Footer: React.FC = (): React.ReactElement => {
         </div>
 
         <h6 className="author">
-          createdBy <a href="https://ja.gravatar.com/aoakuablog">{author}</a>
+          createdBy{' '}
+          <a href="https://ja.gravatar.com/aoakuablog">
+            {fetchFooter.site?.siteMetadata?.author}
+          </a>
         </h6>
 
         <h6 className="copyright">
