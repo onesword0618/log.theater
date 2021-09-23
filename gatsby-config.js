@@ -20,6 +20,7 @@ module.exports = {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
         fileName: `types/graphql-types.d.ts`,
+        documentPaths: [`node_modules/gatsby-transformer-sharp/!(node_modules)/**/*.js`]
       },
     },
     `gatsby-transformer-sharp`,
