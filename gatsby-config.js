@@ -20,7 +20,12 @@ module.exports = {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
         fileName: `types/graphql-types.d.ts`,
-        documentPaths: [`node_modules/gatsby-transformer-sharp/!(node_modules)/**/*.js`]
+        documentPaths: [
+          `./node_modules/gatsby-*/**/*.js`,
+          `./.cache/fragments/*.js`,
+          `./src/**/*.{ts,tsx}`,
+          `node_modules/gatsby-transformer-sharp/!(node_modules)/**/*.js`
+        ]
       },
     },
     `gatsby-transformer-sharp`,
@@ -47,5 +52,6 @@ module.exports = {
         gfm: true,
       }
     },
+    `gatsby-plugin-react-helmet`,
   ],
 };
