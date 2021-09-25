@@ -21,6 +21,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { TemplateContentsQuery } from '@graphql-types';
 import { ClockDate } from '../components/clockDate';
+import { SEO } from '../components/seo';
 
 type Props = {
   data: TemplateContentsQuery;
@@ -35,6 +36,7 @@ type Props = {
 const Template: React.FC<Props> = ({ data }) => (
   <Layout>
     <div className="container">
+      <SEO title={data.markdownRemark?.frontmatter?.title} />
       <article className="entry">
         <h1>{data.markdownRemark?.frontmatter?.title}</h1>
 

@@ -9,6 +9,7 @@ import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
 import Entry from '../components/entry';
 import { EntriesQuery } from '@graphql-types';
+import { SEO } from '../components/seo';
 
 type Props = {
   data: EntriesQuery;
@@ -22,6 +23,7 @@ type Props = {
  */
 const Component: React.FC<Props> = ({ data }) => (
   <Layout>
+    <SEO />
     <article className="application">
       <h2>Entries</h2>
       <Entry data={data} />
