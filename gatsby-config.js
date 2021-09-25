@@ -47,5 +47,6 @@ module.exports = {
         gfm: true,
       }
     },
+    `gatsby-plugin-react-helmet`,
   ],
 };
