@@ -22,7 +22,6 @@ module.exports = {
         fileName: `types/graphql-types.d.ts`,
         documentPaths: [
           `./node_modules/gatsby-*/**/*.js`,
-          `./.cache/fragments/*.js`,
           `./src/**/*.{ts,tsx}`,
           `node_modules/gatsby-transformer-sharp/!(node_modules)/**/*.js`
         ]
