@@ -5,13 +5,14 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
+
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import { HeaderComponentQuery } from '@graphql-types';
 
 /**
- * Header Component Parts.
+ * Header Component Part.
  *
- * @returns {React.ReactElement} components
+ * @returns {React.ReactElement} component
  */
 export const Header: React.FC = (): React.ReactElement => {
   const fetchHeader = useStaticQuery<HeaderComponentQuery>(
@@ -26,7 +27,19 @@ export const Header: React.FC = (): React.ReactElement => {
     `,
   );
 
-  const title: string = fetchHeader.site?.siteMetadata?.title as string;
+  let title = `No Title`;
+  const { site } = fetchHeader;
+  if (
+    site === undefined ||
+    site?.siteMetadata === undefined ||
+    site?.siteMetadata?.title === undefined
+  ) {
+    return <h1>{title}</h1>;
+  }
+
+  if (site.siteMetadata.title !== null) {
+    title = site.siteMetadata.title;
+  }
 
   return (
     <header>

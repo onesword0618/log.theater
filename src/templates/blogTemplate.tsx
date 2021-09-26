@@ -20,7 +20,7 @@ import {
   faFolderOpen,
 } from '@fortawesome/free-solid-svg-icons';
 import { TemplateContentsQuery } from '@graphql-types';
-import { ClockDate } from '../components/clockDate';
+import { Date } from '../components/date';
 import { SEO } from '../components/seo';
 
 type Props = {
@@ -33,61 +33,80 @@ type Props = {
  * @param {TemplateContentsQuery} query contents
  * @returns {React.FC} components
  */
-const Template: React.FC<Props> = ({ data }) => (
-  <Layout>
-    <div className="container">
-      <SEO title={data.markdownRemark?.frontmatter?.title} />
-      <article className="entry">
-        <h1>{data.markdownRemark?.frontmatter?.title}</h1>
+const Template: React.FC<Props> = ({ data }) => {
+  const { markdownRemark } = data;
+  if (
+    markdownRemark === undefined ||
+    markdownRemark?.frontmatter === undefined ||
+    markdownRemark.frontmatter?.entrytDate === undefined ||
+    markdownRemark.frontmatter?.updateDate === undefined ||
+    markdownRemark.html === undefined
+  ) {
+    return <Layout> No Content </Layout>;
+  }
 
-        <aside className="meta">
-          <ClockDate
-            className="entryDate"
-            caption="投稿日"
-            date={data.markdownRemark?.frontmatter?.entrytDate}
+  const { frontmatter, html } = markdownRemark;
+  let title = `No Post Title`;
+  if (frontmatter.title !== undefined && frontmatter.title !== null) {
+    title = frontmatter.title;
+  }
+
+  return (
+    <Layout>
+      <div className="container">
+        <SEO title={title} />
+        <article className="entry">
+          <h1>{data.markdownRemark?.frontmatter?.title}</h1>
+
+          <aside className="meta">
+            <Date
+              className="entryDate"
+              caption="投稿日"
+              date={frontmatter.entrytDate}
+            />
+
+            <Date
+              className="updateDate"
+              caption="更新日"
+              date={frontmatter.updateDate}
+            />
+
+            <FontAwesomeIcon icon={faFolderOpen} />
+            <ul className="category">
+              {data.tags.group.map((current, index) => (
+                <li className={`${current.tag || 'none'}`} key={index}>
+                  {current.tag}
+                </li>
+              ))}
+            </ul>
+          </aside>
+
+          <div
+            className="content"
+            dangerouslySetInnerHTML={{
+              __html: `${html || 'no content'}`,
+            }}
           />
 
-          <ClockDate
-            className="updateDate"
-            caption="更新日"
-            date={data.markdownRemark?.frontmatter?.updateDate}
-          />
+          <div
+            className="link"
+            style={{ display: 'flex', flexDirection: 'column' }}
+          >
+            <i className="preview">
+              <FontAwesomeIcon icon={faChevronLeft} />
+              <span>Preview Post</span>
+            </i>
 
-          <FontAwesomeIcon icon={faFolderOpen} />
-          <ul className="category">
-            {data.tags.group.map((current, index) => (
-              <li className={`${current.tag || 'none'}`} key={index}>
-                {current.tag}
-              </li>
-            ))}
-          </ul>
-        </aside>
-
-        <div
-          className="content"
-          dangerouslySetInnerHTML={{
-            __html: `${data.markdownRemark?.html || 'no content'}`,
-          }}
-        />
-
-        <div
-          className="link"
-          style={{ display: 'flex', flexDirection: 'column' }}
-        >
-          <i className="preview">
-            <FontAwesomeIcon icon={faChevronLeft} />
-            <span>Preview Post</span>
-          </i>
-
-          <i className="next">
-            <FontAwesomeIcon icon={faChevronRight} />
-            <span>Next Post</span>
-          </i>
-        </div>
-      </article>
-    </div>
-  </Layout>
-);
+            <i className="next">
+              <FontAwesomeIcon icon={faChevronRight} />
+              <span>Next Post</span>
+            </i>
+          </div>
+        </article>
+      </div>
+    </Layout>
+  );
+};
 
 /**
  * Template Contents,
