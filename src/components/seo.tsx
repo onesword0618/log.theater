@@ -12,6 +12,7 @@ import { MetaQuery } from '@graphql-types';
 type Props = {
   title?: string;
   description?: string;
+  url?: string;
 };
 
 /**
@@ -21,7 +22,7 @@ type Props = {
  * @returns {React.FC} component
  */
 export const SEO: React.FC<Props> = (props: Props) => {
-  const { title, description } = props;
+  const { title, description, url } = props;
 
   const fetchMeta = useStaticQuery<MetaQuery>(
     graphql`
@@ -30,6 +31,7 @@ export const SEO: React.FC<Props> = (props: Props) => {
           siteMetadata {
             defaultTitle: title
             defaultDescription: description
+            siteUrl
           }
         }
       }
@@ -41,23 +43,31 @@ export const SEO: React.FC<Props> = (props: Props) => {
     site === undefined ||
     site?.siteMetadata === undefined ||
     site?.siteMetadata?.defaultDescription === undefined ||
-    site?.siteMetadata?.defaultTitle === undefined
+    site?.siteMetadata?.defaultTitle === undefined ||
+    site.siteMetadata.siteUrl === undefined
   ) {
     return null;
   }
-  const { defaultTitle, defaultDescription } = site.siteMetadata;
-  if (defaultTitle === null || defaultDescription === null) {
+
+  const { defaultTitle, defaultDescription, siteUrl } = site.siteMetadata;
+  if (
+    defaultTitle === null ||
+    defaultDescription === null ||
+    siteUrl === null
+  ) {
     return null;
   }
 
   SEO.defaultProps = {
     title: defaultTitle,
     description: defaultDescription,
+    url: siteUrl,
   };
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
+    url: url !== siteUrl ? `${siteUrl}${url}` : siteUrl,
   };
 
   return (
@@ -65,6 +75,7 @@ export const SEO: React.FC<Props> = (props: Props) => {
       <html lang="ja" />
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
+      <link rel="canonical" href={seo.url} />
     </Helmet>
   );
 };

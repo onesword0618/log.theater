@@ -5,19 +5,31 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
+import { SEO } from '../components/seo';
 import { Layout } from '../components/layout';
+
+type Props = {
+  location: {
+    pathname: string;
+  };
+};
 
 /**
  * About MySelf Introduce.
  *
- * @returns {React.ReactElement} components
+ * @param  {string} location current page
+ * @returns {React.ReactElement} component
  */
-export default function Introduce(): React.ReactElement {
+export default function Introduce({ location }: Props): React.ReactElement {
+  const { pathname } = location;
   return (
-    <Layout>
-      <article className="introduce">
-        <h2>Introduce</h2>
-      </article>
-    </Layout>
+    <>
+      <SEO title={`introduce`} url={pathname} />
+      <Layout>
+        <article className="introduce">
+          <h2>Introduce</h2>
+        </article>
+      </Layout>
+    </>
   );
 }

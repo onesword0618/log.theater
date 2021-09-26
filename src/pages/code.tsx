@@ -5,19 +5,31 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
+import { SEO } from '../components/seo';
 import { Layout } from '../components/layout';
+
+type Props = {
+  location: {
+    pathname: string;
+  };
+};
 
 /**
  * Code Explain.
  *
- * @returns {React.ReactElement} components
+ * @param  {string} location current page
+ * @returns {React.ReactElement} component
  */
-export default function Code(): React.ReactElement {
+export default function Code({ location }: Props): React.ReactElement {
+  const { pathname } = location;
   return (
-    <Layout>
-      <article className="code">
-        <h2>Code</h2>
-      </article>
-    </Layout>
+    <>
+      <SEO title={`code`} url={pathname} />
+      <Layout>
+        <article className="code">
+          <h2>Code</h2>
+        </article>
+      </Layout>
+    </>
   );
 }
