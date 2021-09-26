@@ -20,50 +20,62 @@ import {
   faWrench,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SEO } from '../components/seo';
+
+type Props = {
+  location: {
+    pathname: string;
+  };
+};
 
 /**
  * Blog About Explain.
  *
- * @returns {React.ReactElement} components
+ * @param  {string} location current page
+ * @returns {React.ReactElement} component
  */
-export default function About(): React.ReactElement {
+export default function About({ location }: Props): React.ReactElement {
+  const { pathname } = location;
   return (
-    <Layout>
-      <article className="content">
-        <h2>About Log Theater</h2>
-        <div className="purpose">
-          <h3>
-            <FontAwesomeIcon icon={faWrench} />
-            目的
-          </h3>
-          <p>
-            このサイトでは、アプリケーション開発全般の疑問や調査、考察を深めていった思考結果を記載しています.
-          </p>
-        </div>
+    <>
+      <SEO title={`Log Theaterについて`} url={pathname} />
+      <Layout>
+        <article className="content">
+          <h2>About Log Theater</h2>
+          <div className="purpose">
+            <h3>
+              <FontAwesomeIcon icon={faWrench} />
+              目的
+            </h3>
+            <p>
+              このサイトでは、アプリケーション開発全般の疑問や調査、考察を深めていった思考結果を記載しています.
+            </p>
+          </div>
 
-        <div className="category">
-          <h3>
-            <FontAwesomeIcon icon={faFilter} />
-            カテゴリ
-          </h3>
-          <p>このサイトでは、取り上げていく内容は以下を予定しています.</p>
+          <div className="category">
+            <h3>
+              <FontAwesomeIcon icon={faFilter} />
+              カテゴリ
+            </h3>
+            <p>このサイトでは、取り上げていく内容は以下を予定しています.</p>
 
-          <ul style={{ listStyle: 'none' }}>
-            <li>
-              <FontAwesomeIcon icon={faFlask} />
-              アプリケーションのテストについての調査、考察について
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faObjectGroup} />
-              アプリケーションの設計について
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faDatabase} />
-              データベースの設計、運用について
-            </li>
-          </ul>
-        </div>
-      </article>
-    </Layout>
+            <ul style={{ listStyle: 'none' }}>
+              <li>
+                <FontAwesomeIcon icon={faFlask} />
+                アプリケーションのテストについての調査、考察について
+              </li>
+              <li>
+                <FontAwesomeIcon icon={faObjectGroup} />
+                アプリケーションの設計について
+              </li>
+              <li>
+                <FontAwesomeIcon icon={faDatabase} />
+                データベースの設計、運用について
+              </li>
+            </ul>
+          </div>
+        </article>
+      </Layout>
+    </>
   );
 }
