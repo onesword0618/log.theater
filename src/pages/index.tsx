@@ -5,10 +5,11 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
-import Entry from '../components/entry';
 import { EntriesQuery } from '@graphql-types';
+
+import { Layout } from '../components/layout';
+import Entry from '../components/entry';
 import { SEO } from '../components/seo';
 
 type Props = {
@@ -16,10 +17,10 @@ type Props = {
 };
 
 /**
- * This Application EntryPoint.
+ * This Application Entry Point.
  *
- * @param {EntriesQuery} {data} initialData
- * @returns {React.FC} components
+ * @param {EntriesQuery} data entries
+ * @returns {React.FC} component
  */
 const Component: React.FC<Props> = ({ data }) => (
   <Layout>

@@ -14,10 +14,10 @@ type Props = {
 };
 
 /**
- *  Layout Components Parts.
+ *  Layout Component Parts.
  *
  * @param {Props} prop children: React.ReactNode
- * @returns {React.ReactElement} components
+ * @returns {React.ReactElement} component
  */
 export const Layout: React.FC<Props> = (prop: Props): React.ReactElement => {
   const { children } = prop;

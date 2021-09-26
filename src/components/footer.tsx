@@ -18,9 +18,9 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import { FooterComponentQuery } from '@graphql-types';
 
 /**
- * Footer Component Parts.
+ * Footer Component Part.
  *
- * @returns {React.ReactElement} components
+ * @returns {React.ReactElement} component
  */
 export const Footer: React.FC = (): React.ReactElement => {
   const fetchFooter = useStaticQuery<FooterComponentQuery>(
@@ -34,6 +34,20 @@ export const Footer: React.FC = (): React.ReactElement => {
       }
     `,
   );
+
+  let author = `No Body`;
+  const { site } = fetchFooter;
+  if (
+    site === undefined ||
+    site?.siteMetadata === undefined ||
+    site?.siteMetadata?.author === undefined
+  ) {
+    return <h1>{author}</h1>;
+  }
+
+  if (site.siteMetadata.author !== null) {
+    author = site.siteMetadata.author;
+  }
 
   return (
     <div
@@ -127,16 +141,13 @@ export const Footer: React.FC = (): React.ReactElement => {
           </a>
         </div>
 
-        <h6 className="author">
-          createdBy{' '}
-          <a href="https://ja.gravatar.com/aoakuablog">
-            {fetchFooter.site?.siteMetadata?.author}
-          </a>
-        </h6>
+        <h5 className="author">
+          createdBy <a href="https://ja.gravatar.com/aoakuablog">{author}</a>
+        </h5>
 
-        <h6 className="copyright">
+        <h5 className="copyright">
           Copyright(c) {new Date().getFullYear()} All Rights Reserved.
-        </h6>
+        </h5>
       </footer>
     </div>
   );

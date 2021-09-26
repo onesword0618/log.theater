@@ -19,10 +19,11 @@ type Props = {
  * @returns {React.FC} page
  */
 const Entry: React.FC<Props> = ({ data }) => {
+  const { nodes } = data.allMarkdownRemark;
   return (
     <div className="entry">
-      {data.allMarkdownRemark.nodes.map(({ frontmatter, id }) => (
-        <Link to={`${frontmatter?.path || 'none'}`} key={id}>
+      {nodes.map(({ frontmatter, id }) => (
+        <Link to={`${frontmatter?.path || '/'}`} key={id}>
           <article className="article">{frontmatter?.title}</article>
         </Link>
       ))}

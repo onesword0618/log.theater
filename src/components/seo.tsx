@@ -18,7 +18,7 @@ type Props = {
  * Meta Component Parts.
  *
  * @param {Props} props meta
- * @returns {React.FC} components
+ * @returns {React.FC} component
  */
 export const SEO: React.FC<Props> = (props: Props) => {
   const { title, description } = props;
@@ -36,7 +36,19 @@ export const SEO: React.FC<Props> = (props: Props) => {
     `,
   );
 
-  const { defaultTitle, defaultDescription } = fetchMeta.site?.siteMetadata;
+  const { site } = fetchMeta;
+  if (
+    site === undefined ||
+    site?.siteMetadata === undefined ||
+    site?.siteMetadata?.defaultDescription === undefined ||
+    site?.siteMetadata?.defaultTitle === undefined
+  ) {
+    return null;
+  }
+  const { defaultTitle, defaultDescription } = site.siteMetadata;
+  if (defaultTitle === null || defaultDescription === null) {
+    return null;
+  }
 
   SEO.defaultProps = {
     title: defaultTitle,
