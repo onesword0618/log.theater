@@ -30,8 +30,8 @@ type Props = {
 /**
  *  Blog Contetnt Template Component.
  *
- * @param {TemplateContentsQuery} query contents
- * @returns {React.FC} components
+ * @param {TemplateContentsQuery} data contents
+ * @returns {React.FC} component
  */
 const Template: React.FC<Props> = ({ data }) => {
   const { markdownRemark } = data;
