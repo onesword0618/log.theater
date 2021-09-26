@@ -18,9 +18,7 @@ type Props = {
  * @param {Props} props date
  * @returns {React.ReactElement} components
  */
-export const ClockDate: React.FC<Props> = (
-  props: Props,
-): React.ReactElement => {
+export const Date: React.FC<Props> = (props: Props): React.ReactElement => {
   const { caption, className, date } = props;
   return (
     <time
