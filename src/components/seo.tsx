@@ -32,6 +32,8 @@ export const SEO: React.FC<Props> = (props: Props) => {
             defaultTitle: title
             defaultDescription: description
             siteUrl
+            locale
+            fbappid
           }
         }
       }
@@ -44,16 +46,21 @@ export const SEO: React.FC<Props> = (props: Props) => {
     site?.siteMetadata === undefined ||
     site?.siteMetadata?.defaultDescription === undefined ||
     site?.siteMetadata?.defaultTitle === undefined ||
-    site.siteMetadata.siteUrl === undefined
+    site.siteMetadata.siteUrl === undefined ||
+    site.siteMetadata.locale === undefined ||
+    site.siteMetadata.fbappid === undefined
   ) {
     return null;
   }
 
-  const { defaultTitle, defaultDescription, siteUrl } = site.siteMetadata;
+  const { defaultTitle, defaultDescription, siteUrl, locale, fbappid } =
+    site.siteMetadata;
   if (
     defaultTitle === null ||
     defaultDescription === null ||
-    siteUrl === null
+    siteUrl === null ||
+    locale === null ||
+    fbappid === null
   ) {
     return null;
   }
@@ -68,6 +75,8 @@ export const SEO: React.FC<Props> = (props: Props) => {
     title: title || defaultTitle,
     description: description || defaultDescription,
     url: url !== siteUrl ? `${siteUrl}${url}` : siteUrl,
+    locale: locale,
+    fbappid: fbappid,
   };
 
   return (
@@ -76,6 +85,17 @@ export const SEO: React.FC<Props> = (props: Props) => {
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <link rel="canonical" href={seo.url} />
+      <meta property="og:site_name" content={defaultTitle} />
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:url" content={seo.url} />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content={seo.locale} />
+      <meta property="fb:app_id" content={seo.fbappid} />
+      <meta property="og:image" content="../images/icon.png" />
+      <meta property="og:image:width" content="1280" />
+      <meta property="og:image:height" content="640" />
+      <meta property="twitter:card" content="../images/icon.png" />
     </Helmet>
   );
 };

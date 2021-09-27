@@ -132,11 +132,14 @@ export const Footer: React.FC = (): React.ReactElement => {
             justifyContent: 'flex-end',
           }}
         >
-          <a href="https://twitter.com/onesword0618">
+          <a className="twitter" href="https://twitter.com/onesword0618">
             <FontAwesomeIcon icon={faTwitter} />
           </a>
 
-          <a href="https://www.facebook.com/profile.php?id=100023464906058">
+          <a
+            className="facebook"
+            href="https://www.facebook.com/profile.php?id=100023464906058"
+          >
             <FontAwesomeIcon icon={faFacebook} />
           </a>
         </div>
