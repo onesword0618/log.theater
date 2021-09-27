@@ -13,6 +13,8 @@ module.exports = {
     description: 'blog',
     email: 'ao.akua.leo@gmail.com',
     title: 'log.theater',
+    locale: 'ja-JP',
+    fbappid: '588287979288774'
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
