@@ -40,7 +40,7 @@ export default function About({ location }: Props): React.ReactElement {
     <>
       <SEO title={`Log Theaterについて`} url={pathname} />
       <Layout>
-        <article className="content">
+        <article className="about">
           <h2>About Log Theater</h2>
           <div className="purpose">
             <h3>
