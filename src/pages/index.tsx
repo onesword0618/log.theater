@@ -56,6 +56,8 @@ export const pageQuery = graphql`
     allMarkdownRemark(
     filter: {fileAbsolutePath: {regex: "/(../entry)/.*\\.md$/"}}
     sort: {order: DESC, fields: frontmatter___created}
+    skip: 0
+    limit: 8
   ) {
     nodes {
       excerpt(format: PLAIN, truncate: true)
