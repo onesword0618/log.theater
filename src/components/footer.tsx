@@ -144,12 +144,12 @@ export const Footer: React.FC = (): React.ReactElement => {
           </a>
         </div>
 
-        <h5 className="author">
-          createdBy <a href="https://ja.gravatar.com/aoakuablog">{author}</a>
-        </h5>
-
         <h5 className="copyright">
-          Copyright(c) {new Date().getFullYear()} All Rights Reserved.
+          <p>Copyright(c) {new Date().getFullYear()}</p>
+          <p>
+            <a href="https://ja.gravatar.com/aoakuablog">{author}</a> All Rights
+            Reserved, with <a href="https://www.gatsbyjs.com">Gatsby</a> .
+          </p>
         </h5>
       </footer>
     </div>
