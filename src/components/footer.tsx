@@ -8,10 +8,11 @@ import * as React from 'react';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false;
-
+import { config, library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
+config.autoAddCss = false;
+library.add(faFacebook, faTwitter);
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StaticImage } from 'gatsby-plugin-image';
 import { graphql, Link, useStaticQuery } from 'gatsby';
