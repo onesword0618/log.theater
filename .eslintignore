@@ -10,5 +10,8 @@ gatsby-config.js
 gatsby-node.js
 gatsby-browser.js
 
+# local plugins
+plugins/
+
 # eslint
 .eslintrc.json
