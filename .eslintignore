@@ -8,6 +8,7 @@ public/
 types/
 gatsby-config.js
 gatsby-node.js
+gatsby-node.esm.js
 gatsby-browser.js
 
 # local plugins
