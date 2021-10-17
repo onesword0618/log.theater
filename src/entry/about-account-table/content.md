@@ -34,13 +34,11 @@ Account テーブルの役割は、以下が挙げられると思われる.
 
 ## Account テーブルに備える項目
 
-```
 | id   | familiy   | given     | middle     | familiy_kana | given_kana | middle_kana        | birth     | sex    |
 | ---- | --------- | --------- | ---------- | ------------ | ---------- | ------------------ | --------- | ------ |
 | 0001 | John      | Kennedy   | Fitzgerald | じょん       | けねでぃ   | ふぃっつじぇらるど | 1917-5-29 | male   |
 | 0002 | Charlotte | Elizabeth | null       | しゃーろっと | えりざべす | null               | 2000-1-1  | female |
 | 0003 | 田中      | 太郎      | null       | tanaka       | taro       | null               | 1992-7-1  | male   |
-```
 
 社外のアプリケーションであるならここに `nickname` のようなアプリケーションに表示する名前の項目が、`familiy`,`given`,`middle`,`familiy_kana`,`given_kana`,`middle_kana` の代わりに定義されるかと思う.
 
