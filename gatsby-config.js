@@ -10,11 +10,11 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://onesword0618.jp',
     author: 'onesword0618',
-    description: 'blog',
+    description: 'log.theater は、Inoue Kenichi @onesword0618 のブログです.',
     email: 'ao.akua.leo@gmail.com',
     title: 'log.theater',
     locale: 'ja-JP',
-    fbappid: '588287979288774'
+    facebookApplicationId: '588287979288774'
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
@@ -27,29 +27,22 @@ module.exports = {
       options: {
         fileName: `types/graphql-types.d.ts`,
         documentPaths: [
-          `node_modules/gatsby-transformer-sharp/!(node_modules)/**/*.js`
+
         ]
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `entry`,
-        path: `${__dirname}/src/entry/`,
+        path: `${__dirname}/content/entry/`,
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `log.theater`,
-        short_name: `blog`,
+        short_name: `log.theater`,
         start_url: `/`,
         background_color: `#FCA400`,
         theme_color: `#FCA400`,

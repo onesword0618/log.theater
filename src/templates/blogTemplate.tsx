@@ -22,6 +22,7 @@ import {
 import { TemplateContentsQuery } from '@graphql-types';
 import { Date } from '../components/date';
 import { SEO } from '../components/seo';
+import { Tag } from '../components/tag';
 
 type Props = {
   data: TemplateContentsQuery;
@@ -51,6 +52,11 @@ const Template: React.FC<Props> = ({ data }) => {
     title = frontmatter.title;
   }
 
+  let tags: string[] = [];
+  if (frontmatter.tags !== undefined && frontmatter.tags !== null) {
+    tags = frontmatter.tags;
+  }
+
   return (
     <Layout>
       <div className="container">
@@ -72,10 +78,10 @@ const Template: React.FC<Props> = ({ data }) => {
             />
 
             <FontAwesomeIcon icon={faFolderOpen} />
-            <ul className="category">
-              {data.tags.group.map((current, index) => (
-                <li className={`${current.tag || 'none'}`} key={index}>
-                  {current.tag}
+            <ul className="category" style={{ listStyle: 'none' }}>
+              {tags.map((current, index) => (
+                <li className={`${current || 'none'}`} key={index}>
+                  <Tag tag={current} />
                 </li>
               ))}
             </ul>
@@ -121,14 +127,10 @@ export const query = graphql`
         created
         updated
         title
+        tags
       }
       id
       html
-    }
-    tags: allMarkdownRemark(limit: 1000) {
-      group(field: frontmatter___tags) {
-        tag: fieldValue
-      }
     }
   }
 `;
