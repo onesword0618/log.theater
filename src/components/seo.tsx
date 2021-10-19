@@ -33,7 +33,7 @@ export const SEO: React.FC<Props> = (props: Props) => {
             defaultDescription: description
             siteUrl
             locale
-            fbappid
+            facebookApplicationId
           }
         }
       }
@@ -48,19 +48,24 @@ export const SEO: React.FC<Props> = (props: Props) => {
     site?.siteMetadata?.defaultTitle === undefined ||
     site.siteMetadata.siteUrl === undefined ||
     site.siteMetadata.locale === undefined ||
-    site.siteMetadata.fbappid === undefined
+    site.siteMetadata.facebookApplicationId === undefined
   ) {
     return null;
   }
 
-  const { defaultTitle, defaultDescription, siteUrl, locale, fbappid } =
-    site.siteMetadata;
+  const {
+    defaultTitle,
+    defaultDescription,
+    siteUrl,
+    locale,
+    facebookApplicationId,
+  } = site.siteMetadata;
   if (
     defaultTitle === null ||
     defaultDescription === null ||
     siteUrl === null ||
     locale === null ||
-    fbappid === null
+    facebookApplicationId === null
   ) {
     return null;
   }
@@ -76,7 +81,7 @@ export const SEO: React.FC<Props> = (props: Props) => {
     description: description || defaultDescription,
     url: url !== siteUrl ? `${siteUrl}${url}` : siteUrl,
     locale: locale,
-    fbappid: fbappid,
+    facebookApplicationId: facebookApplicationId,
   };
 
   return (
@@ -91,7 +96,7 @@ export const SEO: React.FC<Props> = (props: Props) => {
       <meta property="og:url" content={seo.url} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={seo.locale} />
-      <meta property="fb:app_id" content={seo.fbappid} />
+      <meta property="fb:app_id" content={seo.facebookApplicationId} />
       <meta property="og:image" content="../images/icon.png" />
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="640" />

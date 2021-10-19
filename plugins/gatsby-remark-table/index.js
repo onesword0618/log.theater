@@ -7,7 +7,6 @@ module.exports = ({ markdownAST }) => {
   visit(markdownAST, `table`, (node) => {
     // https://github.com/remarkjs/remark-rehype#use
     const html = toHtml(unified().use(remarkRehype).runSync(node));
-    console.log(`html : : ${html}`);
     node.type = `html`;
     node.value = `
       <div class="table-wrapper">
