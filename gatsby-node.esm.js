@@ -36,19 +36,4 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-
-  const count = 6;
-  const pages = entryResult.data.posts.nodes.length;
-  const entryPages = Math.ceil(pages / count);
-
-  Array.from({ length: entryPages }).forEach((_ , index) => {
-    createPage({
-      path: index === 0 ? `/entry/` : `/entry/${index + 1}`,
-      component: path.resolve(`./src/templates/entryTemplate.tsx`),
-      context: {
-        skip: count * index,
-        limit: count,
-      },
-    })
-  })
 }
