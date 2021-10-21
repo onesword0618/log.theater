@@ -1,5 +1,5 @@
 /**
- * Entry Templete Component Parts
+ * Entry Templete Component Parts.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.

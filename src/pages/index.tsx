@@ -54,25 +54,25 @@ const Component: React.FC<Props> = ({ data }) => {
 export const pageQuery = graphql`
   query Entries {
     allMarkdownRemark(
-    filter: {fileAbsolutePath: {regex: "/(../entry)/.*\\.md$/"}}
-    sort: {order: DESC, fields: frontmatter___created}
-    skip: 0
-    limit: 8
-  ) {
-    nodes {
-      excerpt(format: PLAIN, truncate: true)
-      frontmatter {
-        title
-        path
+      filter: {fileAbsolutePath: {regex: "/(../content/entry)/.*\\.md$/"}}
+      sort: {order: DESC, fields: frontmatter___created}
+      skip: 0
+      limit: 8
+    ) {
+      nodes {
+        excerpt(format: PLAIN, truncate: true)
+        frontmatter {
+          title
+          path
+        }
+        id
       }
-      id
     }
-  }
-  site {
-    siteMetadata {
-      siteUrl
+    site {
+      siteMetadata {
+        siteUrl
+      }
     }
-  }
   }
 `;
 

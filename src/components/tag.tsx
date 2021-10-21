@@ -5,6 +5,7 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
+import { Link } from 'gatsby';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -21,18 +22,18 @@ library.add(faDatabase, faFilter, faFlask, faObjectGroup);
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type Props = {
-  tag: string;
+  name: string;
 };
 
 /**
  * Category Icon.
  *
- * @param {Props} props tag
+ * @param {Props} props name
  * @returns {React.FC} category
  */
-export const Tag: React.FC<Props> = ({ tag }) => {
+export const Tag: React.FC<Props> = ({ name }) => {
   let category: IconProp = faFilter;
-  switch (tag) {
+  switch (name) {
     case `test`:
       category = faFlask;
       break;
@@ -48,11 +49,11 @@ export const Tag: React.FC<Props> = ({ tag }) => {
 
   return (
     <div className="tag">
-      {tag && (
-        <>
+      {name && (
+        <Link to={`/tag/${name}`}>
           <FontAwesomeIcon icon={category} />
-          {tag}
-        </>
+          {name}
+        </Link>
       )}
     </div>
   );

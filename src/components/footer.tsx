@@ -146,10 +146,10 @@ export const Footer: React.FC = (): React.ReactElement => {
         </div>
 
         <h5 className="copyright">
-          <p>Copyright(c) {new Date().getFullYear()}</p>
           <p>
+            Copyright(c) {new Date().getFullYear()},
             <a href="https://ja.gravatar.com/aoakuablog">{author}</a> All Rights
-            Reserved, with <a href="https://www.gatsbyjs.com">Gatsby</a> .
+            Reserved, Build with <a href="https://www.gatsbyjs.com">Gatsby</a> .
           </p>
         </h5>
       </footer>

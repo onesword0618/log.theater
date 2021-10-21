@@ -1,12 +1,12 @@
 /**
- * Contetnt Template Component Parts.
+ * Entry Template Parts.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
 import * as React from 'react';
 import { Layout } from '../components/layout';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -15,46 +15,50 @@ config.autoAddCss = false;
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faChevronLeft,
-  faChevronRight,
-  faFolderOpen,
+  faArrowCircleLeft,
+  faArrowCircleRight,
 } from '@fortawesome/free-solid-svg-icons';
-import { TemplateContentsQuery } from '@graphql-types';
+import { MarkdownRemark, Maybe, TemplateContentsQuery } from '@graphql-types';
 import { Date } from '../components/date';
 import { SEO } from '../components/seo';
 import { Tag } from '../components/tag';
 
-type Props = {
-  data: TemplateContentsQuery;
+type PageContext = {
+  previous: Maybe<MarkdownRemark>;
+  next: Maybe<MarkdownRemark>;
 };
 
-/**
- *  Blog Contetnt Template Component.
- *
- * @param {TemplateContentsQuery} data contents
- * @returns {React.FC} component
- */
-const Template: React.FC<Props> = ({ data }) => {
+type Props = {
+  data: TemplateContentsQuery;
+  pageContext: PageContext;
+};
+
+const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
   const { markdownRemark } = data;
-  if (
-    markdownRemark === undefined ||
-    markdownRemark?.frontmatter === undefined ||
-    markdownRemark.frontmatter?.entrytDate === undefined ||
-    markdownRemark.frontmatter?.updateDate === undefined ||
-    markdownRemark.html === undefined
-  ) {
+  if (markdownRemark === undefined || markdownRemark === null) {
     return <Layout> No Content </Layout>;
   }
 
   const { frontmatter, html } = markdownRemark;
-  let title = `No Post Title`;
-  if (frontmatter.title !== undefined && frontmatter.title !== null) {
-    title = frontmatter.title;
+  let title;
+  let entryDate;
+  let updateDate;
+  if (frontmatter !== undefined && frontmatter !== null) {
+    title =
+      frontmatter.title !== undefined && frontmatter.title !== null
+        ? frontmatter.title
+        : `No Title`;
+    entryDate = frontmatter.entrytDate;
+    updateDate = frontmatter.updateDate;
   }
 
-  let tags: string[] = [];
-  if (frontmatter.tags !== undefined && frontmatter.tags !== null) {
-    tags = frontmatter.tags;
+  const tags: string[] = [];
+  if (frontmatter?.tags !== undefined && frontmatter?.tags !== null) {
+    for (const tag of frontmatter?.tags) {
+      if (tag !== undefined && tag !== null) {
+        tags.push(tag);
+      }
+    }
   }
 
   return (
@@ -62,26 +66,17 @@ const Template: React.FC<Props> = ({ data }) => {
       <div className="container">
         <SEO title={title} />
         <article className="entry">
-          <h1>{data.markdownRemark?.frontmatter?.title}</h1>
+          <h1>{title}</h1>
 
           <aside className="meta">
-            <Date
-              className="entryDate"
-              caption="投稿日"
-              date={frontmatter.entrytDate}
-            />
+            <Date className="entryDate" caption="投稿日" date={entryDate} />
 
-            <Date
-              className="updateDate"
-              caption="更新日"
-              date={frontmatter.updateDate}
-            />
+            <Date className="updateDate" caption="更新日" date={updateDate} />
 
-            <FontAwesomeIcon icon={faFolderOpen} />
             <ul className="category" style={{ listStyle: 'none' }}>
               {tags.map((current, index) => (
                 <li className={`${current || 'none'}`} key={index}>
-                  <Tag tag={current} />
+                  <Tag name={current} />
                 </li>
               ))}
             </ul>
@@ -98,15 +93,19 @@ const Template: React.FC<Props> = ({ data }) => {
             className="link"
             style={{ display: 'flex', flexDirection: 'column' }}
           >
-            <i className="preview">
-              <FontAwesomeIcon icon={faChevronLeft} />
-              <span>Preview Post</span>
-            </i>
+            {pageContext.previous?.frontmatter?.path && (
+              <i className="preview">
+                <FontAwesomeIcon icon={faArrowCircleLeft} />
+                <Link to={pageContext.previous.frontmatter.path}>前の記事</Link>
+              </i>
+            )}
 
-            <i className="next">
-              <FontAwesomeIcon icon={faChevronRight} />
-              <span>Next Post</span>
-            </i>
+            {pageContext.next?.frontmatter?.path && (
+              <i className="next">
+                <FontAwesomeIcon icon={faArrowCircleRight} />
+                <Link to={pageContext.next.frontmatter.path}>次の記事</Link>
+              </i>
+            )}
           </div>
         </article>
       </div>
@@ -115,7 +114,7 @@ const Template: React.FC<Props> = ({ data }) => {
 };
 
 /**
- * Template Contents,
+ * Template Contents.
  */
 export const query = graphql`
   query TemplateContents($id: String) {
@@ -135,4 +134,7 @@ export const query = graphql`
   }
 `;
 
-export default Template;
+/**
+ * Entry Template.
+ */
+export default EntryTemplate;
