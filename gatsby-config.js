@@ -1,5 +1,5 @@
 /**
- * Config Gatsby site with this file.
+ * Gatsby Config File.
  *
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  *
