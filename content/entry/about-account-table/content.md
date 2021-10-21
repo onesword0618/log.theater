@@ -1,7 +1,7 @@
 ---
 path: /entry/about-account-table
 created: '2021-10-07'
-updated: '2021-10-11'
+updated: '2021-10-21'
 title: 'Accountテーブルについての所感を述べる.'
 tags: [database, design]
 ---
@@ -57,13 +57,11 @@ Account テーブルの役割は、以下が挙げられると思われる.
 
 Account
 
-```
 | familiy   | given     | middle     |
 | --------- | --------- | ---------- |
 | John      | Kennedy   | Fitzgerald |
 | Charlotte | Elizabeth | null       |
 | 田中      | 太郎      | null       |
-```
 
 日本の法律では、ミドルネームは認められておらず、名前の一部として登録し、名前として扱われる.
 
