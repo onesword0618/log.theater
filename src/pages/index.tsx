@@ -6,20 +6,19 @@
  */
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { EntriesQuery } from '@graphql-types';
 
 import { Layout } from '../components/layout';
 import Entry from '../components/entry';
 import { SEO } from '../components/seo';
 
 type Props = {
-  data: EntriesQuery;
+  data: GatsbyTypes.EntriesQuery;
 };
 
 /**
  * This Application Entry Point.
  *
- * @param {EntriesQuery} data entries
+ * @param {Props} data entries
  * @returns {React.FC} component
  */
 const Component: React.FC<Props> = ({ data }) => {

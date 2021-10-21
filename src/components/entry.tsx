@@ -1,24 +1,19 @@
 /**
- * Entry Point File.
+ * Entry File.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { Link } from 'gatsby';
-import { EntriesQuery } from '@graphql-types';
-
-type Props = {
-  data: EntriesQuery;
-};
+import { Link, PageProps } from 'gatsby';
 
 /**
  * Entry List.
  *
- * @param {EntriesQuery} props contents
+ * @param {PageProps} data contents
  * @returns {React.FC} page
  */
-const Entry: React.FC<Props> = ({ data }) => {
+const Entry: React.FC<PageProps<GatsbyTypes.EntriesQuery>> = ({ data }) => {
   const { nodes } = data.allMarkdownRemark;
   return (
     <div className="entry">

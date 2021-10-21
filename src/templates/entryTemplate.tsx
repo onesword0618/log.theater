@@ -10,26 +10,26 @@ import { graphql, Link } from 'gatsby';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false;
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { config, library } from '@fortawesome/fontawesome-svg-core';
 import {
   faArrowCircleLeft,
   faArrowCircleRight,
 } from '@fortawesome/free-solid-svg-icons';
-import { MarkdownRemark, Maybe, TemplateContentsQuery } from '@graphql-types';
+config.autoAddCss = false;
+library.add(faArrowCircleLeft, faArrowCircleRight);
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Date } from '../components/date';
 import { SEO } from '../components/seo';
 import { Tag } from '../components/tag';
 
 type PageContext = {
-  previous: Maybe<MarkdownRemark>;
-  next: Maybe<MarkdownRemark>;
+  previous: GatsbyTypes.Maybe<GatsbyTypes.MarkdownRemark>;
+  next: GatsbyTypes.Maybe<GatsbyTypes.MarkdownRemark>;
 };
 
 type Props = {
-  data: TemplateContentsQuery;
+  data: GatsbyTypes.TemplateContentsQuery;
   pageContext: PageContext;
 };
 
