@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*.ts", "src/**/*.tsx", "test/**/*"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "test/**/*", "./types/**/*"],
   "exclude": ["node_modules","gatsby-node.esm.js","gatsby-browser.js"],
   "compileOnSave": false,
   "compilerOptions": {
@@ -38,8 +38,6 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "checkJs": false,
-    "paths": {
-      "@graphql-types": ["types/graphql-types.d.ts"]
-    }
+    "typeRoots": ["./types", "node_modules/@types"]
   }
 }

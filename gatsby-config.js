@@ -23,12 +23,9 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-graphql-codegen`,
+      resolve: `gatsby-plugin-typegen`,
       options: {
-        fileName: `types/graphql-types.d.ts`,
-        documentPaths: [
-
-        ]
+        outputPath: `${__dirname}/types/graphql-types.d.ts`
       },
     },
     {
@@ -36,6 +33,7 @@ module.exports = {
       options: {
         name: `entry`,
         path: `${__dirname}/content/entry/`,
+        ignore: [`${__dirname}/types/graphql-types.d.ts`]
       },
     },
     {
@@ -59,12 +57,6 @@ module.exports = {
         plugins: [
           {
             resolve: `gatsby-remark-code-titles`,
-          },
-          {
-            resolve: `gatsby-remark-shiki`,
-            options: {
-              theme: "monokai",
-            },
           },
           {
             resolve: `gatsby-remark-autolink-headers`,
