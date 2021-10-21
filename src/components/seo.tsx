@@ -7,7 +7,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
-import { MetaQuery } from '@graphql-types';
 
 type Props = {
   title?: string;
@@ -24,7 +23,7 @@ type Props = {
 export const SEO: React.FC<Props> = (props: Props) => {
   const { title, description, url } = props;
 
-  const fetchMeta = useStaticQuery<MetaQuery>(
+  const fetchMeta = useStaticQuery<GatsbyTypes.MetaQuery>(
     graphql`
       query Meta {
         site {

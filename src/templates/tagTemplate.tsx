@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import { Layout } from '../components/layout';
-import { TagsQuery } from '@graphql-types';
 
 type Props = {
-  data: TagsQuery;
-  pageContext: any;
+  data: GatsbyTypes.TagsQuery;
 };
 
-const TagTemplate: React.FC<Props> = ({ data, pageContext }) => {
+const TagTemplate: React.FC<Props> = ({ data }) => {
   const { nodes } = data.allMarkdownRemark;
   return (
     <Layout>

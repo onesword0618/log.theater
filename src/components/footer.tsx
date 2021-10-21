@@ -16,7 +16,6 @@ library.add(faFacebook, faTwitter);
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StaticImage } from 'gatsby-plugin-image';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import { FooterComponentQuery } from '@graphql-types';
 
 /**
  * Footer Component Part.
@@ -24,7 +23,7 @@ import { FooterComponentQuery } from '@graphql-types';
  * @returns {React.ReactElement} component
  */
 export const Footer: React.FC = (): React.ReactElement => {
-  const fetchFooter = useStaticQuery<FooterComponentQuery>(
+  const fetchFooter = useStaticQuery<GatsbyTypes.FooterComponentQuery>(
     graphql`
       query FooterComponent {
         site {

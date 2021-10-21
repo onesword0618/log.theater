@@ -8,20 +8,20 @@ import * as React from 'react';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false;
-
-import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
-
-import { SEO } from '../components/seo';
-import { Layout } from '../components/layout';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { config, library } from '@fortawesome/fontawesome-svg-core';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faBook,
   faCode,
   faPaperclip,
   faQuestionCircle,
 } from '@fortawesome/free-solid-svg-icons';
+config.autoAddCss = false;
+library.add(faGithub, faBook, faCode, faPaperclip, faQuestionCircle);
+
+import { SEO } from '../components/seo';
+import { Layout } from '../components/layout';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type Props = {
   location: {

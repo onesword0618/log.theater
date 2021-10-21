@@ -7,7 +7,6 @@
 import * as React from 'react';
 
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import { HeaderComponentQuery } from '@graphql-types';
 
 /**
  * Header Component Part.
@@ -15,7 +14,7 @@ import { HeaderComponentQuery } from '@graphql-types';
  * @returns {React.ReactElement} component
  */
 export const Header: React.FC = (): React.ReactElement => {
-  const fetchHeader = useStaticQuery<HeaderComponentQuery>(
+  const fetchHeader = useStaticQuery<GatsbyTypes.HeaderComponentQuery>(
     graphql`
       query HeaderComponent {
         site {

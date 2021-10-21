@@ -9,9 +9,7 @@ import { Layout } from '../components/layout';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false;
-
+import { config, library } from '@fortawesome/fontawesome-svg-core';
 import {
   faDatabase,
   faFilter,
@@ -19,6 +17,9 @@ import {
   faObjectGroup,
   faWrench,
 } from '@fortawesome/free-solid-svg-icons';
+config.autoAddCss = false;
+library.add(faDatabase, faFilter, faFlask, faObjectGroup, faWrench);
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SEO } from '../components/seo';
 
