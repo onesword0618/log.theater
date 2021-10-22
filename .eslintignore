@@ -16,3 +16,6 @@ plugins/
 
 # eslint
 .eslintrc.json
+
+# prettier
+.prettierrc.json
