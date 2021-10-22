@@ -1,5 +1,5 @@
 /**
- * Entry Template Parts.
+ * Entry Page Template.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -114,9 +114,14 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
 };
 
 /**
+ * Entry Template.
+ */
+export default EntryTemplate;
+
+/**
  * Template Contents.
  */
-export const query = graphql`
+export const entryQuery = graphql`
   query TemplateContents($id: String) {
     markdownRemark(id: { eq: $id }) {
       excerpt(format: PLAIN, truncate: true)
@@ -133,8 +138,3 @@ export const query = graphql`
     }
   }
 `;
-
-/**
- * Entry Template.
- */
-export default EntryTemplate;

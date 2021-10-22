@@ -5,16 +5,22 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { Link, PageProps } from 'gatsby';
+import { Link } from 'gatsby';
+
+type Props = {
+  contents: GatsbyTypes.EntriesQuery;
+};
 
 /**
  * Entry List.
  *
- * @param {PageProps} data contents
- * @returns {React.FC} page
+ * @param {Props} contents contents
+ * @returns {React.ReactElement} page
  */
-const Entry: React.FC<PageProps<GatsbyTypes.EntriesQuery>> = ({ data }) => {
-  const { nodes } = data.allMarkdownRemark;
+export const Entry: React.FC<Props> = ({
+  contents,
+}: Props): React.ReactElement => {
+  const { nodes } = contents.allMarkdownRemark;
   return (
     <div className="entry">
       {nodes.map(({ frontmatter, id }) => (
@@ -25,5 +31,3 @@ const Entry: React.FC<PageProps<GatsbyTypes.EntriesQuery>> = ({ data }) => {
     </div>
   );
 };
-
-export default Entry;

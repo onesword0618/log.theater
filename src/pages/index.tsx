@@ -8,7 +8,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 
 import { Layout } from '../components/layout';
-import Entry from '../components/entry';
+import { Entry } from '../components/entry';
 import { SEO } from '../components/seo';
 
 type Props = {
@@ -41,11 +41,13 @@ const Component: React.FC<Props> = ({ data }) => {
       <SEO url={siteUrl} />
       <article className="application">
         <h2>Entries</h2>
-        <Entry data={data} />
+        <Entry contents={data} />
       </article>
     </Layout>
   );
 };
+
+export default Component;
 
 /**
  * All Entry Page.
@@ -74,5 +76,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-export default Component;

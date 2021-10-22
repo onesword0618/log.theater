@@ -1,5 +1,17 @@
+/**
+ * Creation Static Contents.
+ *
+ * Copyright (c) 2021.
+ * Kenichi Inoue.
+ */
 import path from 'path';
 
+/**
+ * Creation Entry Page.
+ *
+ * @param graphql
+ * @param actions
+ */
 const createEntries = async ( graphql, actions ) => {
   const { createPage } = actions;
 
@@ -7,7 +19,6 @@ const createEntries = async ( graphql, actions ) => {
     {
       entries: allMarkdownRemark(
         sort: {order: DESC, fields: frontmatter___created}
-        limit: 1000
       ) {
         edges {
           node {
@@ -56,6 +67,12 @@ const createEntries = async ( graphql, actions ) => {
   })
 }
 
+/**
+ * Creation Tag Page.
+ *
+ * @param graphql
+ * @param actions
+ */
 const createTags = async ( graphql, actions ) => {
   const { createPage } = actions;
 

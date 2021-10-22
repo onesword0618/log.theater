@@ -1,3 +1,9 @@
+/**
+ * Tag  Page Template.
+ *
+ * Copyright (c) 2021.
+ * Kenichi Inoue.
+ */
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import { Layout } from '../components/layout';
@@ -21,7 +27,15 @@ const TagTemplate: React.FC<Props> = ({ data }) => {
   );
 };
 
-export const query = graphql`
+/**
+ * Tag Template.
+ */
+export default TagTemplate;
+
+/**
+ * Template Contents.
+ */
+export const tagQuery = graphql`
   query Tags($tag: String) {
     allMarkdownRemark(
       sort: { order: DESC, fields: frontmatter___created }
@@ -37,8 +51,3 @@ export const query = graphql`
     }
   }
 `;
-
-/**
- * Tag Template.
- */
-export default TagTemplate;
