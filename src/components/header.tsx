@@ -29,7 +29,6 @@ export const Header: React.FC = (): React.ReactElement => {
   let title = `No Title`;
   const { site } = fetchHeader;
   if (
-    site === undefined ||
     site?.siteMetadata === undefined ||
     site?.siteMetadata?.title === undefined
   ) {
