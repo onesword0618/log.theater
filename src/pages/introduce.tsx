@@ -5,7 +5,7 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { SEO } from '../components/seo';
+import { Head } from '../components/head';
 import { Layout } from '../components/layout';
 
 type Props = {
@@ -24,7 +24,7 @@ export default function Introduce({ location }: Props): React.ReactElement {
   const { pathname } = location;
   return (
     <>
-      <SEO title={`introduce`} url={pathname} />
+      <Head title={`introduce`} url={pathname} />
       <Layout>
         <article className="introduce">
           <h2>Introduce</h2>

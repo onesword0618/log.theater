@@ -21,7 +21,7 @@ config.autoAddCss = false;
 library.add(faDatabase, faFilter, faFlask, faObjectGroup, faWrench);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SEO } from '../components/seo';
+import { Head } from '../components/head';
 
 type Props = {
   location: {
@@ -39,7 +39,7 @@ export default function About({ location }: Props): React.ReactElement {
   const { pathname } = location;
   return (
     <>
-      <SEO title={`Log Theaterについて`} url={pathname} />
+      <Head title={`Log Theaterについて`} url={pathname} />
       <Layout>
         <article className="about">
           <h2>About Log Theater</h2>

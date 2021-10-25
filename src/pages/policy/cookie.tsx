@@ -5,7 +5,7 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { SEO } from '../../components/seo';
+import { Head } from '../../components/head';
 import { Layout } from '../../components/layout';
 
 type Props = {
@@ -24,7 +24,7 @@ export default function Cookie({ location }: Props): React.ReactElement {
   const { pathname } = location;
   return (
     <>
-      <SEO title="Cookie" url={pathname} />
+      <Head title="Cookie" url={pathname} />
       <Layout>
         <article className="cookie">
           <h2>Cookie</h2>

@@ -5,7 +5,7 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { SEO } from '../components/seo';
+import { Head } from '../components/head';
 import { Layout } from '../components/layout';
 
 type Props = {
@@ -24,7 +24,7 @@ export default function Page({ location }: Props): React.ReactElement {
   const { pathname } = location;
   return (
     <>
-      <SEO title="Not Found Page." url={pathname} />
+      <Head title="Not Found Page." url={pathname} />
       <Layout>
         <h1>Sorry, Not Found.</h1>
       </Layout>

@@ -24,7 +24,7 @@ export const Layout: React.FC<Props> = (prop: Props): React.ReactElement => {
   return (
     <div className="layout">
       <Header />
-      <div className="content">{children}</div>
+      <main>{children}</main>
       <Footer />
     </div>
   );

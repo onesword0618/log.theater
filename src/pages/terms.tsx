@@ -5,7 +5,7 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { SEO } from '../components/seo';
+import { Head } from '../components/head';
 import { Layout } from '../components/layout';
 
 type Props = {
@@ -24,7 +24,7 @@ export default function Terms({ location }: Props): React.ReactElement {
   const { pathname } = location;
   return (
     <>
-      <SEO title={`terms`} url={pathname} />
+      <Head title={`terms`} url={pathname} />
       <Layout>
         <article className="terms">
           <h2>利用規約</h2>

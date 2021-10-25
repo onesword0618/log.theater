@@ -19,7 +19,7 @@ import {
 config.autoAddCss = false;
 library.add(faGithub, faBook, faCode, faPaperclip, faQuestionCircle);
 
-import { SEO } from '../components/seo';
+import { Head } from '../components/head';
 import { Layout } from '../components/layout';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -39,7 +39,7 @@ export default function Activity({ location }: Props): React.ReactElement {
   const { pathname } = location;
   return (
     <>
-      <SEO title={`activity`} url={pathname} />
+      <Head title={`activity`} url={pathname} />
       <Layout>
         <article className="activity">
           <h2>Activity</h2>

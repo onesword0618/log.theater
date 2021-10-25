@@ -20,7 +20,7 @@ library.add(faArrowCircleLeft, faArrowCircleRight);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Date } from '../components/date';
-import { SEO } from '../components/seo';
+import { Head } from '../components/head';
 import { Tag } from '../components/tag';
 
 type PageContext = {
@@ -64,7 +64,7 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
   return (
     <Layout>
       <div className="container">
-        <SEO title={title} />
+        <Head title={title} />
         <article className="entry">
           <h1>{title}</h1>
 
@@ -96,14 +96,18 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
             {pageContext.previous?.frontmatter?.path && (
               <i className="preview">
                 <FontAwesomeIcon icon={faArrowCircleLeft} />
-                <Link to={pageContext.previous.frontmatter.path}>前の記事</Link>
+                <Link to={pageContext.previous.frontmatter.path}>
+                  {pageContext.previous.frontmatter?.title}
+                </Link>
               </i>
             )}
 
             {pageContext.next?.frontmatter?.path && (
               <i className="next">
                 <FontAwesomeIcon icon={faArrowCircleRight} />
-                <Link to={pageContext.next.frontmatter.path}>次の記事</Link>
+                <Link to={pageContext.next.frontmatter.path}>
+                  {pageContext.next.frontmatter?.title}
+                </Link>
               </i>
             )}
           </div>
