@@ -15,12 +15,12 @@ type Props = {
 };
 
 /**
- * Meta Component Parts.
+ * Head Component Part.
  *
  * @param {Props} props meta
  * @returns {React.FC} component
  */
-export const SEO: React.FC<Props> = (props: Props) => {
+export const Head: React.FC<Props> = (props: Props) => {
   const { title, description, url } = props;
 
   const fetchMeta = useStaticQuery<GatsbyTypes.MetaQuery>(
@@ -69,7 +69,7 @@ export const SEO: React.FC<Props> = (props: Props) => {
     return null;
   }
 
-  SEO.defaultProps = {
+  Head.defaultProps = {
     title: defaultTitle,
     description: defaultDescription,
     url: siteUrl,
@@ -84,10 +84,11 @@ export const SEO: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <Helmet>
-      <html lang="ja" />
-      <title>{seo.title}</title>
+    <Helmet defer={false} title={seo.title}>
+      <html lang="ja-JP" />
+      <meta charSet="utf-8" />
       <meta name="description" content={seo.description} />
+      {/* TODO author */}
       <link rel="canonical" href={seo.url} />
       <meta property="og:site_name" content={defaultTitle} />
       <meta property="og:title" content={seo.title} />
@@ -99,7 +100,12 @@ export const SEO: React.FC<Props> = (props: Props) => {
       <meta property="og:image" content="../images/icon.png" />
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="640" />
-      <meta property="twitter:card" content="../images/icon.png" />
+      {/* twitter */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:site" content={`@onesword0618`} />
+      <meta name="twitter:image" content="../images/icon.png" />
     </Helmet>
   );
 };
