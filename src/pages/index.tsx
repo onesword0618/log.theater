@@ -1,15 +1,14 @@
 /**
- * Entry Point File.
+ * Application Entry Point File.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
 import * as React from 'react';
 import { graphql } from 'gatsby';
-
 import { Layout } from '../components/layout';
 import { Entry } from '../components/entry';
-import { SEO } from '../components/seo';
+import { Head } from '../components/head';
 
 type Props = {
   data: GatsbyTypes.EntriesQuery;
@@ -21,7 +20,7 @@ type Props = {
  * @param {Props} data entries
  * @returns {React.FC} component
  */
-const Component: React.FC<Props> = ({ data }) => {
+const Application: React.FC<Props> = ({ data }) => {
   const { site } = data;
   if (
     site === undefined ||
@@ -38,35 +37,31 @@ const Component: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO url={siteUrl} />
+      <Head url={siteUrl} />
       <article className="application">
-        <h2>Entries</h2>
+        <h2>記事一覧</h2>
         <Entry contents={data} />
       </article>
     </Layout>
   );
 };
 
-export default Component;
-
 /**
- * All Entry Page.
+ * Building Entry Pages.
  */
 export const pageQuery = graphql`
   query Entries {
     allMarkdownRemark(
       filter: {fileAbsolutePath: {regex: "/(../content/entry)/.*\\.md$/"}}
       sort: {order: DESC, fields: frontmatter___created}
-      skip: 0
-      limit: 8
     ) {
       nodes {
-        excerpt(format: PLAIN, truncate: true)
+        id
         frontmatter {
           title
           path
         }
-        id
+        excerpt(format: PLAIN, truncate: true)
       }
     }
     site {
@@ -76,3 +71,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default Application;

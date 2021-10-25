@@ -5,7 +5,7 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { SEO } from '../components/seo';
+import { Head } from '../components/head';
 import { Layout } from '../components/layout';
 
 type Props = {
@@ -24,7 +24,7 @@ export default function Design({ location }: Props): React.ReactElement {
   const { pathname } = location;
   return (
     <>
-      <SEO title={`design`} url={pathname} />
+      <Head title={`design`} url={pathname} />
       <Layout>
         <article className="design">
           <h2>Design</h2>

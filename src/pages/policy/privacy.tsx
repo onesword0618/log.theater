@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import { Layout } from '../../components/layout';
-import { SEO } from '../../components/seo';
+import { Head } from '../../components/head';
 
 type Props = {
   location: {
@@ -24,7 +24,7 @@ export default function Privacy({ location }: Props): React.ReactElement {
   const { pathname } = location;
   return (
     <>
-      <SEO title="privacy policy" url={pathname} />
+      <Head title="privacy policy" url={pathname} />
       <Layout>
         <article className="pricacy">
           <h2>Privacy Policy</h2>
