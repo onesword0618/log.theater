@@ -8,13 +8,20 @@
  */
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://onesword0618.jp',
-    author: 'onesword0618',
-    description: 'log.theater は、Inoue Kenichi @onesword0618 のブログです.',
-    email: 'ao.akua.leo@gmail.com',
-    title: 'log.theater',
-    locale: 'ja-JP',
-    facebookApplicationId: '588287979288774'
+    locale: `ja-JP`,
+    title: `log.theater`,
+    author: {
+      name: `onesword0618`,
+      excerpt: `you reap what you sow.`,
+    },
+    description: `log.theater は、Inoue Kenichi (@onesword0618) のブログです.`,
+    siteUrl: `https://onesword0618.jp`,
+    email: `ao.akua.leo@gmail.com`,
+    facebookApplicationId: `588287979288774`,
+    social: {
+      twitter: `onesword0618`,
+      github: `onesword0618`,
+    },
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
@@ -71,7 +78,7 @@ module.exports = {
               maxWidth: 590,
             },
           },
-          'gatsby-remark-table',
+          `gatsby-remark-table`,
         ]
       }
     },

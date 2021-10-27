@@ -5,46 +5,42 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import { Layout } from '../components/layout';
-import { Entry } from '../components/entry';
+import { Article } from '../components/article';
 import { Head } from '../components/head';
+import { SiteMetadata, MarkdownRemark } from '@types';
 
-type Props = {
-  data: GatsbyTypes.EntriesQuery;
-};
+type Props = PageProps<{
+  allMarkdownRemark: {
+    nodes: MarkdownRemark[];
+  };
+  site: {
+    siteMetadata: SiteMetadata;
+  };
+}>;
 
 /**
  * This Application Entry Point.
  *
- * @param {Props} data entries
+ * @param {PageProps} data pageQuery
  * @returns {React.FC} component
  */
-const Application: React.FC<Props> = ({ data }) => {
-  const { site } = data;
-  if (
-    site === undefined ||
-    site?.siteMetadata === undefined ||
-    site.siteMetadata?.siteUrl === undefined
-  ) {
-    return null;
-  }
-
-  const { siteUrl } = site.siteMetadata;
-  if (siteUrl === null) {
-    return null;
-  }
-
+const Application: React.FC<Props> = ({ data, location }) => {
+  const metaData = data.site.siteMetadata;
+  const articles = data.allMarkdownRemark.nodes;
   return (
-    <Layout>
-      <Head url={siteUrl} />
-      <article className="application">
-        <h2>記事一覧</h2>
-        <Entry contents={data} />
-      </article>
+    <Layout pathName={location.pathname}>
+      <Head url={metaData.siteUrl} />
+      <h2>Articles</h2>
+      {articles.map((content) => (
+        <Article content={content} key={content.id} />
+      ))}
     </Layout>
   );
 };
+
+export default Application;
 
 /**
  * Building Entry Pages.
@@ -61,15 +57,22 @@ export const pageQuery = graphql`
           title
           path
         }
-        excerpt(format: PLAIN, truncate: true)
       }
     }
     site {
       siteMetadata {
+        title
+        author {
+          name
+          excerpt
+        }
+        description
         siteUrl
+        social {
+          twitter
+          github
+        }
       }
     }
   }
 `;
-
-export default Application;

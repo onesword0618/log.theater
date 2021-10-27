@@ -7,7 +7,7 @@ node_modules/
 # GatsbyJS
 .cache/
 public/
-types/
+types/graphql-types.d.ts
 
 # typedoc
 docs
