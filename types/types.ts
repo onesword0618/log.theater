@@ -15,6 +15,9 @@ export type SiteMetadata = {
 export type Frontmatter = {
   title: string;
   path: string;
+  entrytDate: string;
+  updateDate: string;
+  tags: string[];
 };
 
 export type MarkdownRemark = {

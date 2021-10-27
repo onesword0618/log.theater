@@ -48,13 +48,13 @@ export const Tag: React.FC<Props> = ({ name }) => {
   }
 
   return (
-    <div className="tag">
+    <>
       {name && (
         <Link to={`/tag/${name}`}>
           <FontAwesomeIcon icon={category} />
-          {name}
+          {name}{' '}
         </Link>
       )}
-    </div>
+    </>
   );
 };
