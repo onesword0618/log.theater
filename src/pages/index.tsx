@@ -53,9 +53,13 @@ export const pageQuery = graphql`
     ) {
       nodes {
         id
+        excerpt(format: PLAIN, truncate: true)
         frontmatter {
           title
           path
+          entrytDate: created(formatString: "YYYY.MM.DD")
+          updateDate: updated(formatString: "YYYY.MM.DD")
+          tags
         }
       }
     }
