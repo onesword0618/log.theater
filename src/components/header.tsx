@@ -8,12 +8,17 @@ import * as React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import './header.css';
 
+type Props = {
+  url: string;
+};
+
 /**
  * Header Component Part.
  *
+ * @param {Props} url place
  * @returns {React.ReactElement} component
  */
-export const Header: React.FC = (): React.ReactElement => {
+export const Header: React.FC<Props> = ({ url }: Props): React.ReactElement => {
   const fetchHeader = useStaticQuery<GatsbyTypes.HeaderComponentQuery>(
     graphql`
       query HeaderComponent {
@@ -26,24 +31,20 @@ export const Header: React.FC = (): React.ReactElement => {
     `,
   );
 
-  let title = `No Title`;
-  const { site } = fetchHeader;
-  if (
-    site?.siteMetadata === undefined ||
-    site?.siteMetadata?.title === undefined
-  ) {
-    return <h1>{title}</h1>;
-  }
-
-  if (site.siteMetadata.title !== null) {
-    title = site.siteMetadata.title;
-  }
-
+  const metaData = fetchHeader.site?.siteMetadata;
   return (
     <header>
-      <h1 className="title">
-        <Link to="/">{title}</Link>
-      </h1>
+      {React.createElement(
+        url === `/` ? `h1` : `p`,
+        {
+          className: `title`,
+        },
+        [
+          <Link key="link" to="/">
+            {metaData?.title}
+          </Link>,
+        ],
+      )}
     </header>
   );
 };

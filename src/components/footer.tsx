@@ -14,8 +14,8 @@ config.autoAddCss = false;
 library.add(faFacebook, faTwitter);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { StaticImage } from 'gatsby-plugin-image';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
+import './footer.css';
 
 /**
  * Footer Component Part.
@@ -23,115 +23,31 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
  * @returns {React.ReactElement} component
  */
 export const Footer: React.FC = (): React.ReactElement => {
-  const fetchFooter = useStaticQuery<GatsbyTypes.FooterComponentQuery>(
-    graphql`
-      query FooterComponent {
-        site {
-          siteMetadata {
-            author
-          }
-        }
-      }
-    `,
-  );
-
-  let author = `No Body`;
-  const { site } = fetchFooter;
-  if (
-    site === undefined ||
-    site?.siteMetadata === undefined ||
-    site?.siteMetadata?.author === undefined
-  ) {
-    return <h1>{author}</h1>;
-  }
-
-  if (site.siteMetadata.author !== null) {
-    author = site.siteMetadata.author;
-  }
-
   return (
-    <div
-      className="footer_container"
-      style={{ display: 'flex', flexDirection: 'row' }}
-    >
+    <div className="container">
       <footer>
-        <div
-          className="footer_area"
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <Link to="/">
-            <figure className="icon">
-              <StaticImage
-                className="blog_icon"
-                layout="fixed"
-                src="../images/icon.png"
-                width={50}
-                height={50}
-                quality={95}
-                alt="Blog Icon"
-              />
-            </figure>
-          </Link>
-
-          <div
-            className="footer_item_blog"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <h4 className="blog">Blog</h4>
-
+        <div className="contents">
+          <div className="item">
+            <div className="blog">Blog</div>
             <Link to="/about/">About</Link>
-
             <Link to="/introduce/">Introduce</Link>
           </div>
 
-          <div
-            className="footer_item_products"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <h4 className="products">Products</h4>
-
+          <div className="item">
+            <div className="products">Products</div>
             <Link to="/design/">Design</Link>
-
             <Link to="/code/">Code</Link>
-
             <Link to="/activity/">Activity</Link>
           </div>
 
-          <div
-            className="footer_item_policy"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <h4 className="policy">Policy</h4>
-
+          <div className="item">
+            <div className="policy">Policy</div>
             <Link to="/terms/">Term of Service</Link>
-
             <Link to="/policy/privacy/">Privacy policy</Link>
           </div>
         </div>
 
-        <div
-          className="sns_area"
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-          }}
-        >
+        <div className="sns">
           <a
             className="twitter"
             href="https://twitter.com/onesword0618"
@@ -149,13 +65,16 @@ export const Footer: React.FC = (): React.ReactElement => {
           </a>
         </div>
 
-        <h5 className="copyright">
+        <div className="copyright">
           <p>
-            Copyright(c) {new Date().getFullYear()},
-            <a href="https://ja.gravatar.com/aoakuablog">{author}</a> All Rights
-            Reserved, Build with <a href="https://www.gatsbyjs.com">Gatsby</a> .
+            © {new Date().getFullYear()}, Build with{' '}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>.
           </p>
-        </h5>
+          <p>
+            <a href="https://ja.gravatar.com/aoakuablog">onesword0618</a> All
+            Rights Reserved.
+          </p>
+        </div>
       </footer>
     </div>
   );
