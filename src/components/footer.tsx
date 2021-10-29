@@ -9,9 +9,13 @@ import * as React from 'react';
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
-import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import {
+  faFacebook,
+  faTwitter,
+  faGithub,
+} from '@fortawesome/free-brands-svg-icons';
 config.autoAddCss = false;
-library.add(faFacebook, faTwitter);
+library.add(faFacebook, faTwitter, faGithub);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'gatsby';
@@ -24,30 +28,38 @@ import './footer.css';
  */
 export const Footer: React.FC = (): React.ReactElement => {
   return (
-    <div className="container">
+    <div className="footer_container">
       <footer>
-        <div className="contents">
-          <div className="item">
-            <div className="blog">Blog</div>
-            <Link to="/about/">About</Link>
-            <Link to="/introduce/">Introduce</Link>
+        <div className="footer_contents">
+          <div className="footer_item">
+            <p className="footer_item_header">Blog</p>
+            <ul className="footer_item_unordered_list">
+              <li>
+                <Link to="/about/">About</Link>
+              </li>
+              <li>
+                <Link to="/introduce/">Introduce</Link>
+              </li>
+              <li>
+                <Link to="/activity/">Activity</Link>
+              </li>
+            </ul>
           </div>
 
-          <div className="item">
-            <div className="products">Products</div>
-            <Link to="/design/">Design</Link>
-            <Link to="/code/">Code</Link>
-            <Link to="/activity/">Activity</Link>
-          </div>
-
-          <div className="item">
-            <div className="policy">Policy</div>
-            <Link to="/terms/">Term of Service</Link>
-            <Link to="/policy/privacy/">Privacy policy</Link>
+          <div className="footer_item">
+            <p className="footer_item_header">Policy</p>
+            <ul className="footer_item_unordered_list">
+              <li>
+                <Link to="/terms/">Term of Service</Link>
+              </li>
+              <li>
+                <Link to="/policy/privacy/">Privacy policy</Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="sns">
+        <div className="footer_sns">
           <a
             className="twitter"
             href="https://twitter.com/onesword0618"
@@ -62,6 +74,14 @@ export const Footer: React.FC = (): React.ReactElement => {
             aria-label="facebook"
           >
             <FontAwesomeIcon icon={faFacebook} />
+          </a>
+
+          <a
+            className="github"
+            href="https://github.com/onesword0618"
+            aria-label="github"
+          >
+            <FontAwesomeIcon icon={faGithub} />
           </a>
         </div>
 
