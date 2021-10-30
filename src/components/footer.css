@@ -9,6 +9,7 @@
 .footer_contents {
   display: flex;
   flex-direction: row;
+  line-height: 1.2;
 }
 
 .footer_item {
@@ -20,6 +21,7 @@
 
 .footer_item_header {
   font-weight: bold;
+  font-feature-settings: 'palt' 1;
 }
 
 .footer_item_unordered_list {

@@ -23,7 +23,7 @@ export const Article: React.FC<Props> = ({
   content,
 }: Props): React.ReactElement => {
   return (
-    <>
+    <div style={{ lineHeight: '1.5' }}>
       <h2 className="title">
         <Link to={`${content.frontmatter.path || '/'}`}>
           {content.frontmatter.title}
@@ -42,6 +42,6 @@ export const Article: React.FC<Props> = ({
       </p>
 
       <p>{content.excerpt}</p>
-    </>
+    </div>
   );
 };
