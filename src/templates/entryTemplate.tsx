@@ -22,6 +22,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Date } from '../components/date';
 import { Head } from '../components/head';
 import { Tag } from '../components/tag';
+import './entryTemplate.css';
 
 type PageContext = {
   previous: GatsbyTypes.Maybe<GatsbyTypes.MarkdownRemark>;

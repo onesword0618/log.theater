@@ -30,6 +30,14 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Noto Sans Mono`
+        ]
+      }
+    },
+    {
       resolve: `gatsby-plugin-typegen`,
       options: {
         outputPath: `${__dirname}/types/graphql-types.d.ts`
