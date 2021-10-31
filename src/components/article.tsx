@@ -1,5 +1,5 @@
 /**
- * Article Components.
+ * Article Component.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
@@ -8,6 +8,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { MarkdownRemark } from '@types';
 import { Tag } from './tag';
+import './article.css';
 
 type Props = {
   content: MarkdownRemark;
@@ -17,13 +18,13 @@ type Props = {
  * Article.
  *
  * @param {Props} content content
- * @returns {React.ReactElement} page
+ * @returns {React.ReactElement} article
  */
 export const Article: React.FC<Props> = ({
   content,
 }: Props): React.ReactElement => {
   return (
-    <div style={{ lineHeight: '1.5' }}>
+    <div className="article_container">
       <h2 className="title">
         <Link to={`${content.frontmatter.path || '/'}`}>
           {content.frontmatter.title}

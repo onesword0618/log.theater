@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import { Layout } from '../components/layout';
+import { Head } from '../components/head';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -16,12 +17,12 @@ import {
   faFlask,
   faObjectGroup,
   faWrench,
+  faCompass,
 } from '@fortawesome/free-solid-svg-icons';
 config.autoAddCss = false;
-library.add(faDatabase, faFilter, faFlask, faObjectGroup, faWrench);
+library.add(faDatabase, faFilter, faFlask, faObjectGroup, faWrench, faCompass);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Head } from '../components/head';
 
 type Props = {
   location: {
@@ -42,7 +43,7 @@ export default function About({ location }: Props): React.ReactElement {
       <Head title={`Log Theaterについて`} url={pathname} />
       <Layout>
         <article className="about">
-          <h2>About Log Theater</h2>
+          <h2>このサイトについて</h2>
           <div className="purpose">
             <h3>
               <FontAwesomeIcon icon={faWrench} />
@@ -62,15 +63,19 @@ export default function About({ location }: Props): React.ReactElement {
 
             <ul style={{ listStyle: 'none' }}>
               <li>
-                <FontAwesomeIcon icon={faFlask} />
+                <FontAwesomeIcon icon={faCompass} listItem={false} spin />
+                ライブラリの調査、考察について
+              </li>
+              <li>
+                <FontAwesomeIcon icon={faFlask} listItem={false} />
                 アプリケーションのテストについての調査、考察について
               </li>
               <li>
-                <FontAwesomeIcon icon={faObjectGroup} />
+                <FontAwesomeIcon icon={faObjectGroup} listItem={false} />
                 アプリケーションの設計について
               </li>
               <li>
-                <FontAwesomeIcon icon={faDatabase} />
+                <FontAwesomeIcon icon={faDatabase} listItem={false} />
                 データベースの設計、運用について
               </li>
             </ul>
