@@ -38,8 +38,8 @@ export const Article: React.FC<Props> = ({
       </p>
 
       <p className="date">
-        投稿日 <time>{content.frontmatter.entrytDate}</time>
-        更新日 <time>{content.frontmatter.updateDate}</time>
+        投稿日 <time>{content.frontmatter.entrytDate}</time> 更新日{' '}
+        <time>{content.frontmatter.updateDate}</time>
       </p>
 
       <p>{content.excerpt}</p>
