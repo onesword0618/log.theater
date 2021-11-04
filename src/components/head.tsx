@@ -88,6 +88,10 @@ export const Head: React.FC<Props> = (props: Props) => {
       <html lang="ja-JP" />
       <meta charSet="utf-8" />
       <meta name="description" content={seo.description} />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
+      />
       {/* TODO author */}
       <link rel="canonical" href={seo.url} />
       <meta property="og:site_name" content={defaultTitle} />
