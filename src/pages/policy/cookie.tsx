@@ -4,28 +4,31 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
+import { SiteMetadata } from '@types';
+import { graphql, PageProps } from 'gatsby';
 import * as React from 'react';
 import { Head } from '../../components/head';
 import { Layout } from '../../components/layout';
 
-type Props = {
-  location: {
-    pathname: string;
+type Props = PageProps<{
+  site: {
+    siteMetadata: SiteMetadata;
   };
-};
+}>;
 
 /**
  * Term Of Service Explain.
  *
- * @param  {string} location current page
+ * @param  {PageProps} data pageQuery
  * @returns {React.ReactElement} component
  */
-export default function Cookie({ location }: Props): React.ReactElement {
-  const { pathname } = location;
+export default function Cookie({ data, location }: Props): React.ReactElement {
+  const metaData = data.site.siteMetadata;
+  metaData.title = `Cookie`;
   return (
     <>
-      <Head title="Cookie" url={pathname} />
-      <Layout>
+      <Layout pathName={location.pathname}>
+        <Head metaData={metaData} />
         <article className="cookie">
           <h2>Cookie</h2>
         </article>
@@ -33,3 +36,28 @@ export default function Cookie({ location }: Props): React.ReactElement {
     </>
   );
 }
+
+/**
+ * Term Page.
+ */
+export const pageQuery = graphql`
+  query CookiePage {
+    site {
+      siteMetadata {
+        locale
+        title
+        author {
+          name
+          excerpt
+        }
+        description
+        siteUrl
+        facebookApplicationId
+        social {
+          twitter
+          github
+        }
+      }
+    }
+  }
+`;

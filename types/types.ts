@@ -1,4 +1,5 @@
 export type SiteMetadata = {
+  locale: string;
   title: string;
   author: {
     name: string;
@@ -6,6 +7,7 @@ export type SiteMetadata = {
   };
   description: string;
   siteUrl: string;
+  facebookApplicationId: string;
   social: {
     twitter: string;
     github: string;
