@@ -7,11 +7,10 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
+import { SiteMetadata } from '@types';
 
 type Props = {
-  title?: string;
-  description?: string;
-  url?: string;
+  metaData: SiteMetadata;
 };
 
 /**
@@ -21,18 +20,26 @@ type Props = {
  * @returns {React.FC} component
  */
 export const Head: React.FC<Props> = (props: Props) => {
-  const { title, description, url } = props;
+  const { metaData } = props;
 
   const fetchMeta = useStaticQuery<GatsbyTypes.MetaQuery>(
     graphql`
       query Meta {
         site {
           siteMetadata {
+            locale
             defaultTitle: title
+            author {
+              name
+              excerpt
+            }
             defaultDescription: description
             siteUrl
-            locale
             facebookApplicationId
+            social {
+              twitter
+              github
+            }
           }
         }
       }
@@ -40,47 +47,19 @@ export const Head: React.FC<Props> = (props: Props) => {
   );
 
   const { site } = fetchMeta;
-  if (
-    site === undefined ||
-    site?.siteMetadata === undefined ||
-    site?.siteMetadata?.defaultDescription === undefined ||
-    site?.siteMetadata?.defaultTitle === undefined ||
-    site.siteMetadata.siteUrl === undefined ||
-    site.siteMetadata.locale === undefined ||
-    site.siteMetadata.facebookApplicationId === undefined
-  ) {
+  if (site === undefined || site?.siteMetadata === undefined) {
     return null;
   }
-
-  const {
-    defaultTitle,
-    defaultDescription,
-    siteUrl,
-    locale,
-    facebookApplicationId,
-  } = site.siteMetadata;
-  if (
-    defaultTitle === null ||
-    defaultDescription === null ||
-    siteUrl === null ||
-    locale === null ||
-    facebookApplicationId === null
-  ) {
-    return null;
-  }
-
-  Head.defaultProps = {
-    title: defaultTitle,
-    description: defaultDescription,
-    url: siteUrl,
-  };
 
   const seo = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
-    url: url !== siteUrl ? `${siteUrl}${url}` : siteUrl,
-    locale: locale,
-    facebookApplicationId: facebookApplicationId,
+    title: metaData.title || site.siteMetadata.defaultTitle,
+    description: metaData.description || site.siteMetadata.defaultDescription,
+    url:
+      metaData.siteUrl !== site.siteMetadata.siteUrl
+        ? `${site.siteMetadata.siteUrl}${metaData.siteUrl}`
+        : site.siteMetadata.siteUrl,
+    locale: site.siteMetadata.locale,
+    facebookApplicationId: site.siteMetadata.facebookApplicationId,
   };
 
   return (
@@ -94,7 +73,7 @@ export const Head: React.FC<Props> = (props: Props) => {
       />
       {/* TODO author */}
       <link rel="canonical" href={seo.url} />
-      <meta property="og:site_name" content={defaultTitle} />
+      <meta property="og:site_name" content={site.siteMetadata.defaultTitle} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:url" content={seo.url} />

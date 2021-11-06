@@ -23,6 +23,7 @@ import { Date } from '../components/date';
 import { Head } from '../components/head';
 import { Tag } from '../components/tag';
 import './entryTemplate.css';
+import { SiteMetadata } from '@types';
 
 type PageContext = {
   previous: GatsbyTypes.Maybe<GatsbyTypes.MarkdownRemark>;
@@ -35,7 +36,8 @@ type Props = {
 };
 
 const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
-  const { markdownRemark } = data;
+  const { markdownRemark, site } = data;
+  const metaData = site?.siteMetadata as SiteMetadata;
   if (markdownRemark === undefined || markdownRemark === null) {
     return <Layout> No Content </Layout>;
   }
@@ -49,6 +51,7 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
       frontmatter.title !== undefined && frontmatter.title !== null
         ? frontmatter.title
         : `No Title`;
+    metaData.title = title;
     entryDate = frontmatter.entrytDate;
     updateDate = frontmatter.updateDate;
   }
@@ -65,7 +68,7 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
   return (
     <Layout>
       <div className="container">
-        <Head title={title} />
+        <Head metaData={metaData} />
         <article className="entry">
           <h1>{title}</h1>
 
@@ -140,6 +143,23 @@ export const entryQuery = graphql`
       }
       id
       html
+    }
+    site {
+      siteMetadata {
+        locale
+        title
+        author {
+          name
+          excerpt
+        }
+        description
+        siteUrl
+        facebookApplicationId
+        social {
+          twitter
+          github
+        }
+      }
     }
   }
 `;
