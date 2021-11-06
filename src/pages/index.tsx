@@ -32,7 +32,7 @@ const Application: React.FC<Props> = ({ data, location }) => {
   const articles = data.allMarkdownRemark.nodes;
   return (
     <Layout pathName={location.pathname}>
-      <Head url={metaData.siteUrl} />
+      <Head metaData={metaData} />
       <h2>Articles</h2>
       {articles.map((content) => (
         <Article content={content} key={content.id} />
@@ -66,6 +66,7 @@ export const pageQuery = graphql`
     }
     site {
       siteMetadata {
+        locale
         title
         author {
           name
@@ -73,6 +74,7 @@ export const pageQuery = graphql`
         }
         description
         siteUrl
+        facebookApplicationId
         social {
           twitter
           github
