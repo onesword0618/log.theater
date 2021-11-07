@@ -29,6 +29,22 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://onesword0618.jp`,
+        sitemap: `https://onesword0618.jp/sitemap.xml`,
+        env: {
+          development: {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+          },
+          production: {
+            policy: [{ userAgent: "*", allow: "/" }],
+          },
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
