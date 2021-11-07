@@ -8,7 +8,7 @@ module.exports = ({ markdownAST }) => {
     // https://github.com/remarkjs/remark-rehype#use
     const html = toHtml(unified().use(remarkRehype).runSync(node));
     node.type = `html`;
-    node.data = `
+    node.value = `
       <div class="table-wrapper">
         ${html}
       </div>

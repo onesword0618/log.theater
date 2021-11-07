@@ -23,6 +23,10 @@ html {
   padding: 1.5em;
 }
 
+li::marker {
+  text-indent: 1.5em;
+}
+
 a {
   outline: none;
 }
