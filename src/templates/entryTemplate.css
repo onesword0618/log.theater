@@ -24,11 +24,6 @@ html {
   padding: 1.5em;
 }
 
-li {
-  position: relative;
-  left: 1.5em;
-}
-
 a {
   outline: none;
 }
@@ -66,6 +61,3 @@ code {
   overflow-wrap: break-word;
   word-break: break-word;
 }
-
-/** pre */
-/** strong */

@@ -22,8 +22,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Date } from '../components/date';
 import { Head } from '../components/head';
 import { Tag } from '../components/tag';
-import './entryTemplate.css';
 import { SiteMetadata } from '@types';
+import 'github-markdown-css';
+import './entryTemplate.css';
 
 type PageContext = {
   previous: GatsbyTypes.Maybe<GatsbyTypes.MarkdownRemark>;
@@ -87,7 +88,7 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
           </aside>
 
           <div
-            className="content"
+            className="markdown-body"
             dangerouslySetInnerHTML={{
               __html: `${html || 'no content'}`,
             }}
