@@ -86,6 +86,8 @@ Web ページを表示する端末が PC・ディスプレイを飛び出して�
 
 ## 参考資料
 
-<cite> https://twitter.com/brad_frost </cite>
-<cite> https://atomicdesign.bradfrost.com/ </cite>
-<cite> https://github.com/bradfrost/atomic-design/ </cite>
+> https://twitter.com/brad_frost
+
+> https://atomicdesign.bradfrost.com/
+
+> https://github.com/bradfrost/atomic-design/
