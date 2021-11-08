@@ -3,6 +3,7 @@
 
 *,
 *::before,
+*::marker,
 *::after {
   box-sizing: inherit;
 }
@@ -23,8 +24,9 @@ html {
   padding: 1.5em;
 }
 
-li::marker {
-  text-indent: 1.5em;
+li {
+  position: relative;
+  left: 1.5em;
 }
 
 a {
