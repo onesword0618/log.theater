@@ -101,8 +101,7 @@ module.exports = {
             options: {
               maxWidth: 590,
             },
-          },
-          `gatsby-remark-table`,
+          }
         ]
       }
     },
