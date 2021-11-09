@@ -31,18 +31,18 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://onesword0618.jp`,
+        stripQueryString: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: `https://onesword0618.jp`,
         sitemap: `https://onesword0618.jp/sitemap.xml`,
-        env: {
-          development: {
-            policy: [{ userAgent: "*", disallow: ["/"] }],
-          },
-          production: {
-            policy: [{ userAgent: "*", allow: "/" }],
-          },
-        },
+        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
     {
