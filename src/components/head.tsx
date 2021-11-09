@@ -72,7 +72,6 @@ export const Head: React.FC<Props> = (props: Props) => {
         content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
       />
       {/* TODO author */}
-      <link rel="canonical" href={seo.url} />
       <meta property="og:site_name" content={site.siteMetadata.defaultTitle} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
