@@ -68,6 +68,10 @@ export const Head: React.FC<Props> = (props: Props) => {
       <meta charSet="utf-8" />
       <meta name="description" content={seo.description} />
       <meta
+        name="google-site-verification"
+        content="7tocuDO8uh5y587N2xWlBEsThHfZCc5V-iyItl3s2-k"
+      />
+      <meta
         name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
       />
