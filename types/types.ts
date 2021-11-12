@@ -8,6 +8,7 @@ export type SiteMetadata = {
   description: string;
   siteUrl: string;
   facebookApplicationId: string;
+  dnsTxtCode: string;
   social: {
     twitter: string;
     github: string;
