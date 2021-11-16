@@ -19,7 +19,6 @@ library.add(faFacebook, faTwitter, faGithub);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'gatsby';
-import './footer.css';
 
 /**
  * Footer Component Part.

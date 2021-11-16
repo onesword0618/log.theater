@@ -6,7 +6,6 @@
  */
 import * as React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import './header.css';
 
 type Props = {
   url: string;
