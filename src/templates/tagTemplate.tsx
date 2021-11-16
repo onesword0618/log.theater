@@ -5,24 +5,31 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import { Layout } from '../components/layout';
+import { Article } from '../components/article';
+import { Head } from '../components/head';
+import { MarkdownRemark, SiteMetadata } from '@types';
 
-type Props = {
-  data: GatsbyTypes.TagsQuery;
-};
+type Props = PageProps<{
+  allMarkdownRemark: {
+    nodes: MarkdownRemark[];
+  };
+  site: {
+    siteMetadata: SiteMetadata;
+  };
+}>;
 
-const TagTemplate: React.FC<Props> = ({ data }) => {
-  const { nodes } = data.allMarkdownRemark;
+const TagTemplate: React.FC<Props> = ({ data, location }: Props) => {
+  const metaData = data.site.siteMetadata;
+  const articles = data.allMarkdownRemark.nodes;
   return (
-    <Layout>
-      <div className="tag">
-        {nodes.map(({ frontmatter, id }) => (
-          <Link to={`${frontmatter?.path || '/'}`} key={id}>
-            <article className="article">{frontmatter?.title}</article>
-          </Link>
-        ))}
-      </div>
+    <Layout pathName={location.pathname}>
+      <Head metaData={metaData} />
+      <h2>Category</h2>
+      {articles.map((content) => (
+        <Article content={content} key={content.id} />
+      ))}
     </Layout>
   );
 };
@@ -33,7 +40,7 @@ const TagTemplate: React.FC<Props> = ({ data }) => {
 export default TagTemplate;
 
 /**
- * Template Contents.
+ * Building Tag Pages.
  */
 export const tagQuery = graphql`
   query Tags($tag: String) {
@@ -43,9 +50,30 @@ export const tagQuery = graphql`
     ) {
       nodes {
         id
+        excerpt(format: PLAIN, truncate: true)
         frontmatter {
           title
           path
+          entrytDate: created(formatString: "YYYY.MM.DD")
+          updateDate: updated(formatString: "YYYY.MM.DD")
+          tags
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        locale
+        title
+        author {
+          name
+          excerpt
+        }
+        description
+        siteUrl
+        facebookApplicationId
+        social {
+          twitter
+          github
         }
       }
     }

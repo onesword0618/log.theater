@@ -27,7 +27,7 @@ type Props = PageProps<{
  * @param {PageProps} data pageQuery
  * @returns {React.FC} component
  */
-const Application: React.FC<Props> = ({ data, location }) => {
+const Application: React.FC<Props> = ({ data, location }: Props) => {
   const metaData = data.site.siteMetadata;
   const articles = data.allMarkdownRemark.nodes;
   return (
