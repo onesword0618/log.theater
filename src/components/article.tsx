@@ -8,7 +8,6 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { MarkdownRemark } from '@types';
 import { Tag } from './tag';
-import './article.css';
 
 type Props = {
   content: MarkdownRemark;

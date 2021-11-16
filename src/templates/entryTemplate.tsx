@@ -24,7 +24,6 @@ import { Head } from '../components/head';
 import { Tag } from '../components/tag';
 import { SiteMetadata } from '@types';
 import 'github-markdown-css';
-import './entryTemplate.css';
 
 type PageContext = {
   previous: GatsbyTypes.Maybe<GatsbyTypes.MarkdownRemark>;
@@ -36,7 +35,7 @@ type Props = {
   pageContext: PageContext;
 };
 
-const EntryTemplate: React.FC<Props> = ({ data, pageContext }) => {
+const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
   const { markdownRemark, site } = data;
   const metaData = site?.siteMetadata as SiteMetadata;
   if (markdownRemark === undefined || markdownRemark === null) {

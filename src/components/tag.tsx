@@ -31,7 +31,7 @@ type Props = {
  * @param {Props} props name
  * @returns {React.FC} category
  */
-export const Tag: React.FC<Props> = ({ name }) => {
+export const Tag: React.FC<Props> = ({ name }: Props) => {
   let category: IconProp = faFilter;
   switch (name) {
     case `test`:
