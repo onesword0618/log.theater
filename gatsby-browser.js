@@ -1,8 +1,7 @@
-/**
- * Call Create Gatsby Browser Process.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
- */
-const requireEsm = require('esm')(module);
-module.exports = requireEsm('./gatsby-browser.esm.js');
+require('ress');
+require('github-markdown-css');
+require('./src/css/article.css');
+require('./src/css/article.css');
+require('./src/css/entryTemplate.css');
+require('./src/css/header.css');
+require('./src/css/footer.css');
