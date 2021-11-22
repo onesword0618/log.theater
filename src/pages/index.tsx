@@ -10,7 +10,6 @@ import { Layout } from '../components/layout';
 import { Article } from '../components/article';
 import { Head } from '../components/head';
 import { SiteMetadata, MarkdownRemark } from '@types';
-import 'ress';
 
 type Props = PageProps<{
   allMarkdownRemark: {

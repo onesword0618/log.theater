@@ -1,6 +1,6 @@
 {
   "include": ["src/**/*.ts", "src/**/*.tsx", "test/**/*", "./types/**/*"],
-  "exclude": ["node_modules","gatsby-node.esm.js","gatsby-browser.js"],
+  "exclude": ["node_modules","gatsby-node.esm.js"],
   "compileOnSave": false,
   "compilerOptions": {
     "incremental": true,
