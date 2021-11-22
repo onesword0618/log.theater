@@ -10,6 +10,7 @@ gatsby-config.js
 gatsby-node.js
 gatsby-node.esm.js
 gatsby-browser.js
+gatsby-browser.esm.js
 
 # local plugins
 plugins/
