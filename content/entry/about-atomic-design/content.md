@@ -1,7 +1,7 @@
 ---
 path: /entry/about-atomic-design
 created: '2021-10-23'
-updated: '2021-12-01'
+updated: '2021-12-02'
 title: 'Atomic Designについて所感を述べる.'
 tags: [design]
 ---
@@ -9,6 +9,8 @@ tags: [design]
 ## 記事の目的
 
 [Atomic Design](https://atomicdesign.bradfrost.com/) の記事を読み、実際に適用した際に感じた課題に対して考察を深めた回答を作成している.
+
+後日、自分の振り返りを行う際の参考資料としても用いる目的があります.
 
 ## 定義
 
@@ -24,13 +26,13 @@ tags: [design]
 
 「Atomic Design」は、紙をモチーフとした Web ページの設計からスタートし、ディスプレイのサイズに従ったデザインへ組む必要があったため生まれてきた考え方だと思われる.
 
-肥大化していく要望、ディスプレイの種類に応えるため、単一のページとしてではなく、部品としての単位で UI を構築していく必要があった.
+肥大化していく要望、ディスプレイの種類に応えるため、単一のページとしてではなく、部品の単位で UI を構築していく必要があった.
 
 単一のページを部品として切り刻んでいく中、部品間でもデザインや共通認識としての一貫性が必要になった.
 
 それらを分類、整理するための仕組みとしての Design System が必要になった.
 
-そこから分類、整理するための方法として導出された階層化を主とした管理方法が「Atomic Design」に繋がっていったと捉えた.
+分類、整理するための方法として導出された階層化を主とした管理方法が「Atomic Design」に繋がっていったと私は捉えた.
 
 [Brad Frost](https://twitter.com/brad_frost) 氏が提供している [Atomic Design](https://atomicdesign.bradfrost.com/) を元に解決しようとしているものを追っていく.
 
@@ -103,12 +105,18 @@ Atomic Design は、5 つの区分で分かれている.
 
 > https://atomicdesign.bradfrost.com/chapter-2/#atoms より引用
 
+これ以上分解できないフォームラベル、入力、ボタンなどの HTML の要素が該当する区分.
+
+特徴を項目で挙げると以下であると捉えている.
+
 - 特定のプロダクトの知識を保有しない.
 - UI としての知識/機能しか持たない.
 
 ```
-これ以上分解できないフォームラベル、入力、ボタンなどのHTMLの要素が該当する.
+These atoms include basic HTML elements like form labels, inputs, buttons, and others that can’t be broken down any further without ceasing to be functional.
 ```
+
+以下 [Atomic Design](https://atomicdesign.bradfrost.com/)で言及している例示を用いる.
 
 ![atoms-form-elements](./atoms-form-elements.png)
 
@@ -125,6 +133,37 @@ Atomic Design は、5 つの区分で分かれている.
 例: React Native Elements
 
 > https://reactnativeelements.com/docs/button
+
+### Molecules
+
+![atomic-design-molecules](./atomic-design-molecules.png)
+
+> https://atomicdesign.bradfrost.com/chapter-2/#molecules より引用
+
+いくつかの「Atoms」の組み合わせで構成されている区分であるが、これ単体では **成立しない** という区分である.
+
+特徴を項目で挙げると以下であると捉えている.
+
+- 特定のプロダクトの知識を保有しない.
+- 複数のコンポーネントの組み合わせで構成されるような Web UI の知識を持つ.
+- ある程度の複雑性をもつが、これ単体では成立しない.
+
+```
+In interfaces, molecules are relatively simple groups of UI elements functioning together as a unit.
+```
+
+以下 [Atomic Design](https://atomicdesign.bradfrost.com/)で言及している例示を用いる.
+
+![molecules-form](./molecule-search-form.png)
+
+> https://atomicdesign.bradfrost.com/chapter-2/#molecules より引用
+
+ここで言及されているのは、どういうプロダクトで使用される検索フォームなのかまでは特定できないということ.
+特定のユーザーを検索したい時に使いたいのか、EC サイトの商品検索で扱いたいのか. 特定する情報はこの区分では保有しない.
+
+検索フォームのオートコンプリートを持たせる複雑性があってもどの場所で使われるというところは絞り込むことはできない.
+
+この抽象度を維持することで、流用や再利用性を高めることができる.
 
 ## 参考資料
 
