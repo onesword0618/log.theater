@@ -165,6 +165,40 @@ In interfaces, molecules are relatively simple groups of UI elements functioning
 
 この抽象度を維持することで、流用や再利用性を高めることができる.
 
+### Organisms
+
+![atomic-design-organisms](./atomic-design-organisms.png)
+
+> https://atomicdesign.bradfrost.com/chapter-2/#organisms より引用
+
+いくつかの「Atoms」、「Molecules」、「Organisms」の組み合わせで構成されている区分である.
+
+特徴を項目で挙げると以下であると捉えている.
+
+- 特定のプロダクトの知識を保有する.
+- 単体でサービスに存在できる.
+
+```
+Organisms are relatively complex UI components composed of groups of molecules and/or atoms and/or other organisms. These organisms form distinct sections of an interface.
+```
+
+![organism-header](./organism-header.png)
+
+> https://atomicdesign.bradfrost.com/chapter-2/#organisms より引用
+
+ここで言及されているのは、サイト内検索をヘッダーに設計する場合である.
+役割を決定づけることができるようになり、独立して利用できるようになっている.
+Web API をコールさせても問題ない.
+
+しかし、特定のプロダクトの知識を保有するため、他に流用することができなくなる.
+
+下記の例示では、EC サイトの商品情報を出力するための「organisms」を使用している.
+この「organisms」でユーザー情報を出力するといったことは行わない.
+
+![atomic-design-organisms-sample](./atomic-design-organisms-sample.png)
+
+> https://www.amazon.co.jp/ より引用
+
 ## 参考資料
 
 > https://twitter.com/brad_frost
