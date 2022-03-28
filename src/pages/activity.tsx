@@ -9,7 +9,7 @@ import * as React from 'react';
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import {
   faBook,
   faCode,
@@ -68,6 +68,10 @@ export default function Activity({
           <li>
             <FontAwesomeIcon icon={faPaperclip} />
             <a href="https://qiita.com/onesword">Qiita</a>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faInstagram} />
+            <a href="https://www.instagram.com/onesword0618/">Instagram</a>
           </li>
         </ul>
       </article>

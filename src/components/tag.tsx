@@ -15,6 +15,7 @@ import {
   faFilter,
   faFlask,
   faObjectGroup,
+  faPen,
 } from '@fortawesome/free-solid-svg-icons';
 config.autoAddCss = false;
 library.add(faDatabase, faFilter, faFlask, faObjectGroup);
@@ -42,6 +43,9 @@ export const Tag: React.FC<Props> = ({ name }: Props) => {
       break;
     case `database`:
       category = faDatabase;
+      break;
+    case `learn`:
+      category = faPen;
       break;
     default:
       break;
