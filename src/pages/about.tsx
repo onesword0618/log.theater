@@ -18,9 +18,18 @@ import {
   faObjectGroup,
   faWrench,
   faCompass,
+  faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 config.autoAddCss = false;
-library.add(faDatabase, faFilter, faFlask, faObjectGroup, faWrench, faCompass);
+library.add(
+  faDatabase,
+  faFilter,
+  faFlask,
+  faObjectGroup,
+  faWrench,
+  faCompass,
+  faPencil,
+);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { graphql, PageProps } from 'gatsby';
@@ -64,6 +73,10 @@ export default function About({ data, location }: Props): React.ReactElement {
           <p>このサイトでは、取り上げていく内容は以下を予定しています.</p>
 
           <ul style={{ listStyle: 'none' }}>
+            <li>
+              <FontAwesomeIcon icon={faPencil} listItem={false} spin />
+              書籍や記事、ドキュメントを読んだ要約や所感について
+            </li>
             <li>
               <FontAwesomeIcon icon={faCompass} listItem={false} spin />
               ライブラリの調査、考察について
