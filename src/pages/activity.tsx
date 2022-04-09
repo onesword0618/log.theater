@@ -52,26 +52,32 @@ export default function Activity({
           <li>
             <FontAwesomeIcon icon={faGithub} />
             <a href="https://github.com/onesword0618">GitHub</a>
+            開発時のアイディアやツール、ライブラリ作成、サンプルなどの素振りをしたリソースが公開されています.
           </li>
           <li>
             <FontAwesomeIcon icon={faCode} />
             <a href="https://leetcode.com/onesword0618">Leet Code</a>
+            テストコードを作成して問題と回答に対するアプローチを追跡しています.
           </li>
           <li>
             <FontAwesomeIcon icon={faQuestionCircle} />
             <a href="https://teratail.com/users/onesword0618">teratail</a>
+            自分が把握している範囲で問題を回答しています.
           </li>
           <li>
             <FontAwesomeIcon icon={faBook} />
             <a href="https://booklog.jp/users/onesword0618">booklog</a>
+            読んだ書籍の感想を記載しています.
           </li>
           <li>
             <FontAwesomeIcon icon={faPaperclip} />
             <a href="https://qiita.com/onesword">Qiita</a>
+            調べたこと、調査した結果を公開しています.
           </li>
           <li>
             <FontAwesomeIcon icon={faInstagram} />
             <a href="https://www.instagram.com/onesword0618/">Instagram</a>
+            外に出る動機づくりのため街の景色やイベントを写真/動画で取得し公開しています.
           </li>
         </ul>
       </article>
