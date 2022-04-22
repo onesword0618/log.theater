@@ -90,7 +90,7 @@ export const Footer: React.FC = (): React.ReactElement => {
             <a href="https://www.gatsbyjs.com">Gatsby</a>.
           </p>
           <p>
-            <a href="https://ja.gravatar.com/aoakuablog">onesword0618</a> All
+            <a href="https://ja.gravatar.com/onesword0618">onesword0618</a> All
             Rights Reserved.
           </p>
         </div>
