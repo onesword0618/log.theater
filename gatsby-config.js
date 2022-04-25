@@ -156,6 +156,16 @@ module.exports = {
             options: {
               maxWidth: 590,
             },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: `language-`,
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: true,
+              noInlineHighlight: false,
+            },
           }
         ]
       }
