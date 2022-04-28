@@ -151,6 +151,13 @@ module.exports = {
               className: `anchor-link`,
             },
           },
+          // afetr gatsby-remark-autolink-headers plugin.
+          {
+            resolve: `gatsby-remark-check-links`,
+            options: {
+              verbose: true,
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
