@@ -88,3 +88,5 @@ TDD の考え方としては、ゴールからの逆算行為を検証・保証�
 - 梅津正洋,竹内亜未,伊藤由貴,浦山さつき,佐々木千絵美,高橋理,武田春恵,根本紀之,藤沢耕助,真鍋俊之,山岡悠,吉田直史,ソフトウェアテスト技法練習帳 知識を経験に変える 40 問, 株式会社技術評論社, 2020, 978-4-297-11061-1.
 - 石原一宏,田中英和,この 1 冊でよくわかるソフトウェアテストの教科書 品質を決定づけるテスト工程の基本と実践, SB クリエイティブ株式会社, 2012, 978-4-7973-6581-8.
 - James A. Whittaker, Jason Arbon, Jeff Carollo,テストから見えてくるグーグルのソフトウェア開発 -テストファーストによるエンジニアリング生産性向上, 日経 BP 社, 2013, 978-4-8222-8512-8.
+
+- https://www.delltechnologies.com/asset/ja-jp/products/data-protection/briefs-summaries/global-data-protection-index-infographic-apj.pdf
