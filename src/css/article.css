@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300&display=swap');
+
 .article_container {
   line-height: 1.5;
-  font-family: 'Noto Sans Mono';
+  font-family: 'Noto Sans Mono', monospace;
 }

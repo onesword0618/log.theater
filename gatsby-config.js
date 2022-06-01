@@ -96,7 +96,7 @@ module.exports = {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: `https://onesword0618.jp`,
-        sitemap: `https://onesword0618.jp/sitemap.xml`,
+        sitemap: `https://onesword0618.jp/sitemap/sitemap-index.xml`,
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
