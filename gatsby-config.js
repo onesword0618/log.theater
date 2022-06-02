@@ -105,7 +105,8 @@ module.exports = {
       options: {
         fonts: [
           `Noto Sans Mono`
-        ]
+        ],
+        display: 'swap',
       }
     },
     {
