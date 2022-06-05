@@ -101,14 +101,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Noto Sans Mono`
-        ]
-      }
-    },
-    {
       resolve: `gatsby-plugin-typegen`,
       options: {
         outputPath: `${__dirname}/types/graphql-types.d.ts`
@@ -131,7 +123,7 @@ module.exports = {
         background_color: `#FCA400`,
         theme_color: `#FCA400`,
         display: `standalone`,
-        icon: `src/images/icon.png`,
+        icon: `static/icon.png`,
       },
     },
     `gatsby-plugin-offline`,

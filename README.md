@@ -1,6 +1,6 @@
 # Log Theater
 
-<img src="./src/images/icon.png" width="160" height="160" alt="logo" align="right" />
+<img src="static/icon.png" width="160" height="160" alt="logo" align="right" />
 
 ## Description
 
