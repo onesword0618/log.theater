@@ -64,7 +64,7 @@ export const Footer: React.FC = (): React.ReactElement => {
             href="https://twitter.com/onesword0618"
             aria-label="twitter"
           >
-            <FontAwesomeIcon icon={faTwitter} />
+            <FontAwesomeIcon icon={faTwitter} size={'3x'} />
           </a>
 
           <a
@@ -72,7 +72,7 @@ export const Footer: React.FC = (): React.ReactElement => {
             href="https://www.facebook.com/profile.php?id=100023464906058"
             aria-label="facebook"
           >
-            <FontAwesomeIcon icon={faFacebook} />
+            <FontAwesomeIcon icon={faFacebook} size={'3x'} />
           </a>
 
           <a
@@ -80,7 +80,7 @@ export const Footer: React.FC = (): React.ReactElement => {
             href="https://github.com/onesword0618"
             aria-label="github"
           >
-            <FontAwesomeIcon icon={faGithub} />
+            <FontAwesomeIcon icon={faGithub} size={'3x'} />
           </a>
         </div>
 

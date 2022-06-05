@@ -3,7 +3,7 @@ path: /entry/learn-tcp-ip-transfer
 created: '2022-03-28'
 updated: '2022-03-28'
 title: 'TCP/IPについての備忘録'
-tags: [learn]
+tags: [note]
 ---
 
 ## 記事の目的
