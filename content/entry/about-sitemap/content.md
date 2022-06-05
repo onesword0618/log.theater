@@ -3,7 +3,7 @@ path: /entry/about-sitemap
 created: '2022-04-29'
 updated: '2022-04-29'
 title: 'sitemapについて所感を述べる.'
-tags: [learn]
+tags: [note]
 ---
 
 ## 記事の目的
