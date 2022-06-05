@@ -13,22 +13,22 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import {
   faDatabase,
-  faFilter,
   faFlask,
   faObjectGroup,
-  faWrench,
-  faCompass,
-  faPencil,
+  faFolderTree,
+  faMapPin,
+  faBookOpenReader,
+  faNoteSticky,
 } from '@fortawesome/free-solid-svg-icons';
 config.autoAddCss = false;
 library.add(
+  faFolderTree,
+  faMapPin,
+  faBookOpenReader,
+  faNoteSticky,
   faDatabase,
-  faFilter,
   faFlask,
   faObjectGroup,
-  faWrench,
-  faCompass,
-  faPencil,
 );
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -57,7 +57,7 @@ export default function About({ data, location }: Props): React.ReactElement {
         <h2>このサイトについて</h2>
         <div className="purpose">
           <h3>
-            <FontAwesomeIcon icon={faWrench} />
+            <FontAwesomeIcon icon={faMapPin} size={'3x'} />
             目的
           </h3>
           <p>
@@ -67,30 +67,42 @@ export default function About({ data, location }: Props): React.ReactElement {
 
         <div className="category">
           <h3>
-            <FontAwesomeIcon icon={faFilter} />
+            <FontAwesomeIcon icon={faFolderTree} size={'3x'} />
             カテゴリ
           </h3>
           <p>このサイトでは、取り上げていく内容は以下を予定しています.</p>
 
           <ul style={{ listStyle: 'none' }}>
             <li>
-              <FontAwesomeIcon icon={faPencil} listItem={false} spin />
+              <FontAwesomeIcon
+                icon={faBookOpenReader}
+                listItem={false}
+                size={'3x'}
+              />
               書籍や記事、ドキュメントを読んだ要約や所感について
             </li>
             <li>
-              <FontAwesomeIcon icon={faCompass} listItem={false} spin />
+              <FontAwesomeIcon
+                icon={faNoteSticky}
+                listItem={false}
+                size={'3x'}
+              />
               ライブラリの調査、考察について
             </li>
             <li>
-              <FontAwesomeIcon icon={faFlask} listItem={false} />
+              <FontAwesomeIcon icon={faFlask} listItem={false} size={'3x'} />
               アプリケーションのテストについての調査、考察について
             </li>
             <li>
-              <FontAwesomeIcon icon={faObjectGroup} listItem={false} />
+              <FontAwesomeIcon
+                icon={faObjectGroup}
+                listItem={false}
+                size={'3x'}
+              />
               アプリケーションの設計について
             </li>
             <li>
-              <FontAwesomeIcon icon={faDatabase} listItem={false} />
+              <FontAwesomeIcon icon={faDatabase} listItem={false} size={'3x'} />
               データベースの設計、運用について
             </li>
           </ul>
