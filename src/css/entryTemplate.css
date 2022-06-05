@@ -29,7 +29,7 @@ a {
 }
 
 a:link {
-  color: #fca400;
+  color: #a26900;
 }
 
 a:visited {
@@ -38,16 +38,16 @@ a:visited {
 
 a:focus {
   border-bottom: 1px solid;
-  background: #ffbb00;
+  background: #a26900;
 }
 
 a:hover {
   border-bottom: 1px solid;
-  background: #ffbb00;
+  background: #a26900;
 }
 
 a:active {
-  background: #ffbb00;
+  background: #a26900;
   color: #384d98;
 }
 
