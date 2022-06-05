@@ -98,7 +98,7 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
           >
             {pageContext.previous?.frontmatter?.path && (
               <i className="preview">
-                <FontAwesomeIcon icon={faArrowCircleLeft} />
+                <FontAwesomeIcon icon={faArrowCircleLeft} size={'3x'} />
                 <Link to={pageContext.previous.frontmatter.path}>
                   {pageContext.previous.frontmatter?.title}
                 </Link>
@@ -107,7 +107,7 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
 
             {pageContext.next?.frontmatter?.path && (
               <i className="next">
-                <FontAwesomeIcon icon={faArrowCircleRight} />
+                <FontAwesomeIcon icon={faArrowCircleRight} size={'3x'} />
                 <Link to={pageContext.next.frontmatter.path}>
                   {pageContext.next.frontmatter?.title}
                 </Link>
