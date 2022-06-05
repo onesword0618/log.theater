@@ -15,10 +15,11 @@ import {
   faFilter,
   faFlask,
   faObjectGroup,
-  faPencil,
+  faNoteSticky,
+  faBookOpenReader,
 } from '@fortawesome/free-solid-svg-icons';
 config.autoAddCss = false;
-library.add(faDatabase, faFilter, faFlask, faObjectGroup, faPencil);
+library.add(faDatabase, faFilter, faFlask, faObjectGroup, faNoteSticky);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -35,6 +36,12 @@ type Props = {
 export const Tag: React.FC<Props> = ({ name }: Props) => {
   let category: IconProp = faFilter;
   switch (name) {
+    case `read`:
+      category = faBookOpenReader;
+      break;
+    case `note`:
+      category = faNoteSticky;
+      break;
     case `test`:
       category = faFlask;
       break;
@@ -44,9 +51,6 @@ export const Tag: React.FC<Props> = ({ name }: Props) => {
     case `database`:
       category = faDatabase;
       break;
-    case `learn`:
-      category = faPencil;
-      break;
     default:
       break;
   }
@@ -55,7 +59,7 @@ export const Tag: React.FC<Props> = ({ name }: Props) => {
     <>
       {name && (
         <Link to={`/tag/${name}`}>
-          <FontAwesomeIcon icon={category} />
+          <FontAwesomeIcon icon={category} size={'3x'} />
           {name}{' '}
         </Link>
       )}
