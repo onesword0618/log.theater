@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.icon {
+  padding: 8px;
+}
+
+.icon_heading {
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+}

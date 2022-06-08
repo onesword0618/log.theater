@@ -50,37 +50,91 @@ export default function Activity({
         <h2>Activity</h2>
         <ul style={{ listStyle: 'none' }}>
           <li>
-            <FontAwesomeIcon icon={faGithub} size={'3x'} />
-            <a href="https://github.com/onesword0618">GitHub</a>
+            <a href="https://github.com/onesword0618" className="icon_heading">
+              <FontAwesomeIcon
+                icon={faGithub}
+                size={'2x'}
+                title={'github'}
+                className="icon"
+              />
+              GitHub
+            </a>
             <p>
               開発時のアイディアやツール、ライブラリ作成、サンプルなどの素振りをしたリソースが公開されています.
             </p>
           </li>
           <li>
-            <FontAwesomeIcon icon={faCode} size={'3x'} />
-            <a href="https://leetcode.com/onesword0618">Leet Code</a>
+            <a
+              href="https://leetcode.com/onesword0618"
+              className="icon_heading"
+            >
+              <FontAwesomeIcon
+                icon={faCode}
+                size={'2x'}
+                title={'Leet Code'}
+                className="icon"
+              />
+              Leet Code
+            </a>
             <p>
               テストコードを作成して問題と回答に対するアプローチを追跡しています.
             </p>
           </li>
           <li>
-            <FontAwesomeIcon icon={faQuestionCircle} />
-            <a href="https://teratail.com/users/onesword0618">teratail</a>
+            <a
+              href="https://teratail.com/users/onesword0618"
+              className="icon_heading"
+            >
+              <FontAwesomeIcon
+                icon={faQuestionCircle}
+                size={'2x'}
+                title={'teratail'}
+                className="icon"
+              />
+              teratail
+            </a>
             <p>自分が把握している範囲で問題を回答しています.</p>
           </li>
           <li>
-            <FontAwesomeIcon icon={faBook} size={'3x'} />
-            <a href="https://booklog.jp/users/onesword0618">booklog</a>
+            <a
+              href="https://booklog.jp/users/onesword0618"
+              className="icon_heading"
+            >
+              <FontAwesomeIcon
+                icon={faBook}
+                size={'2x'}
+                title={'booklog'}
+                className="icon"
+              />
+              booklog
+            </a>
             <p>読んだ書籍の感想を記載しています.</p>
           </li>
           <li>
-            <FontAwesomeIcon icon={faPaperclip} size={'3x'} />
-            <a href="https://qiita.com/onesword">Qiita</a>
+            <a href="https://qiita.com/onesword" className="icon_heading">
+              <FontAwesomeIcon
+                icon={faPaperclip}
+                size={'2x'}
+                title={'Qiita'}
+                className="icon"
+              />
+              Qiita
+            </a>
             <p>調べたこと、調査した結果を公開しています.</p>
           </li>
           <li>
-            <FontAwesomeIcon icon={faInstagram} size={'3x'} />
-            <a href="https://www.instagram.com/onesword0618/">Instagram</a>
+            <a
+              href="https://www.instagram.com/onesword0618/"
+              className="icon_heading"
+            >
+              <FontAwesomeIcon
+                icon={faInstagram}
+                size={'2x'}
+                title={'Instagram'}
+                className="icon"
+              />
+              Instagram
+            </a>
             <p>
               外に出る動機づくりのため街の景色やイベントを写真/動画で取得し公開しています.
             </p>
