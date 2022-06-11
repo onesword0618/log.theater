@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.icon_container {
+  display: flex;
+}
+
 .icon {
   padding: 8px;
 }
@@ -7,5 +11,4 @@
 .icon_heading {
   display: flex;
   align-items: center;
-  line-height: 1.5;
 }

@@ -30,6 +30,11 @@
   list-style: none;
 }
 
+.footer_link {
+  padding: 8px;
+  line-height: 1.6;
+}
+
 .footer_sns {
   display: flex;
   flex-direction: row;
