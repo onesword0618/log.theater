@@ -34,13 +34,19 @@ export const Footer: React.FC = (): React.ReactElement => {
             <p className="footer_item_header">Blog</p>
             <ul className="footer_item_unordered_list">
               <li>
-                <Link to="/about/">About</Link>
+                <Link to="/about/" className="footer_link">
+                  About
+                </Link>
               </li>
               <li>
-                <Link to="/introduce/">Introduce</Link>
+                <Link to="/introduce/" className="footer_link">
+                  Introduce
+                </Link>
               </li>
               <li>
-                <Link to="/activity/">Activity</Link>
+                <Link to="/activity/" className="footer_link">
+                  Activity
+                </Link>
               </li>
             </ul>
           </div>
@@ -49,10 +55,14 @@ export const Footer: React.FC = (): React.ReactElement => {
             <p className="footer_item_header">Policy</p>
             <ul className="footer_item_unordered_list">
               <li>
-                <Link to="/terms/">Term of Service</Link>
+                <Link to="/terms/" className="footer_link">
+                  Term of Service
+                </Link>
               </li>
               <li>
-                <Link to="/policy/privacy/">Privacy policy</Link>
+                <Link to="/policy/privacy/" className="footer_link">
+                  Privacy policy
+                </Link>
               </li>
             </ul>
           </div>
@@ -60,27 +70,27 @@ export const Footer: React.FC = (): React.ReactElement => {
 
         <div className="footer_sns">
           <a
-            className="twitter"
+            className="icon"
             href="https://twitter.com/onesword0618"
             aria-label="twitter"
           >
-            <FontAwesomeIcon icon={faTwitter} size={'3x'} />
+            <FontAwesomeIcon icon={faTwitter} size={'2x'} />
           </a>
 
           <a
-            className="facebook"
+            className="icon"
             href="https://www.facebook.com/profile.php?id=100023464906058"
             aria-label="facebook"
           >
-            <FontAwesomeIcon icon={faFacebook} size={'3x'} />
+            <FontAwesomeIcon icon={faFacebook} size={'2x'} />
           </a>
 
           <a
-            className="github"
+            className="icon"
             href="https://github.com/onesword0618"
             aria-label="github"
           >
-            <FontAwesomeIcon icon={faGithub} size={'3x'} />
+            <FontAwesomeIcon icon={faGithub} size={'2x'} />
           </a>
         </div>
 
