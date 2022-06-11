@@ -12,12 +12,12 @@ import { config, library } from '@fortawesome/fontawesome-svg-core';
 import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import {
   faBook,
-  faCode,
+  faLaptopCode,
   faPaperclip,
   faQuestionCircle,
 } from '@fortawesome/free-solid-svg-icons';
 config.autoAddCss = false;
-library.add(faGithub, faBook, faCode, faPaperclip, faQuestionCircle);
+library.add(faGithub, faBook, faLaptopCode, faPaperclip, faQuestionCircle);
 
 import { Head } from '../components/head';
 import { Layout } from '../components/layout';
@@ -50,91 +50,106 @@ export default function Activity({
         <h2>Activity</h2>
         <ul style={{ listStyle: 'none' }}>
           <li>
-            <a href="https://github.com/onesword0618" className="icon_heading">
+            <div className="icon_container">
               <FontAwesomeIcon
                 icon={faGithub}
                 size={'2x'}
                 title={'github'}
                 className="icon"
               />
-              GitHub
-            </a>
+              <a
+                href="https://github.com/onesword0618"
+                className="icon_heading"
+              >
+                GitHub
+              </a>
+            </div>
             <p>
               開発時のアイディアやツール、ライブラリ作成、サンプルなどの素振りをしたリソースが公開されています.
             </p>
           </li>
           <li>
-            <a
-              href="https://leetcode.com/onesword0618"
-              className="icon_heading"
-            >
+            <div className="icon_container">
               <FontAwesomeIcon
-                icon={faCode}
+                icon={faLaptopCode}
                 size={'2x'}
                 title={'Leet Code'}
                 className="icon"
               />
-              Leet Code
-            </a>
+              <a
+                href="https://leetcode.com/onesword0618"
+                className="icon_heading"
+              >
+                Leet Code
+              </a>
+            </div>
             <p>
               テストコードを作成して問題と回答に対するアプローチを追跡しています.
             </p>
           </li>
           <li>
-            <a
-              href="https://teratail.com/users/onesword0618"
-              className="icon_heading"
-            >
+            <div className="icon_container">
               <FontAwesomeIcon
                 icon={faQuestionCircle}
                 size={'2x'}
                 title={'teratail'}
                 className="icon"
               />
-              teratail
-            </a>
+              <a
+                href="https://teratail.com/users/onesword0618"
+                className="icon_heading"
+              >
+                teratail
+              </a>
+            </div>
             <p>自分が把握している範囲で問題を回答しています.</p>
           </li>
           <li>
-            <a
-              href="https://booklog.jp/users/onesword0618"
-              className="icon_heading"
-            >
+            <div className="icon_container">
               <FontAwesomeIcon
                 icon={faBook}
                 size={'2x'}
                 title={'booklog'}
                 className="icon"
               />
-              booklog
-            </a>
+              <a
+                href="https://booklog.jp/users/onesword0618"
+                className="icon_heading"
+              >
+                booklog
+              </a>
+            </div>
             <p>読んだ書籍の感想を記載しています.</p>
           </li>
           <li>
-            <a href="https://qiita.com/onesword" className="icon_heading">
+            <div className="icon_container">
               <FontAwesomeIcon
                 icon={faPaperclip}
                 size={'2x'}
                 title={'Qiita'}
                 className="icon"
               />
-              Qiita
-            </a>
+              <a href="https://qiita.com/onesword" className="icon_heading">
+                Qiita
+              </a>
+            </div>
             <p>調べたこと、調査した結果を公開しています.</p>
           </li>
           <li>
-            <a
-              href="https://www.instagram.com/onesword0618/"
-              className="icon_heading"
-            >
+            <div className="icon_container">
               <FontAwesomeIcon
                 icon={faInstagram}
                 size={'2x'}
                 title={'Instagram'}
                 className="icon"
               />
-              Instagram
-            </a>
+              <a
+                href="https://www.instagram.com/onesword0618/"
+                className="icon_heading"
+              >
+                Instagram
+              </a>
+            </div>
             <p>
               外に出る動機づくりのため街の景色やイベントを写真/動画で取得し公開しています.
             </p>
