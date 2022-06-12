@@ -33,17 +33,17 @@ export const Footer: React.FC = (): React.ReactElement => {
           <div className="footer_item">
             <p className="footer_item_header">Blog</p>
             <ul className="footer_item_unordered_list">
-              <li>
+              <li className="footer_list">
                 <Link to="/about/" className="footer_link">
                   About
                 </Link>
               </li>
-              <li>
+              <li className="footer_list">
                 <Link to="/introduce/" className="footer_link">
                   Introduce
                 </Link>
               </li>
-              <li>
+              <li className="footer_list">
                 <Link to="/activity/" className="footer_link">
                   Activity
                 </Link>
@@ -54,12 +54,12 @@ export const Footer: React.FC = (): React.ReactElement => {
           <div className="footer_item">
             <p className="footer_item_header">Policy</p>
             <ul className="footer_item_unordered_list">
-              <li>
+              <li className="footer_list">
                 <Link to="/terms/" className="footer_link">
                   Term of Service
                 </Link>
               </li>
-              <li>
+              <li className="footer_list">
                 <Link to="/policy/privacy/" className="footer_link">
                   Privacy policy
                 </Link>
