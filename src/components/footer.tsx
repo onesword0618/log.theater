@@ -33,7 +33,7 @@ export const Footer: React.FC = (): React.ReactElement => {
           <div className="footer_item">
             <p className="footer_item_header">Blog</p>
             <ul className="footer_item_unordered_list">
-              <li>
+              <li className="footer_list">
                 <Link to="/about/" className="footer_link">
                   About
                 </Link>

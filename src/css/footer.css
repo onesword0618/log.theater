@@ -30,9 +30,12 @@
   list-style: none;
 }
 
+.footer_list {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
 .footer_link {
-  margin: 8px;
-  padding: 8px;
   line-height: 1.6;
 }
 
