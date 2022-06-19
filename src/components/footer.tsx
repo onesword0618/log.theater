@@ -96,10 +96,8 @@ export const Footer: React.FC = (): React.ReactElement => {
 
         <div className="copyright">
           <small>
-            <p>
-              © {new Date().getFullYear()},{' '}
-              <a href="https://ja.gravatar.com/onesword0618">onesword0618</a>
-            </p>
+            © {new Date().getFullYear()},{' '}
+            <a href="https://ja.gravatar.com/onesword0618">onesword0618</a>
           </small>
         </div>
       </footer>
