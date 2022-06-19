@@ -56,9 +56,9 @@ export default function About({ data, location }: Props): React.ReactElement {
       <article className="about">
         <h2>このサイトについて</h2>
         <div className="purpose">
-          <h3>
-            <FontAwesomeIcon icon={faMapPin} size={'3x'} />
-            目的
+          <h3 className="icon_container">
+            <FontAwesomeIcon icon={faMapPin} size={'2x'} className="icon" />
+            <p className="icon_heading">目的</p>
           </h3>
           <p>
             このサイトでは、アプリケーション開発全般の疑問や調査、考察を深めていった思考結果を記載しています.
@@ -66,43 +66,71 @@ export default function About({ data, location }: Props): React.ReactElement {
         </div>
 
         <div className="category">
-          <h3>
-            <FontAwesomeIcon icon={faFolderTree} size={'3x'} />
-            カテゴリ
+          <h3 className="icon_container">
+            <FontAwesomeIcon icon={faFolderTree} size={'2x'} className="icon" />
+            <p className="icon_heading">カテゴリ</p>
           </h3>
           <p>このサイトでは、取り上げていく内容は以下を予定しています.</p>
 
           <ul style={{ listStyle: 'none' }}>
             <li>
-              <FontAwesomeIcon
-                icon={faBookOpenReader}
-                listItem={false}
-                size={'3x'}
-              />
+              <div className="icon_container">
+                <FontAwesomeIcon
+                  icon={faBookOpenReader}
+                  listItem={false}
+                  size={'2x'}
+                  className="icon"
+                />
+                <p className="icon_heading">Read</p>
+              </div>
               書籍や記事、ドキュメントを読んだ要約や所感について
             </li>
             <li>
-              <FontAwesomeIcon
-                icon={faNoteSticky}
-                listItem={false}
-                size={'3x'}
-              />
+              <div className="icon_container">
+                <FontAwesomeIcon
+                  icon={faNoteSticky}
+                  listItem={false}
+                  size={'2x'}
+                  className="icon"
+                />
+                <p className="icon_heading">Note</p>
+              </div>
               ライブラリの調査、考察について
             </li>
             <li>
-              <FontAwesomeIcon icon={faFlask} listItem={false} size={'3x'} />
+              <div className="icon_container">
+                <FontAwesomeIcon
+                  icon={faFlask}
+                  listItem={false}
+                  size={'2x'}
+                  className="icon"
+                />
+                <p className="icon_heading">Test</p>
+              </div>
               アプリケーションのテストについての調査、考察について
             </li>
             <li>
-              <FontAwesomeIcon
-                icon={faObjectGroup}
-                listItem={false}
-                size={'3x'}
-              />
+              <div className="icon_container">
+                <FontAwesomeIcon
+                  icon={faObjectGroup}
+                  listItem={false}
+                  size={'2x'}
+                  className="icon"
+                />
+                <p className="icon_heading">Design</p>
+              </div>
               アプリケーションの設計について
             </li>
             <li>
-              <FontAwesomeIcon icon={faDatabase} listItem={false} size={'3x'} />
+              <div className="icon_container">
+                <FontAwesomeIcon
+                  icon={faDatabase}
+                  listItem={false}
+                  size={'2x'}
+                  className="icon"
+                />
+                <p className="icon_heading">DataBase</p>
+              </div>
               データベースの設計、運用について
             </li>
           </ul>
