@@ -30,7 +30,7 @@ export const Article: React.FC<Props> = ({
         </Link>
       </h2>
 
-      <p className="tags">
+      <p className="tags icon_container">
         {content.frontmatter.tags.map((tag, index) => (
           <Tag name={tag} key={index} />
         ))}
