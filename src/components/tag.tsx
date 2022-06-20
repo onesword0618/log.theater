@@ -58,10 +58,17 @@ export const Tag: React.FC<Props> = ({ name }: Props) => {
   return (
     <>
       {name && (
-        <Link to={`/tag/${name}`}>
-          <FontAwesomeIcon icon={category} size={'3x'} />
-          {name}{' '}
-        </Link>
+        <div className="icon_container">
+          <Link to={`/tag/${name}`}>
+            <FontAwesomeIcon
+              icon={category}
+              size={'2x'}
+              title={name}
+              className="icon"
+            />
+          </Link>
+          <p className="icon_heading">{name}</p>
+        </div>
       )}
     </>
   );

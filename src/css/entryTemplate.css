@@ -33,22 +33,22 @@ a:link {
 }
 
 a:visited {
-  color: #384d98;
+  color: #c7dc68;
 }
 
 a:focus {
   border-bottom: 1px solid;
-  background: #384d98;
+  background: #bce2e8;
 }
 
 a:hover {
   border-bottom: 1px solid;
-  background: #384d98;
+  background: #bce2e8;
 }
 
 a:active {
   background: #a26900;
-  color: #384d98;
+  color: #c7dc68;
 }
 
 p {
