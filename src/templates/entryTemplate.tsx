@@ -77,11 +77,13 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
             <Date className="updateDate" caption="更新日" date={updateDate} />
 
             <ul className="category" style={{ listStyle: 'none' }}>
-              {tags.map((current, index) => (
-                <li className={`${current || 'none'}`} key={index}>
-                  <Tag name={current} />
-                </li>
-              ))}
+              <div className="icon_container">
+                {tags.map((current, index) => (
+                  <li className={`${current || 'none'}`} key={index}>
+                    <Tag name={current} />
+                  </li>
+                ))}
+              </div>
             </ul>
           </aside>
 
@@ -97,18 +99,32 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
             style={{ display: 'flex', flexDirection: 'column' }}
           >
             {pageContext.previous?.frontmatter?.path && (
-              <i className="preview">
-                <FontAwesomeIcon icon={faArrowCircleLeft} size={'3x'} />
-                <Link to={pageContext.previous.frontmatter.path}>
+              <i className="preview icon_container">
+                <FontAwesomeIcon
+                  icon={faArrowCircleLeft}
+                  size={'2x'}
+                  className="icon"
+                />
+                <Link
+                  to={pageContext.previous.frontmatter.path}
+                  className="icon_heading"
+                >
                   {pageContext.previous.frontmatter?.title}
                 </Link>
               </i>
             )}
 
             {pageContext.next?.frontmatter?.path && (
-              <i className="next">
-                <FontAwesomeIcon icon={faArrowCircleRight} size={'3x'} />
-                <Link to={pageContext.next.frontmatter.path}>
+              <i className="next icon_container">
+                <FontAwesomeIcon
+                  icon={faArrowCircleRight}
+                  size={'2x'}
+                  className="icon"
+                />
+                <Link
+                  to={pageContext.next.frontmatter.path}
+                  className="icon_heading"
+                >
                   {pageContext.next.frontmatter?.title}
                 </Link>
               </i>

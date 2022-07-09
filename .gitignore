@@ -9,9 +9,6 @@ node_modules/
 public/
 types/graphql-types.d.ts
 
-# typedoc
-docs
-
 # dotenv environment variable files
 .env*
 
