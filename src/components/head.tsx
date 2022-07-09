@@ -83,7 +83,7 @@ export const Head: React.FC<Props> = (props: Props) => {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={seo.locale} />
       <meta property="fb:app_id" content={seo.facebookApplicationId} />
-      <meta property="og:image" content="../images/icon.png" />
+      <meta property="og:image" content="../../static/icon.png" />
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="640" />
       {/* twitter */}
@@ -91,7 +91,7 @@ export const Head: React.FC<Props> = (props: Props) => {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:site" content={`@onesword0618`} />
-      <meta name="twitter:image" content="../images/icon.png" />
+      <meta name="twitter:image" content="../../static/icon.png" />
     </Helmet>
   );
 };
