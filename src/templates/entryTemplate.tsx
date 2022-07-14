@@ -96,7 +96,11 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
 
           <div
             className="link"
-            style={{ display: 'flex', flexDirection: 'column' }}
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}
           >
             {pageContext.previous?.frontmatter?.path && (
               <i className="preview icon_container">
@@ -116,17 +120,17 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
 
             {pageContext.next?.frontmatter?.path && (
               <i className="next icon_container">
-                <FontAwesomeIcon
-                  icon={faArrowCircleRight}
-                  size={'2x'}
-                  className="icon"
-                />
                 <Link
                   to={pageContext.next.frontmatter.path}
                   className="icon_heading"
                 >
                   {pageContext.next.frontmatter?.title}
                 </Link>
+                <FontAwesomeIcon
+                  icon={faArrowCircleRight}
+                  size={'2x'}
+                  className="icon"
+                />
               </i>
             )}
           </div>
