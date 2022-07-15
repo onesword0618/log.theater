@@ -1,7 +1,7 @@
 ---
 path: /entry/about-sitemap
 created: '2022-04-29'
-updated: '2022-04-29'
+updated: '2022-07-15'
 title: 'sitemapについて所感を述べる.'
 tags: [note]
 ---
@@ -62,7 +62,7 @@ Web ページが少ない規模の Web サイトでは、利便性は薄いも�
 
 > https://www.sitemaps.org/protocol.html
 
-```xml:title=single.xml
+```xml{numberLines: true}:title=single.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset urlset xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
