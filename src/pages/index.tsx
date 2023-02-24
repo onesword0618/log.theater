@@ -46,39 +46,39 @@ export default Application;
  * Building Entry Pages.
  */
 export const pageQuery = graphql`
-  query Entries {
-    allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "/(../content/entry)/.*\\.md$/"}}
-      sort: {order: DESC, fields: frontmatter___created}
-    ) {
-      nodes {
-        id
-        excerpt(format: PLAIN, truncate: true)
-        frontmatter {
-          title
-          path
-          entrytDate: created(formatString: "YYYY.MM.DD")
-          updateDate: updated(formatString: "YYYY.MM.DD")
-          tags
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        locale
+query Entries {
+  allMarkdownRemark(
+    filter: {fileAbsolutePath: {regex: "/(../content/entry)/.*\\.md$/"}}
+    sort: {frontmatter: {created: DESC}}
+  ) {
+    nodes {
+      id
+      excerpt(format: PLAIN, truncate: true)
+      frontmatter {
         title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
+        path
+        entrytDate: created(formatString: "YYYY.MM.DD")
+        updateDate: updated(formatString: "YYYY.MM.DD")
+        tags
       }
     }
   }
+  site {
+    siteMetadata {
+      locale
+      title
+      author {
+        name
+        excerpt
+      }
+      description
+      siteUrl
+      facebookApplicationId
+      social {
+        twitter
+        github
+      }
+    }
+  }
+}
 `;

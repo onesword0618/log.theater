@@ -8,6 +8,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import { SiteMetadata } from '@types';
+import ogImage from '../../static/icon.png';
 
 type Props = {
   metaData: SiteMetadata;
@@ -40,6 +41,7 @@ export const Head: React.FC<Props> = (props: Props) => {
               twitter
               github
             }
+            siteIcon
           }
         }
       }
@@ -47,8 +49,23 @@ export const Head: React.FC<Props> = (props: Props) => {
   );
 
   const { site } = fetchMeta;
-  if (site === undefined || site?.siteMetadata === undefined) {
-    return null;
+  if (site === undefined || site === null) {
+    throw new Error('no site contents');
+  }
+
+  if (site.siteMetadata === undefined || site.siteMetadata === null) {
+    throw new Error('no siteMetadata contents');
+  }
+
+  if (
+    site.siteMetadata.defaultTitle === null ||
+    site.siteMetadata.defaultDescription === null ||
+    site.siteMetadata.locale === null ||
+    site.siteMetadata.facebookApplicationId === null ||
+    site.siteMetadata.siteIcon === null ||
+    site.siteMetadata.siteUrl === null
+  ) {
+    throw new Error('no contents');
   }
 
   const seo = {
@@ -60,6 +77,7 @@ export const Head: React.FC<Props> = (props: Props) => {
         : site.siteMetadata.siteUrl,
     locale: site.siteMetadata.locale,
     facebookApplicationId: site.siteMetadata.facebookApplicationId,
+    icon: `${metaData.siteUrl}${ogImage}`,
   };
 
   return (
@@ -83,7 +101,7 @@ export const Head: React.FC<Props> = (props: Props) => {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={seo.locale} />
       <meta property="fb:app_id" content={seo.facebookApplicationId} />
-      <meta property="og:image" content="../../static/icon.png" />
+      <meta property="og:image" content={seo.icon} />
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="640" />
       {/* twitter */}
@@ -91,7 +109,7 @@ export const Head: React.FC<Props> = (props: Props) => {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:site" content={`@onesword0618`} />
-      <meta name="twitter:image" content="../../static/icon.png" />
+      <meta name="twitter:image" content={seo.icon} />
     </Helmet>
   );
 };

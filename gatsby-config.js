@@ -23,6 +23,7 @@ module.exports = {
       twitter: `onesword0618`,
       github: `onesword0618`,
     },
+    siteIcon: `${__dirname}/static/icon.png`
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
@@ -33,6 +34,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-feed`,
       options: {
+        setup(ref) {
+          const metaInfo = ref.query.site.siteMetadata
+          return metaInfo
+        },
         query: `
           {
             site {
@@ -47,36 +52,47 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map((edge) => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.updated,
-                  url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
-                  guid: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
-                });
-              });
+            serialize(value) {
+              const meta = value.query.site.siteMetadata;
+              return value.query.allMarkdownRemark.edges.map(edge => ({
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.updated,
+                url: meta.siteUrl + edge.node.frontmatter.path,
+                guid: meta.siteUrl + edge.node.frontmatter.path,
+                custom_elements: [{ 'content:encoded': edge.node.html }],
+              }));
             },
             query: `
-              {
-                allMarkdownRemark(
-                  sort: {order: DESC, fields: frontmatter___created}
-                ) {
-                    edges {
-                      node {
-                        id
-                        frontmatter {
-                          title
-                          path
-                          updated
-                        }
-                        excerpt(format: PLAIN, truncate: true)
-                        html
-                      }
+            {
+              allMarkdownRemark(sort: {frontmatter: {created: DESC}}) {
+                edges {
+                  node {
+                    id
+                    frontmatter {
+                      title
+                      path
+                      updated
+                    }
+                    excerpt(format: PLAIN, truncate: true)
+                    html
+                  }
+                  previous {
+                    id
+                    frontmatter {
+                      title
+                      path
                     }
                   }
+                  next {
+                    id
+                    frontmatter {
+                      title
+                      path
+                    }
+                  }
+                }
               }
+            }
             `,
             output: "/rss.xml",
             title: "log.theater feed",
@@ -120,8 +136,8 @@ module.exports = {
         name: `log.theater`,
         short_name: `log.theater`,
         start_url: `/`,
-        background_color: `#FCA400`,
-        theme_color: `#FCA400`,
+        background_color: `#FDDEA5`,
+        theme_color: `#FDDEA5`,
         display: `standalone`,
         icon: `static/icon.png`,
       },

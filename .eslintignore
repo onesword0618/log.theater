@@ -6,6 +6,7 @@ package-lock.json
 .cache/
 public/
 types/
+static/
 gatsby-config.js
 gatsby-node.js
 gatsby-node.esm.js
