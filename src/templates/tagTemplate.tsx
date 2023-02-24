@@ -45,7 +45,7 @@ export default TagTemplate;
 export const tagQuery = graphql`
   query Tags($tag: String) {
     allMarkdownRemark(
-      sort: { order: DESC, fields: frontmatter___created }
+      sort: { frontmatter: { created: DESC } }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       nodes {

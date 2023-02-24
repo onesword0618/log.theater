@@ -13,6 +13,7 @@ export type SiteMetadata = {
     twitter: string;
     github: string;
   };
+  siteIcon: string;
 };
 
 export type Frontmatter = {

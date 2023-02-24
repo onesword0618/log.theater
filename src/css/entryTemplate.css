@@ -1,6 +1,21 @@
 @charset "UTF-8";
 /** 記事で表示する際のスタイルを定義している. */
 
+/** color scheme */
+:root {
+  --base-color:#FDDEA5;
+  --primary-color:#D8B26B;
+  --menu-color:#B7A481;
+  --logo-color:#555555;
+  --heder-color:#E5B762;
+  --sub-header-color:#FED589;
+  --side-bar-header-color:#FFEFD2;
+  --side-bar-background-color:#FFFAF0;
+  --font-color:#333333;
+  --link-color:#3366CC;
+  --visited-color:#765AC9;
+}
+
 *,
 *::before,
 *::marker,
@@ -10,6 +25,7 @@
 
 /** TODO: globalへ */
 html {
+  background-color: var(--base-color);
   box-sizing: border-box;
   font-family: 'Noto Sans Mono';
   font-style: normal;
@@ -29,26 +45,26 @@ a {
 }
 
 a:link {
-  color: #a26900;
+  color: var(--link-color);
+  text-decoration: underline;
 }
 
 a:visited {
-  color: #c7dc68;
+  color: var(--visited-color);
+}
+
+a:hover {
+  text-decoration:none;
+}
+
+a:active {
+  background: #02552A;
+  color: #F2FFFE;
 }
 
 a:focus {
   border-bottom: 1px solid;
-  background: #bce2e8;
-}
-
-a:hover {
-  border-bottom: 1px solid;
-  background: #bce2e8;
-}
-
-a:active {
-  background: #a26900;
-  color: #c7dc68;
+  color: #0085F2;
 }
 
 p {

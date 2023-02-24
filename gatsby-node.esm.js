@@ -16,36 +16,34 @@ const createEntries = async ( graphql, actions ) => {
   const { createPage } = actions;
 
   const contents = await graphql(`
-    {
-      entries: allMarkdownRemark(
-        sort: {order: DESC, fields: frontmatter___created}
-      ) {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-              path
-            }
-            excerpt(format: PLAIN, truncate: true)
+  {
+    entries: allMarkdownRemark(sort: {frontmatter: {created: DESC}}) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            path
           }
-          previous {
-            id
-            frontmatter {
-              title
-              path
-            }
+          excerpt(format: PLAIN, truncate: true)
+        }
+        previous {
+          id
+          frontmatter {
+            title
+            path
           }
-          next {
-            id
-            frontmatter {
-              title
-              path
-            }
+        }
+        next {
+          id
+          frontmatter {
+            title
+            path
           }
         }
       }
     }
+  }
   `)
 
   if(contents.errors) {
@@ -77,13 +75,13 @@ const createTags = async ( graphql, actions ) => {
   const { createPage } = actions;
 
   const contents = await graphql(`
-    {
-      tags: allMarkdownRemark {
-        group(field: frontmatter___tags) {
-          tag: fieldValue
-        }
+  {
+    tags: allMarkdownRemark {
+      group(field: {frontmatter: {tags: SELECT}}) {
+        tag: fieldValue
       }
     }
+  }
   `)
 
   if(contents.errors) {
