@@ -4,6 +4,8 @@
 
 ## Description
 
+Sorry, Not NPM Package.
+
 Personal Blog.
 
 ![GitHub](https://img.shields.io/github/license/onesword0618/log.theater?style=plastic)
@@ -24,26 +26,35 @@ Personal Blog.
 [![EditorConfig](https://img.shields.io/badge/EditorConfig-333333?logo=editorconfig&logoColor=FEFEFE)](https://editorconfig.org/)
 [![NPM](https://img.shields.io/badge/npm-333333?logo=npm&logoColor=CB3837)](https://docs.npmjs.com/about-npm)
 
-## USAGE
+## For Development
 
-Sorry, Not NPM Package.
+### Requirement
 
-- For Development
+- Node.js v16-
+
+### USAGE
 
 ```
+npm install
 npm run develop
 ```
 
-## License
+### Note
 
-- [MIT](./LICENSE)
+I don't test environments under Windows and Mac.
 
-### Include Library License Explain.
+### License
+
+- "Log Theater" is under [MIT](./LICENSE) license.
+
+#### Include Library License Explain.
 
 - [gatsby](https://github.com/gatsbyjs/gatsby/blob/master/LICENSE)
 
 - [react](https://github.com/facebook/react/blob/main/LICENSE)
 
 ### Author
+
+- onesword0618
 
 [![twitter](https://img.shields.io/badge/twitter-ffffff?style=plastic&logo=twitter&logoColor=1DA1F2)](https://twitter.com/onesword0618)
