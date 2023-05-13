@@ -3,7 +3,7 @@
 public/
 types/
 static/
-gatsby-config.js
+src/gatsby-types.d.ts
 
 # Output
 build
