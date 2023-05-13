@@ -3,10 +3,30 @@
  *
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  *
+ * Support added in gatsby@4.9.0 -
+ * See: https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#gatsby-configts
+ *
  * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @author Kenichi Inoue.
  */
-module.exports = {
+import type { GatsbyConfig } from 'gatsby';
+
+// GraphiQL described in gatsby-config.ts does not perform automatic type generation.
+// Definition to pass type inspection.
+type Feed = {
+  node: {
+    id: string;
+    frontmatter: {
+      title: string;
+      path: string;
+      updated: string;
+    };
+    excerpt: string;
+    html: string;
+  };
+};
+
+const config: GatsbyConfig = {
   siteMetadata: {
     locale: `ja-JP`,
     title: `log.theater`,
@@ -23,21 +43,18 @@ module.exports = {
       twitter: `onesword0618`,
       github: `onesword0618`,
     },
-    siteIcon: `${__dirname}/static/icon.png`
+    siteIcon: `${__dirname}/static/icon.png`,
   },
+  graphqlTypegen: true,
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet`, // TODO Remove
     {
       resolve: `gatsby-plugin-feed`,
       options: {
-        setup(ref) {
-          const metaInfo = ref.query.site.siteMetadata
-          return metaInfo
-        },
         query: `
           {
             site {
@@ -52,50 +69,44 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize(value) {
-              const meta = value.query.site.siteMetadata;
-              return value.query.allMarkdownRemark.edges.map(edge => ({
-                description: edge.node.excerpt,
-                date: edge.node.frontmatter.updated,
-                url: meta.siteUrl + edge.node.frontmatter.path,
-                guid: meta.siteUrl + edge.node.frontmatter.path,
-                custom_elements: [{ 'content:encoded': edge.node.html }],
-              }));
+            serialize: ({
+              query: { site, allMarkdownRemark },
+            }: {
+              query: {
+                site: Queries.SiteMetaDataQuery['site'];
+                allMarkdownRemark: { edges: Feed[] };
+              };
+            }) => {
+              return allMarkdownRemark.edges.map((edge) => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.updated,
+                  url: `${site?.siteMetadata?.siteUrl}${edge.node.frontmatter.path}`,
+                  guid: `${site?.siteMetadata?.siteUrl}${edge.node.frontmatter.path}`,
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                });
+              });
             },
             query: `
-            {
-              allMarkdownRemark(sort: {frontmatter: {created: DESC}}) {
-                edges {
-                  node {
-                    id
-                    frontmatter {
-                      title
-                      path
-                      updated
-                    }
-                    excerpt(format: PLAIN, truncate: true)
-                    html
-                  }
-                  previous {
-                    id
-                    frontmatter {
-                      title
-                      path
-                    }
-                  }
-                  next {
-                    id
-                    frontmatter {
-                      title
-                      path
+              {
+                allMarkdownRemark(sort: {frontmatter: {created: DESC}}) {
+                  edges {
+                    node {
+                      id
+                      frontmatter {
+                        title
+                        path
+                        updated
+                      }
+                      excerpt(format: PLAIN, truncate: true)
+                      html
                     }
                   }
                 }
               }
-            }
             `,
-            output: "/rss.xml",
-            title: "log.theater feed",
+            output: '/rss.xml',
+            title: 'log.theater RSS feed',
           },
         ],
       },
@@ -117,17 +128,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typegen`,
-      options: {
-        outputPath: `${__dirname}/types/graphql-types.d.ts`
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `entry`,
         path: `${__dirname}/content/entry/`,
-        ignore: [`${__dirname}/types/graphql-types.d.ts`]
+        ignore: [`${__dirname}/types/graphql-types.d.ts`], // TODO Remove
       },
     },
     {
@@ -181,9 +186,11 @@ module.exports = {
               showLineNumbers: false,
               noInlineHighlight: false,
             },
-          }
-        ]
-      }
+          },
+        ],
+      },
     },
   ],
 };
+
+export default config;
