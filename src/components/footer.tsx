@@ -4,6 +4,7 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
+// eslint-disable-next-line import/order
 import * as React from 'react';
 
 // look-ahead font
@@ -22,7 +23,6 @@ import { Link } from 'gatsby';
 
 /**
  * Footer Component Part.
- *
  * @returns {React.ReactElement} component
  */
 export const Footer: React.FC = (): React.ReactElement => {

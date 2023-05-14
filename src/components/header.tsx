@@ -4,8 +4,8 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
-import * as React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
+import * as React from 'react';
 
 type Props = {
   url: string;
@@ -13,12 +13,11 @@ type Props = {
 
 /**
  * Header Component Part.
- *
  * @param {Props} url place
  * @returns {React.ReactElement} component
  */
 export const Header: React.FC<Props> = ({ url }: Props): React.ReactElement => {
-  const fetchHeader = useStaticQuery<GatsbyTypes.HeaderComponentQuery>(
+  const fetchHeader = useStaticQuery(
     graphql`
       query HeaderComponent {
         site {

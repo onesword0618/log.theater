@@ -4,21 +4,20 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
-import * as React from 'react';
-import { Layout } from '../../components/layout';
-import { Head } from '../../components/head';
 import { graphql, PageProps } from 'gatsby';
-import { SiteMetadata } from '@types';
+import * as React from 'react';
+import { Head } from '../../components/head';
+import { Layout } from '../../components/layout';
 
 type Props = PageProps<{
   site: {
-    siteMetadata: SiteMetadata;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    siteMetadata: any;
   };
 }>;
 
 /**
  * Privacy Explain.
- *
  * @param  {PageProps} data pageQuery
  * @returns {React.ReactElement} component
  */

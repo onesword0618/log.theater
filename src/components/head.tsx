@@ -4,26 +4,25 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
+import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { graphql, useStaticQuery } from 'gatsby';
-import { SiteMetadata } from '@types';
 import ogImage from '../../static/icon.png';
 
 type Props = {
-  metaData: SiteMetadata;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  metaData: any;
 };
 
 /**
  * Head Component Part.
- *
  * @param {Props} props meta
  * @returns {React.FC} component
  */
 export const Head: React.FC<Props> = (props: Props) => {
   const { metaData } = props;
 
-  const fetchMeta = useStaticQuery<GatsbyTypes.MetaQuery>(
+  const fetchMeta = useStaticQuery(
     graphql`
       query Meta {
         site {

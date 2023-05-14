@@ -6,8 +6,8 @@
  * Kenichi Inoue.
  */
 import * as React from 'react';
-import { Header } from './header';
 import { Footer } from './footer';
+import { Header } from './header';
 
 type Props = {
   pathName?: string;
@@ -16,7 +16,6 @@ type Props = {
 
 /**
  *  Layout Component Part.
- *
  * @param {Props} props children: React.ReactNode
  * @returns {React.ReactElement} component
  */

@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 /**
  * Category.
  *
@@ -29,7 +30,6 @@ type Props = {
 
 /**
  * Category Icon.
- *
  * @param {Props} props name
  * @returns {React.FC} category
  */

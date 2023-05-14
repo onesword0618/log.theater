@@ -4,6 +4,7 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
+// eslint-disable-next-line import/order
 import * as React from 'react';
 
 // look-ahead font
@@ -19,21 +20,20 @@ import {
 config.autoAddCss = false;
 library.add(faGithub, faBook, faLaptopCode, faPaperclip, faQuestionCircle);
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { graphql, PageProps } from 'gatsby';
 import { Head } from '../components/head';
 import { Layout } from '../components/layout';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SiteMetadata } from '@types';
-import { graphql, PageProps } from 'gatsby';
 
 type Props = PageProps<{
   site: {
-    siteMetadata: SiteMetadata;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    siteMetadata: any;
   };
 }>;
 
 /**
  * Activity Explain.
- *
  * @param  {PageProps} data pageQuery
  * @returns {React.ReactElement} component
  */

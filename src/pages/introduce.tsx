@@ -4,7 +4,6 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
-import { SiteMetadata } from '@types';
 import { graphql, PageProps } from 'gatsby';
 import * as React from 'react';
 import { Head } from '../components/head';
@@ -12,13 +11,13 @@ import { Layout } from '../components/layout';
 
 type Props = PageProps<{
   site: {
-    siteMetadata: SiteMetadata;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    siteMetadata: any;
   };
 }>;
 
 /**
  * About Self Introduce.
- *
  * @param  {PageProps} data pageQuery
  * @returns {React.ReactElement} component
  */

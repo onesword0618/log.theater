@@ -1,3 +1,5 @@
+/* eslint-disable import/order */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Entry Page Template.
  *
@@ -22,21 +24,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Date } from '../components/date';
 import { Head } from '../components/head';
 import { Tag } from '../components/tag';
-import { SiteMetadata } from '@types';
 
 type PageContext = {
-  previous: GatsbyTypes.Maybe<GatsbyTypes.MarkdownRemark>;
-  next: GatsbyTypes.Maybe<GatsbyTypes.MarkdownRemark>;
+  previous: any;
+  next: any;
 };
 
 type Props = {
-  data: GatsbyTypes.TemplateContentsQuery;
+  data: any;
   pageContext: PageContext;
 };
 
 const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
   const { markdownRemark, site } = data;
-  const metaData = site?.siteMetadata as SiteMetadata;
+  const metaData = site?.siteMetadata;
   if (markdownRemark === undefined || markdownRemark === null) {
     return <Layout> No Content </Layout>;
   }
@@ -59,6 +60,7 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
   if (frontmatter?.tags !== undefined && frontmatter?.tags !== null) {
     for (const tag of frontmatter?.tags) {
       if (tag !== undefined && tag !== null) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         tags.push(tag);
       }
     }

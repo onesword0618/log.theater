@@ -4,19 +4,20 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
-import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { Layout } from '../components/layout';
+import * as React from 'react';
 import { Article } from '../components/article';
 import { Head } from '../components/head';
-import { MarkdownRemark, SiteMetadata } from '@types';
+import { Layout } from '../components/layout';
 
 type Props = PageProps<{
   allMarkdownRemark: {
-    nodes: MarkdownRemark[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    nodes: any[];
   };
   site: {
-    siteMetadata: SiteMetadata;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    siteMetadata: any;
   };
 }>;
 

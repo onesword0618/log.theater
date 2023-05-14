@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 /**
  * About Page.
  *
@@ -6,7 +7,6 @@
  */
 import * as React from 'react';
 import { Layout } from '../components/layout';
-import { Head } from '../components/head';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -33,17 +33,17 @@ library.add(
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { graphql, PageProps } from 'gatsby';
-import { SiteMetadata } from '@types';
+import { Head } from '../components/head';
 
 type Props = PageProps<{
   site: {
-    siteMetadata: SiteMetadata;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    siteMetadata: any;
   };
 }>;
 
 /**
  * Blog About Explain.
- *
  * @param  {PageProps} data pageQuery
  * @returns {React.ReactElement} component
  */

@@ -4,18 +4,18 @@
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
-import * as React from 'react';
 import { Link } from 'gatsby';
-import { MarkdownRemark } from '@types';
+import * as React from 'react';
+
 import { Tag } from './tag';
 
 type Props = {
-  content: MarkdownRemark;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  content: any;
 };
 
 /**
  * Article.
- *
  * @param {Props} content content
  * @returns {React.ReactElement} article
  */
@@ -31,9 +31,11 @@ export const Article: React.FC<Props> = ({
       </h2>
 
       <p className="tags icon_container">
-        {content.frontmatter.tags.map((tag, index) => (
-          <Tag name={tag} key={index} />
-        ))}
+        {content.frontmatter.tags.map(
+          (tag: string, index: React.Key | null | undefined) => (
+            <Tag name={tag} key={index} />
+          ),
+        )}
       </p>
 
       <p className="date">

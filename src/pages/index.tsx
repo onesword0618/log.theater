@@ -1,28 +1,27 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Application Entry Point File.
  *
  * Copyright (c) 2021.
  * Kenichi Inoue.
  */
-import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { Layout } from '../components/layout';
+import * as React from 'react';
 import { Article } from '../components/article';
 import { Head } from '../components/head';
-import { SiteMetadata, MarkdownRemark } from '@types';
+import { Layout } from '../components/layout';
 
 type Props = PageProps<{
   allMarkdownRemark: {
-    nodes: MarkdownRemark[];
+    nodes: any[];
   };
   site: {
-    siteMetadata: SiteMetadata;
+    siteMetadata: any;
   };
 }>;
 
 /**
  * This Application Entry Point.
- *
  * @param {PageProps} data pageQuery
  * @returns {React.FC} component
  */

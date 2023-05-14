@@ -14,7 +14,6 @@ type Props = {
 
 /**
  * Date Component Parts.
- *
  * @param {Props} props date
  * @returns {React.ReactElement} components
  */
