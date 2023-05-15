@@ -1,11 +1,8 @@
 /**
- * Blog Common Component Parts.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file The footer element.
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-footer-element
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-// eslint-disable-next-line import/order
-import * as React from 'react';
 
 // look-ahead font
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -20,12 +17,13 @@ library.add(faFacebook, faTwitter, faGithub);
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'gatsby';
+import { ComponentType } from 'react';
 
 /**
  * Footer Component Part.
- * @returns {React.ReactElement} component
+ * @returns {ComponentType} component
  */
-export const Footer: React.FC = (): React.ReactElement => {
+export const Footer: ComponentType = () => {
   return (
     <div className="footer_container">
       <footer>
