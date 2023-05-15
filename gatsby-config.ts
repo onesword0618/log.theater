@@ -1,13 +1,10 @@
 /**
- * Gatsby Config File.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
+ * @file Gatsby Config File.
+ * @see https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  *
  * Support added in gatsby@4.9.0 -
- * See: https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#gatsby-configts
- *
- * Copyright (c) 2021.
- * @author Kenichi Inoue.
+ * @see https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#gatsby-configts
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import type { GatsbyConfig } from 'gatsby';
 
@@ -51,7 +48,6 @@ const config: GatsbyConfig = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-react-helmet`, // TODO Remove
     {
       resolve: `gatsby-plugin-feed`,
       options: {
