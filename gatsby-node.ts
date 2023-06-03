@@ -1,15 +1,26 @@
 /**
- * Call Create Gatsby Node Process.
- * Creation Static Contents.
+ * @file Call the create pages process.
+ * @see https://www.gatsbyjs.com/docs/conceptual/overview-of-the-gatsby-build-process/#steps-of-the-bootstrap-phase
  *
- * Copyright (c) 2021.
- * @author Kenichi Inoue.
+ * Support added in gatsby@4.9.0 -
+ * @see https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#gatsby-nodets
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import path from 'path';
 import { GatsbyNode } from 'gatsby';
 
+type NextEges = Queries.EntriesQuery['entries']['edges'][number]['next'];
+type PreviousEges =
+  Queries.EntriesQuery['entries']['edges'][number]['previous'];
+
+export type ContentPageContext = {
+  id: string;
+  previous: PreviousEges;
+  next: NextEges;
+};
+
 /**
- * Creation Entry Page.
+ * Creation ALL Entry Page Contents.
  * @param {Parameters<NonNullable<GatsbyNode["createPages"]>>["0"]["actions"]["createPage"]} createPage is an API for creating pages from templates.
  * @param {Parameters<NonNullable<GatsbyNode["createPages"]>>["0"]["graphql"]} graphql Query
  */
@@ -19,31 +30,63 @@ const createEntries = async (
   >['0']['actions']['createPage'],
   graphql: Parameters<NonNullable<GatsbyNode['createPages']>>['0']['graphql'],
 ) => {
-  const contents = await graphql<Queries.AllEntryQuery>(`
-    query AllEntry {
+  const contents = await graphql<Queries.EntriesQuery>(`
+    query Entries {
       entries: allMarkdownRemark(sort: { frontmatter: { created: DESC } }) {
         edges {
           node {
             id
             frontmatter {
-              title
               path
+              created
+              updated
+              title
+              cover {
+                childImageSharp {
+                  gatsbyImageData(width: 120, height: 90)
+                }
+              }
+              author
+              tags
+              published
             }
-            excerpt(format: PLAIN, truncate: true)
+            excerpt(format: PLAIN, truncate: true, pruneLength: 40)
           }
           previous {
             id
             frontmatter {
-              title
               path
+              created
+              updated
+              title
+              cover {
+                childImageSharp {
+                  gatsbyImageData(width: 120, height: 90)
+                }
+              }
+              author
+              tags
+              published
             }
+            excerpt(format: PLAIN, truncate: true, pruneLength: 40)
           }
           next {
             id
             frontmatter {
-              title
               path
+              created
+              updated
+              title
+              cover {
+                childImageSharp {
+                  gatsbyImageData(width: 120, height: 90)
+                }
+              }
+              author
+              tags
+              published
             }
+            excerpt(format: PLAIN, truncate: true, pruneLength: 40)
           }
         }
       }
@@ -54,19 +97,21 @@ const createEntries = async (
     throw contents.errors;
   }
 
-  contents.data.entries.edges.map(({ node, previous, next }) => {
-    if (!node.frontmatter || node.frontmatter.path === null) {
-      throw new Error('frontmatter be there.');
+  contents.data.entries.edges.map((content) => {
+    if (!content.node.frontmatter || !content.node.frontmatter.path) {
+      throw new Error('could not get the frontmatter part.');
     }
 
+    const context: ContentPageContext = {
+      id: content.node.id,
+      previous: content.previous,
+      next: content.next,
+    };
+
     createPage({
-      path: node.frontmatter.path,
+      path: content.node.frontmatter.path,
       component: path.resolve(`./src/templates/entryTemplate.tsx`),
-      context: {
-        id: node.id,
-        previous: previous,
-        next: next,
-      },
+      context: context,
     });
   });
 };
@@ -82,9 +127,9 @@ const createTags = async (
   >['0']['actions']['createPage'],
   graphql: Parameters<NonNullable<GatsbyNode['createPages']>>['0']['graphql'],
 ) => {
-  const contents = await graphql<Queries.AllTagQuery>(`
-    query AllTag {
-      tag: allMarkdownRemark {
+  const contents = await graphql<Queries.TagsQuery>(`
+    query Tags {
+      allMarkdownRemark {
         group(field: { frontmatter: { tags: SELECT } }) {
           tag: fieldValue
         }
@@ -96,8 +141,7 @@ const createTags = async (
     throw contents.errors;
   }
 
-  const tags = contents.data.tag.group;
-  tags.map(({ tag }) => {
+  contents.data.allMarkdownRemark.group.map(({ tag }) => {
     if (tag === null) {
       throw new Error('tag should be there');
     }

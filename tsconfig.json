@@ -1,5 +1,11 @@
 {
-  "include": ["./src/**/*", "./gatsby-node.ts", "./gatsby-config.ts", "./plugins/**/*", "./static/**/*"],
+  "include": [
+    "./src/**/*",
+    "./gatsby-node.ts",
+    "./gatsby-config.ts",
+    "./gatsby-browser.ts",
+    "./plugins/**/*"
+  ],
   "exclude": ["node_modules"],
   "compileOnSave": false,
   "compilerOptions": {
@@ -46,6 +52,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     /* Completeness */
-    "skipLibCheck": true,
+    "skipLibCheck": true
   }
 }

@@ -127,8 +127,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `entry`,
-        path: `${__dirname}/content/entry/`,
-        ignore: [`${__dirname}/types/graphql-types.d.ts`], // TODO Remove
+        path: `${__dirname}/contents/`,
       },
     },
     {
@@ -181,6 +180,14 @@ const config: GatsbyConfig = {
               aliases: {},
               showLineNumbers: false,
               noInlineHighlight: false,
+            },
+          },
+          {
+            resolve: `gatsby-plugin-typescript`,
+            options: {
+              isTSX: true,
+              jsxPragma: `jsx`,
+              allExtensions: true,
             },
           },
         ],
