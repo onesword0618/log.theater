@@ -66,13 +66,16 @@
     "@typescript-eslint/restrict-template-expressions": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "import/order": ["error", {
-      "groups": ["builtin", "external", "parent", "sibling", "index"],
-      "alphabetize": {
-        "order": "asc",
-        "caseInsensitive": true
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
-    }]
+    ]
   },
   "globals": {}
 }
