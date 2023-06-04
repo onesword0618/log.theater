@@ -1,62 +1,22 @@
 /**
- * Activity Page.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file Activity Page.
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-// eslint-disable-next-line import/order
-import * as React from 'react';
-
-// look-ahead font
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config, library } from '@fortawesome/fontawesome-svg-core';
-import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import {
-  faBook,
-  faLaptopCode,
-  faPaperclip,
-  faQuestionCircle,
-} from '@fortawesome/free-solid-svg-icons';
-config.autoAddCss = false;
-library.add(faGithub, faBook, faLaptopCode, faPaperclip, faQuestionCircle);
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { graphql, PageProps } from 'gatsby';
+import { PageProps } from 'gatsby';
 import { Head } from '../components/head';
 import { Layout } from '../components/layout';
+import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-type Props = PageProps<{
-  site: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    siteMetadata: any;
-  };
-}>;
-
-/**
- * Activity Explain.
- * @param  {PageProps} data pageQuery
- * @returns {React.ReactElement} component
- */
-export default function Activity({
-  data,
-  location,
-}: Props): React.ReactElement {
-  const metaData = data.site.siteMetadata;
-  metaData.title = `activity`;
+const Activity = ({ location }: PageProps) => {
+  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head metaData={metaData} />
+      <Head title={`activity`} metaData={metaData} />
       <article className="activity">
         <h2>Activity</h2>
         <ul style={{ listStyle: 'none' }}>
           <li>
             <div className="icon_container">
-              <FontAwesomeIcon
-                icon={faGithub}
-                size={'2x'}
-                title={'github'}
-                className="icon"
-              />
               <a
                 href="https://github.com/onesword0618"
                 className="icon_heading"
@@ -70,12 +30,6 @@ export default function Activity({
           </li>
           <li>
             <div className="icon_container">
-              <FontAwesomeIcon
-                icon={faLaptopCode}
-                size={'2x'}
-                title={'Leet Code'}
-                className="icon"
-              />
               <a
                 href="https://leetcode.com/onesword0618"
                 className="icon_heading"
@@ -89,12 +43,6 @@ export default function Activity({
           </li>
           <li>
             <div className="icon_container">
-              <FontAwesomeIcon
-                icon={faQuestionCircle}
-                size={'2x'}
-                title={'teratail'}
-                className="icon"
-              />
               <a
                 href="https://teratail.com/users/onesword0618"
                 className="icon_heading"
@@ -106,12 +54,6 @@ export default function Activity({
           </li>
           <li>
             <div className="icon_container">
-              <FontAwesomeIcon
-                icon={faBook}
-                size={'2x'}
-                title={'booklog'}
-                className="icon"
-              />
               <a
                 href="https://booklog.jp/users/onesword0618"
                 className="icon_heading"
@@ -123,12 +65,6 @@ export default function Activity({
           </li>
           <li>
             <div className="icon_container">
-              <FontAwesomeIcon
-                icon={faPaperclip}
-                size={'2x'}
-                title={'Qiita'}
-                className="icon"
-              />
               <a href="https://qiita.com/onesword" className="icon_heading">
                 Qiita
               </a>
@@ -137,12 +73,6 @@ export default function Activity({
           </li>
           <li>
             <div className="icon_container">
-              <FontAwesomeIcon
-                icon={faInstagram}
-                size={'2x'}
-                title={'Instagram'}
-                className="icon"
-              />
               <a
                 href="https://www.instagram.com/onesword0618/"
                 className="icon_heading"
@@ -158,29 +88,6 @@ export default function Activity({
       </article>
     </Layout>
   );
-}
+};
 
-/**
- * Activity Page.
- */
-export const pageQuery = graphql`
-  query ActivityPage {
-    site {
-      siteMetadata {
-        locale
-        title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
-      }
-    }
-  }
-`;
+export default Activity;
