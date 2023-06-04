@@ -24,7 +24,7 @@ export type SiteMetadata = {
  * @returns {SiteMetadata} execute query result.
  */
 export function useSiteMetaData(): SiteMetadata {
-  const result = useStaticQuery<Queries.SiteMetaDataQuery['site']>(
+  const { site }: Queries.SiteMetaDataQuery = useStaticQuery(
     graphql`
       query SiteMetaData {
         site {
@@ -51,47 +51,43 @@ export function useSiteMetaData(): SiteMetadata {
     `,
   );
 
-  if (!result || !result.siteMetadata) {
-    throw new Error('not found contents.');
-  }
-
-  const metaData = result.siteMetadata;
+  const metadata = site?.siteMetadata;
   if (
-    !metaData.title ||
-    !metaData.locale ||
-    !metaData.author ||
-    !metaData.author.name ||
-    !metaData.author.excerpt ||
-    !metaData.description ||
-    !metaData.siteUrl ||
-    !metaData.email ||
-    !metaData.facebookApplicationId ||
-    !metaData.dnsTxtCode ||
-    !metaData.social ||
-    !metaData.social.github ||
-    !metaData.social.twitter ||
-    !metaData.siteIcon
+    !metadata?.title ||
+    !metadata?.locale ||
+    !metadata?.author ||
+    !metadata?.author.name ||
+    !metadata?.author.excerpt ||
+    !metadata?.description ||
+    !metadata?.siteUrl ||
+    !metadata?.email ||
+    !metadata?.facebookApplicationId ||
+    !metadata?.dnsTxtCode ||
+    !metadata?.social ||
+    !metadata?.social.github ||
+    !metadata?.social.twitter ||
+    !metadata?.siteIcon
   ) {
-    throw new Error('data source is invalid.');
+    throw new Error('siteMetadata source is invalid.');
   }
 
-  const siteMetaData: SiteMetadata = {
-    title: metaData.title,
-    locale: metaData.locale,
+  const siteMetadata: SiteMetadata = {
+    title: metadata.title,
+    locale: metadata.locale,
     author: {
-      name: metaData.author.name,
-      excerpt: metaData.author.excerpt,
+      name: metadata.author.name,
+      excerpt: metadata.author.excerpt,
     },
-    description: metaData.description,
-    siteUrl: metaData.siteUrl,
-    email: metaData.email,
-    facebookApplicationId: metaData.facebookApplicationId,
-    dnsTxtCode: metaData.dnsTxtCode,
+    description: metadata.description,
+    siteUrl: metadata.siteUrl,
+    email: metadata.email,
+    facebookApplicationId: metadata.facebookApplicationId,
+    dnsTxtCode: metadata.dnsTxtCode,
     social: {
-      github: metaData.social.github,
-      twitter: metaData.social.twitter,
+      github: metadata.social.github,
+      twitter: metadata.social.twitter,
     },
-    siteIcon: metaData.siteIcon,
+    siteIcon: metadata.siteIcon,
   };
-  return siteMetaData;
+  return siteMetadata;
 }
