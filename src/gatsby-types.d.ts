@@ -361,18 +361,6 @@ type DuotoneGradient = {
   readonly shadow: Scalars['String'];
 };
 
-type Edges = {
-  readonly next: Maybe<Next>;
-  readonly node: EntryNode;
-  readonly previous: Maybe<Previous>;
-};
-
-type EntryNode = {
-  readonly excerpt: Scalars['String'];
-  readonly frontmatter: Frontmatter;
-  readonly id: Scalars['ID'];
-};
-
 type FieldSelectorEnum =
   | 'SELECT';
 
@@ -714,11 +702,6 @@ type FloatQueryOperatorInput = {
   readonly lte: InputMaybe<Scalars['Float']>;
   readonly ne: InputMaybe<Scalars['Float']>;
   readonly nin: InputMaybe<ReadonlyArray<InputMaybe<Scalars['Float']>>>;
-};
-
-type Frontmatter = {
-  readonly path: Scalars['String'];
-  readonly title: Scalars['String'];
 };
 
 type GatsbyImageDataQueryOperatorInput = {
@@ -1433,8 +1416,11 @@ type MarkdownRemarkFilterListInput = {
 };
 
 type MarkdownRemarkFrontmatter = {
+  readonly author: Maybe<Scalars['String']>;
+  readonly cover: Maybe<File>;
   readonly created: Maybe<Scalars['Date']>;
   readonly path: Maybe<Scalars['String']>;
+  readonly published: Maybe<Scalars['Boolean']>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly title: Maybe<Scalars['String']>;
   readonly updated: Maybe<Scalars['Date']>;
@@ -1457,24 +1443,33 @@ type MarkdownRemarkFrontmatter_updatedArgs = {
 };
 
 type MarkdownRemarkFrontmatterFieldSelector = {
+  readonly author: InputMaybe<FieldSelectorEnum>;
+  readonly cover: InputMaybe<FileFieldSelector>;
   readonly created: InputMaybe<FieldSelectorEnum>;
   readonly path: InputMaybe<FieldSelectorEnum>;
+  readonly published: InputMaybe<FieldSelectorEnum>;
   readonly tags: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
   readonly updated: InputMaybe<FieldSelectorEnum>;
 };
 
 type MarkdownRemarkFrontmatterFilterInput = {
+  readonly author: InputMaybe<StringQueryOperatorInput>;
+  readonly cover: InputMaybe<FileFilterInput>;
   readonly created: InputMaybe<DateQueryOperatorInput>;
   readonly path: InputMaybe<StringQueryOperatorInput>;
+  readonly published: InputMaybe<BooleanQueryOperatorInput>;
   readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
   readonly updated: InputMaybe<DateQueryOperatorInput>;
 };
 
 type MarkdownRemarkFrontmatterSortInput = {
+  readonly author: InputMaybe<SortOrderEnum>;
+  readonly cover: InputMaybe<FileSortInput>;
   readonly created: InputMaybe<SortOrderEnum>;
   readonly path: InputMaybe<SortOrderEnum>;
+  readonly published: InputMaybe<SortOrderEnum>;
   readonly tags: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
   readonly updated: InputMaybe<SortOrderEnum>;
@@ -1563,11 +1558,6 @@ type MarkdownWordCountSortInput = {
   readonly words: InputMaybe<SortOrderEnum>;
 };
 
-type Next = {
-  readonly frontmatter: Frontmatter;
-  readonly id: Scalars['ID'];
-};
-
 /** Node Interface */
 type Node = {
   readonly children: ReadonlyArray<Node>;
@@ -1635,11 +1625,6 @@ type PotraceTurnPolicy =
   | 'minority'
   | 'right'
   | 'white';
-
-type Previous = {
-  readonly frontmatter: Frontmatter;
-  readonly id: Scalars['ID'];
-};
 
 type Query = {
   readonly allDirectory: DirectoryConnection;
@@ -2784,25 +2769,10 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
-type ActivityPageQueryVariables = Exact<{ [key: string]: never; }>;
+type ArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ActivityPageQuery = { readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
-
-type BlogAboutPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BlogAboutPageQuery = { readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
-
-type CookiePageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type CookiePageQuery = { readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
-
-type EntriesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type EntriesQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly title: string | null, readonly path: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly entrytDate: string | null, readonly updateDate: string | null } | null }> }, readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
+type ArticlesQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null } | null }> } };
 
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
@@ -2830,64 +2800,34 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
-type HeaderComponentQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type HeaderComponentQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null };
-
-type IntroducePageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type IntroducePageQuery = { readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
-
-type MetaQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type MetaQuery = { readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly siteIcon: string | null, readonly defaultTitle: string | null, readonly defaultDescription: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
-
-type NotFoundPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type NotFoundPageQuery = { readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
-
-type PrivacyPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PrivacyPageQuery = { readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
-
 type SiteMetaDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type SiteMetaDataQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly locale: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly email: string | null, readonly facebookApplicationId: string | null, readonly dnsTxtCode: string | null, readonly siteIcon: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
 
-type TagsQueryVariables = Exact<{
+type TagContentsQueryVariables = Exact<{
   tag: InputMaybe<Scalars['String']>;
 }>;
 
 
-type TagsQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly title: string | null, readonly path: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly entrytDate: string | null, readonly updateDate: string | null } | null }> }, readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
+type TagContentsQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null } | null }> } };
 
 type TemplateContentsQueryVariables = Exact<{
   id: InputMaybe<Scalars['String']>;
 }>;
 
 
-type TemplateContentsQuery = { readonly markdownRemark: { readonly excerpt: string | null, readonly id: string, readonly html: string | null, readonly frontmatter: { readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly entrytDate: string | null, readonly updateDate: string | null } | null } | null, readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
+type TemplateContentsQuery = { readonly markdownRemark: { readonly id: string, readonly html: string | null, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null, readonly cover: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null };
 
-type TermsPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type TermsPageQuery = { readonly site: { readonly siteMetadata: { readonly locale: string | null, readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly facebookApplicationId: string | null, readonly author: { readonly name: string | null, readonly excerpt: string | null } | null, readonly social: { readonly twitter: string | null, readonly github: string | null } | null } | null } | null };
-
-type AllEntryQueryVariables = Exact<{ [key: string]: never; }>;
+type EntriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllEntryQuery = { readonly entries: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly title: string | null, readonly path: string | null } | null }, readonly previous: { readonly id: string, readonly frontmatter: { readonly title: string | null, readonly path: string | null } | null } | null, readonly next: { readonly id: string, readonly frontmatter: { readonly title: string | null, readonly path: string | null } | null } | null }> } };
+type EntriesQuery = { readonly entries: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null, readonly cover: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null }, readonly previous: { readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null, readonly cover: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null, readonly next: { readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null, readonly cover: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null }> } };
 
-type AllTagQueryVariables = Exact<{ [key: string]: never; }>;
+type TagsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllTagQuery = { readonly tag: { readonly group: ReadonlyArray<{ readonly tag: string | null }> } };
+type TagsQuery = { readonly allMarkdownRemark: { readonly group: ReadonlyArray<{ readonly tag: string | null }> } };
 
 
 }

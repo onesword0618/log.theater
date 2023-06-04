@@ -49,9 +49,11 @@ I don't test environments under Windows and Mac.
 
 #### Include Library License Explain.
 
-- [gatsby](https://github.com/gatsbyjs/gatsby/blob/master/LICENSE)
+- "[gatsby](https://www.gatsbyjs.com)" is under [MIT](https://github.com/gatsbyjs/gatsby/blob/master/LICENSE) license.
 
-- [react](https://github.com/facebook/react/blob/main/LICENSE)
+- "[react](https://react.dev)" is under [MIT](https://github.com/facebook/react/blob/main/LICENSE) license.
+
+- "[Ionicons 5](https://ionicons.com)" is under [MIT](https://github.com/ionic-team/ionicons/blob/main/LICENSE) license.
 
 ### Author
 
