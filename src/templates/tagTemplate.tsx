@@ -1,29 +1,19 @@
 /**
  * Tag  Page Template.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { graphql, PageProps } from 'gatsby';
-import * as React from 'react';
 import { Article } from '../components/article';
 import { Head } from '../components/head';
 import { Layout } from '../components/layout';
+import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-type Props = PageProps<{
-  allMarkdownRemark: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    nodes: any[];
-  };
-  site: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    siteMetadata: any;
-  };
-}>;
-
-const TagTemplate: React.FC<Props> = ({ data, location }: Props) => {
-  const metaData = data.site.siteMetadata;
+const TagTemplate = ({
+  data,
+  location,
+}: PageProps<Queries.TagContentsQuery>) => {
   const articles = data.allMarkdownRemark.nodes;
+  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
       <Head metaData={metaData} />
@@ -41,41 +31,26 @@ const TagTemplate: React.FC<Props> = ({ data, location }: Props) => {
 export default TagTemplate;
 
 /**
- * Building Tag Pages.
+ * Template Tag Contents.
  */
 export const tagQuery = graphql`
-  query Tags($tag: String) {
+  query TagContents($tag: String) {
     allMarkdownRemark(
       sort: { frontmatter: { created: DESC } }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       nodes {
         id
-        excerpt(format: PLAIN, truncate: true)
         frontmatter {
-          title
           path
-          entrytDate: created(formatString: "YYYY.MM.DD")
-          updateDate: updated(formatString: "YYYY.MM.DD")
+          created
+          updated
+          title
+          author
           tags
+          published
         }
-      }
-    }
-    site {
-      siteMetadata {
-        locale
-        title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
+        excerpt(format: PLAIN, truncate: true, pruneLength: 40)
       }
     }
   }
