@@ -33,6 +33,7 @@
 .footer-list {
   margin-top: 4px;
   margin-bottom: 4px;
+  font-size: x-large;
 }
 
 .footer-link {
@@ -43,4 +44,15 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+
+.creator {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: x-large;
+  padding: 8px;
+}
+
+.year {
+  font-size: x-large;
 }

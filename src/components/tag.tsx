@@ -20,7 +20,7 @@ type Props = {
 export const Tag: ComponentType<Props> = ({ name }) => {
   return (
     <div className="icon-container">
-      <Link to={`/tag/${name}`}>
+      <Link to={`/tag/${name}`} className={name} aria-label={name}>
         <Icon name={name} />
       </Link>
       <p className="icon-heading">{name}</p>

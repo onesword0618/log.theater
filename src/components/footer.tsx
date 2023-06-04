@@ -88,9 +88,11 @@ export const Footer: ComponentType = () => {
         </div>
 
         <div className="copyright">
-          <small>
+          <small className="year">
             © {new Date().getFullYear()},
-            <a href="https://ja.gravatar.com/onesword0618">onesword0618</a>
+            <a className="creator" href="https://ja.gravatar.com/onesword0618">
+              onesword0618
+            </a>
           </small>
         </div>
       </footer>
