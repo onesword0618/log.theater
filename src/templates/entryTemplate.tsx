@@ -9,7 +9,7 @@
 import { graphql, Link, PageProps } from 'gatsby';
 import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image';
 import { Date } from '../components/date';
-import { Head } from '../components/head';
+import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 
 import { Tag } from '../components/tag';
@@ -67,18 +67,9 @@ const EntryTemplate = ({
     throw new Error('image path should be');
   }
 
-  const metaData = useSiteMetaData();
   return (
     <Layout>
       <div className="container">
-        <Head
-          title={data.markdownRemark.frontmatter.title}
-          description={data.markdownRemark.excerpt}
-          metaData={metaData}
-          image={ogpImage}
-          created={data.markdownRemark.frontmatter.created}
-          updated={data.markdownRemark.frontmatter.updated}
-        />
         <article className="entry">
           <h1>{data.markdownRemark.frontmatter.title}</h1>
 
@@ -188,3 +179,48 @@ export const entryQuery = graphql`
     }
   }
 `;
+
+export const Head = ({ data }: PageProps<Queries.TemplateContentsQuery>) => {
+  if (!data.markdownRemark) {
+    throw new Error(`Need markdown content.`);
+  }
+
+  if (!data.markdownRemark.frontmatter) {
+    throw new Error(`Need markdown frontmatter content.`);
+  }
+
+  if (
+    !data.markdownRemark.frontmatter.title ||
+    !data.markdownRemark.frontmatter.created ||
+    !data.markdownRemark.frontmatter.updated ||
+    !data.markdownRemark.frontmatter.cover ||
+    !data.markdownRemark.frontmatter.cover.childImageSharp ||
+    !data.markdownRemark.excerpt
+  ) {
+    throw new Error(`Need markdown item content.`);
+  }
+
+  const thumbnail = getImage(
+    data.markdownRemark.frontmatter.cover.childImageSharp,
+  );
+  if (thumbnail === undefined) {
+    throw new Error('no image');
+  }
+
+  const ogpImage = getSrc(
+    data.markdownRemark.frontmatter.cover.childImageSharp,
+  );
+  if (ogpImage === undefined) {
+    throw new Error('image path should be');
+  }
+
+  <HeadFactory
+    type={`article`}
+    title={data.markdownRemark.frontmatter.title}
+    description={data.markdownRemark.excerpt}
+    created={data.markdownRemark.frontmatter.created}
+    updated={data.markdownRemark.frontmatter.updated}
+    image={ogpImage}
+    metaData={useSiteMetaData()}
+  />;
+};

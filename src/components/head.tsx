@@ -25,6 +25,7 @@ type Props = {
   created?: string;
   updated?: string;
   image?: string;
+  type: `article` | `website`;
 };
 
 /**
@@ -32,13 +33,14 @@ type Props = {
  * @param {Props} props meta data compose
  * @returns {ComponentType} component
  */
-export const Head: ComponentType<Props> = ({
+export const HeadFactory: ComponentType<Props> = ({
   title,
   description,
   metaData,
   image,
   created,
   updated,
+  type,
 }) => {
   const published = !created
     ? new Date(`July 16 2021`).toISOString()
@@ -46,6 +48,8 @@ export const Head: ComponentType<Props> = ({
   const modified = !updated
     ? new Date().toISOString()
     : parse(updated, `yyyy-MM-dd`, new Date(), { locale: ja });
+  const baseDescription =
+    description !== undefined ? description : metaData.description;
 
   return (
     <>
@@ -57,23 +61,27 @@ export const Head: ComponentType<Props> = ({
         name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
       />
-      <meta
-        name="description"
-        content={description !== undefined ? description : metaData.description}
-      />
+      <meta name="description" content={baseDescription} />
       <meta property="og:site_name" content={metaData.title} />
-      <meta property="og:type" content={`blog`} />
       <meta property="og:locale" content={metaData.locale} />
       <meta
         property="og:title"
         content={title !== undefined ? title : metaData.title}
       />
-      <meta property="og:description" content={metaData.description} />
-      <meta property="og:image" content={`${metaData.siteUrl}${image}`} />
+      <meta property="og:description" content={baseDescription} />
+      <meta
+        property="og:image"
+        content={
+          image !== undefined
+            ? `${metaData.siteUrl}${image}`
+            : metaData.siteIcon
+        }
+      />
       <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="640" />
       <meta property="og:image:alt" content="thumbnail" />
+      <meta property="og:type" content={type} />
       <meta property="article:published_time" content={`${published}`} />
       <meta property="article:modified_time" content={`${modified}`} />
       <meta property="article:author" content={metaData.author.name} />
@@ -86,7 +94,7 @@ export const Head: ComponentType<Props> = ({
         name="twitter:title"
         content={title !== undefined ? title : metaData.title}
       />
-      <meta name="twitter:description" content={metaData.description} />
+      <meta name="twitter:description" content={baseDescription} />
       <meta
         name="twitter:image"
         content={

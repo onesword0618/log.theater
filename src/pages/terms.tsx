@@ -3,15 +3,13 @@
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { PageProps } from 'gatsby';
-import { Head } from '../components/head';
+import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
 const Terms = ({ location }: PageProps) => {
-  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head title={`利用規約`} metaData={metaData} />
       <article className="terms">
         <h2>利用規約</h2>
         <p>
@@ -162,3 +160,11 @@ const Terms = ({ location }: PageProps) => {
 };
 
 export default Terms;
+
+export const Head = () => (
+  <HeadFactory
+    type={`website`}
+    title={`利用規約`}
+    metaData={useSiteMetaData()}
+  />
+);

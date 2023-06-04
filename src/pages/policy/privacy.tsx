@@ -6,15 +6,13 @@
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { PageProps } from 'gatsby';
-import { Head } from '../../components/head';
+import { HeadFactory } from '../../components/head';
 import { Layout } from '../../components/layout';
 import { useSiteMetaData } from '../../hooks/useSiteMetaData';
 
 const Privacy = ({ location }: PageProps) => {
-  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head title={`privacy policy`} metaData={metaData} />
       <article className="pricacy">
         <h2>Privacy Policy</h2>
         <p>
@@ -127,3 +125,11 @@ const Privacy = ({ location }: PageProps) => {
 };
 
 export default Privacy;
+
+export const Head = () => (
+  <HeadFactory
+    type={`website`}
+    title={`privacy policy`}
+    metaData={useSiteMetaData()}
+  />
+);

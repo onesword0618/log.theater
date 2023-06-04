@@ -3,15 +3,13 @@
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { PageProps } from 'gatsby';
-import { Head } from '../components/head';
+import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
 const Introduce = ({ location }: PageProps) => {
-  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head title={`自己紹介`} metaData={metaData} />
       <article className="introduce">
         <h2>Introduce</h2>
         <p>Q. あなたはどういう人ですか？</p>
@@ -109,3 +107,11 @@ const Introduce = ({ location }: PageProps) => {
 };
 
 export default Introduce;
+
+export const Head = () => (
+  <HeadFactory
+    type={`website`}
+    title={`自己紹介`}
+    metaData={useSiteMetaData()}
+  />
+);

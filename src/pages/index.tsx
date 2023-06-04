@@ -4,16 +4,14 @@
  */
 import { graphql, PageProps } from 'gatsby';
 import { Article } from '../components/article';
-import { Head } from '../components/head';
+import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
 const Application = ({ data, location }: PageProps<Queries.ArticlesQuery>) => {
   const articles = data.allMarkdownRemark.nodes;
-  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head metaData={metaData} />
       <h2>Articles</h2>
       {articles.map((content) => (
         <Article content={content} key={content.id} />
@@ -49,3 +47,11 @@ query Articles {
   }
 }
 `;
+
+export const Head = () => (
+  <HeadFactory
+    type={`website`}
+    title={`log.theater`}
+    metaData={useSiteMetaData()}
+  />
+);

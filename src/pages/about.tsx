@@ -1,5 +1,5 @@
 /**
- * @file About Page.
+ * @file About Content Page.
  * @see https://html.spec.whatwg.org/multipage/sections.html#the-article-element
  * @see https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
  * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element
@@ -8,20 +8,19 @@
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { PageProps } from 'gatsby';
-import { Head } from '../components/head';
+import { HeadFactory } from '../components/head';
 import { Icon } from '../components/icon';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
 const About = ({ location }: PageProps) => {
-  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head title={`このサイトについて`} metaData={metaData} />
       <article className="about">
         <h2>このサイトについて</h2>
         <div className="purpose">
           <h3 className="icon-container">
+            <Icon name={`purpose`} size={`1.5em`} />
             <p className="icon-heading">目的</p>
           </h3>
           <p>
@@ -79,3 +78,11 @@ const About = ({ location }: PageProps) => {
 };
 
 export default About;
+
+export const Head = () => (
+  <HeadFactory
+    type={`website`}
+    title={`サイトについて`}
+    metaData={useSiteMetaData()}
+  />
+);

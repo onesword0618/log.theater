@@ -4,7 +4,7 @@
  */
 import { graphql, PageProps } from 'gatsby';
 import { Article } from '../components/article';
-import { Head } from '../components/head';
+import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
@@ -12,13 +12,10 @@ const TagTemplate = ({
   data,
   location,
 }: PageProps<Queries.TagContentsQuery>) => {
-  const articles = data.allMarkdownRemark.nodes;
-  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head metaData={metaData} />
       <h2>Category</h2>
-      {articles.map((content) => (
+      {data.allMarkdownRemark.nodes.map((content) => (
         <Article content={content} key={content.id} />
       ))}
     </Layout>
@@ -55,3 +52,7 @@ export const tagQuery = graphql`
     }
   }
 `;
+
+export const Head = () => (
+  <HeadFactory type={`website`} metaData={useSiteMetaData()} />
+);
