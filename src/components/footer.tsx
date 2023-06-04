@@ -1,23 +1,18 @@
 /**
  * @file The footer element.
  * @see https://html.spec.whatwg.org/multipage/sections.html#the-footer-element
+ * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element
+ * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element
+ * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element
+ * @see https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link
+ * @see https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element
+ * @see https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 
-// look-ahead font
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config, library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faFacebook,
-  faTwitter,
-  faGithub,
-} from '@fortawesome/free-brands-svg-icons';
-config.autoAddCss = false;
-library.add(faFacebook, faTwitter, faGithub);
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'gatsby';
 import { ComponentType } from 'react';
+import { Icon } from './icon';
 
 /**
  * Footer Component Part.
@@ -25,40 +20,40 @@ import { ComponentType } from 'react';
  */
 export const Footer: ComponentType = () => {
   return (
-    <div className="footer_container">
+    <div className="footer-container">
       <footer>
-        <div className="footer_contents">
-          <div className="footer_item">
-            <p className="footer_item_header">Blog</p>
-            <ul className="footer_item_unordered_list">
-              <li className="footer_list">
-                <Link to="/about/" className="footer_link">
+        <div className="footer-contents">
+          <div className="footer-item">
+            <p className="footer-item-header">Blog</p>
+            <ul className="footer-item-unordered-list">
+              <li className="footer-list">
+                <Link to="/about/" className="footer-link">
                   About
                 </Link>
               </li>
-              <li className="footer_list">
-                <Link to="/introduce/" className="footer_link">
+              <li className="footer-list">
+                <Link to="/introduce/" className="footer-link">
                   Introduce
                 </Link>
               </li>
-              <li className="footer_list">
-                <Link to="/activity/" className="footer_link">
+              <li className="footer-list">
+                <Link to="/activity/" className="footer-link">
                   Activity
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="footer_item">
-            <p className="footer_item_header">Policy</p>
-            <ul className="footer_item_unordered_list">
-              <li className="footer_list">
-                <Link to="/terms/" className="footer_link">
+          <div className="footer-item">
+            <p className="footer-item-header">Policy</p>
+            <ul className="footer-item-unordered-list">
+              <li className="footer-list">
+                <Link to="/terms/" className="footer-link">
                   Term of Service
                 </Link>
               </li>
-              <li className="footer_list">
-                <Link to="/policy/privacy/" className="footer_link">
+              <li className="footer-list">
+                <Link to="/policy/privacy/" className="footer-link">
                   Privacy policy
                 </Link>
               </li>
@@ -66,13 +61,13 @@ export const Footer: ComponentType = () => {
           </div>
         </div>
 
-        <div className="footer_sns">
+        <div className="footer-sns">
           <a
             className="icon"
             href="https://twitter.com/onesword0618"
             aria-label="twitter"
           >
-            <FontAwesomeIcon icon={faTwitter} size={'2x'} />
+            <Icon name={`twitter`} />
           </a>
 
           <a
@@ -80,7 +75,7 @@ export const Footer: ComponentType = () => {
             href="https://www.facebook.com/profile.php?id=100023464906058"
             aria-label="facebook"
           >
-            <FontAwesomeIcon icon={faFacebook} size={'2x'} />
+            <Icon name={`facebook`} />
           </a>
 
           <a
@@ -88,13 +83,13 @@ export const Footer: ComponentType = () => {
             href="https://github.com/onesword0618"
             aria-label="github"
           >
-            <FontAwesomeIcon icon={faGithub} size={'2x'} />
+            <Icon name={`github`} />
           </a>
         </div>
 
         <div className="copyright">
           <small>
-            © {new Date().getFullYear()},{' '}
+            © {new Date().getFullYear()},
             <a href="https://ja.gravatar.com/onesword0618">onesword0618</a>
           </small>
         </div>
