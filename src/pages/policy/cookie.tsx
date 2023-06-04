@@ -1,62 +1,24 @@
 /**
- * Term Of Service Explain.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file Term Of Service Explain.
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-article-element
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { graphql, PageProps } from 'gatsby';
-import * as React from 'react';
+import { PageProps } from 'gatsby';
 import { Head } from '../../components/head';
 import { Layout } from '../../components/layout';
+import { useSiteMetaData } from '../../hooks/useSiteMetaData';
 
-type Props = PageProps<{
-  site: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    siteMetadata: any;
-  };
-}>;
-
-/**
- * Term Of Service Explain.
- * @param  {PageProps} data pageQuery
- * @returns {React.ReactElement} component
- */
-export default function Cookie({ data, location }: Props): React.ReactElement {
-  const metaData = data.site.siteMetadata;
-  metaData.title = `Cookie`;
+const Cookie = ({ location }: PageProps) => {
+  const metaData = useSiteMetaData();
   return (
-    <>
-      <Layout pathName={location.pathname}>
-        <Head metaData={metaData} />
-        <article className="cookie">
-          <h2>Cookie</h2>
-        </article>
-      </Layout>
-    </>
+    <Layout pathName={location.pathname}>
+      <Head title={`Cookie`} metaData={metaData} />
+      <article className="cookie">
+        <h2>Cookie</h2>
+      </article>
+    </Layout>
   );
-}
+};
 
-/**
- * Term Page.
- */
-export const pageQuery = graphql`
-  query CookiePage {
-    site {
-      siteMetadata {
-        locale
-        title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
-      }
-    }
-  }
-`;
+export default Cookie;
