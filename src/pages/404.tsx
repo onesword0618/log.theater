@@ -1,58 +1,21 @@
 /**
- * Not Found Page.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file Not Found Page.
+ * @see https://www.gatsbyjs.com/docs/how-to/adding-common-features/add-404-page/
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { graphql, PageProps } from 'gatsby';
-import * as React from 'react';
+import { PageProps } from 'gatsby';
 import { Head } from '../components/head';
 import { Layout } from '../components/layout';
+import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-type Props = PageProps<{
-  site: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    siteMetadata: any;
-  };
-}>;
-
-/**
- * Not Found Page.
- * @param  {PageProps} data pageQuery
- * @returns {React.ReactElement} component
- */
-export default function Page({ data, location }: Props): React.ReactElement {
-  const metaData = data.site.siteMetadata;
-  metaData.title = `Not Found Page`;
+const NotFound = ({ location }: PageProps) => {
+  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head metaData={metaData} />
+      <Head title={`Not Found Page`} metaData={metaData} />
       <h1>Sorry, Not Found.</h1>
     </Layout>
   );
-}
+};
 
-/**
- * Not Found Page.
- */
-export const pageQuery = graphql`
-  query NotFoundPage {
-    site {
-      siteMetadata {
-        locale
-        title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
-      }
-    }
-  }
-`;
+export default NotFound;
