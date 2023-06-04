@@ -1,11 +1,12 @@
 /**
  * @file The header element.
  * @see https://html.spec.whatwg.org/multipage/sections.html#the-header-element
+ * @see https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { Link } from 'gatsby';
 import { ComponentType, createElement } from 'react';
-import { SiteMetadata, useSiteMetaData } from 'src/hooks/useSiteMetaData';
+import { SiteMetadata, useSiteMetaData } from '../hooks/useSiteMetaData';
 
 type Props = {
   url: string;
@@ -17,7 +18,7 @@ type Props = {
  * @returns {ComponentType} component
  */
 export const Header: ComponentType<Props> = ({ url }) => {
-  const siteMetaData: SiteMetadata = useSiteMetaData();
+  const siteMetadata: SiteMetadata = useSiteMetaData();
   return (
     <header>
       {createElement(
@@ -27,7 +28,7 @@ export const Header: ComponentType<Props> = ({ url }) => {
         },
         [
           <Link key="link" to="/">
-            {siteMetaData.title}
+            {siteMetadata.title}
           </Link>,
         ],
       )}
