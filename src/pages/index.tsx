@@ -1,33 +1,16 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Application Entry Point File.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file Application Entry Point File.
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { graphql, PageProps } from 'gatsby';
-import * as React from 'react';
 import { Article } from '../components/article';
 import { Head } from '../components/head';
 import { Layout } from '../components/layout';
+import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-type Props = PageProps<{
-  allMarkdownRemark: {
-    nodes: any[];
-  };
-  site: {
-    siteMetadata: any;
-  };
-}>;
-
-/**
- * This Application Entry Point.
- * @param {PageProps} data pageQuery
- * @returns {React.FC} component
- */
-const Application: React.FC<Props> = ({ data, location }: Props) => {
-  const metaData = data.site.siteMetadata;
+const Application = ({ data, location }: PageProps<Queries.ArticlesQuery>) => {
   const articles = data.allMarkdownRemark.nodes;
+  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
       <Head metaData={metaData} />
@@ -45,38 +28,23 @@ export default Application;
  * Building Entry Pages.
  */
 export const pageQuery = graphql`
-query Entries {
+query Articles {
   allMarkdownRemark(
-    filter: {fileAbsolutePath: {regex: "/(../content/entry)/.*\\.md$/"}}
+    filter: {fileAbsolutePath: {regex: "/(../contents)/.*\\.md$/"}}
     sort: {frontmatter: {created: DESC}}
   ) {
     nodes {
       id
-      excerpt(format: PLAIN, truncate: true)
       frontmatter {
-        title
         path
-        entrytDate: created(formatString: "YYYY.MM.DD")
-        updateDate: updated(formatString: "YYYY.MM.DD")
+        created
+        updated
+        title
+        author
         tags
+        published
       }
-    }
-  }
-  site {
-    siteMetadata {
-      locale
-      title
-      author {
-        name
-        excerpt
-      }
-      description
-      siteUrl
-      facebookApplicationId
-      social {
-        twitter
-        github
-      }
+      excerpt(format: PLAIN, truncate: true, pruneLength: 40)
     }
   }
 }
