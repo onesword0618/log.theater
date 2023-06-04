@@ -1,32 +1,17 @@
 /**
- * Term Of Service Page.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file Term Of Service Page.
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { graphql, PageProps } from 'gatsby';
-import * as React from 'react';
+import { PageProps } from 'gatsby';
 import { Head } from '../components/head';
 import { Layout } from '../components/layout';
+import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-type Props = PageProps<{
-  site: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    siteMetadata: any;
-  };
-}>;
-
-/**
- * Term Of Service Explain.
- * @param  {PageProps} data pageQuery
- * @returns {React.ReactElement} component
- */
-export default function Terms({ data, location }: Props): React.ReactElement {
-  const metaData = data.site.siteMetadata;
-  metaData.title = `terms`;
+const Terms = ({ location }: PageProps) => {
+  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head metaData={metaData} />
+      <Head title={`利用規約`} metaData={metaData} />
       <article className="terms">
         <h2>利用規約</h2>
         <p>
@@ -174,29 +159,6 @@ export default function Terms({ data, location }: Props): React.ReactElement {
       </article>
     </Layout>
   );
-}
+};
 
-/**
- * Terms Page.
- */
-export const pageQuery = graphql`
-  query TermsPage {
-    site {
-      siteMetadata {
-        locale
-        title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
-      }
-    }
-  }
-`;
+export default Terms;
