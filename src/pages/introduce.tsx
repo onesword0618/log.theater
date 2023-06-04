@@ -1,35 +1,17 @@
 /**
- * Author Page.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file Author Page.
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { graphql, PageProps } from 'gatsby';
-import * as React from 'react';
+import { PageProps } from 'gatsby';
 import { Head } from '../components/head';
 import { Layout } from '../components/layout';
+import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-type Props = PageProps<{
-  site: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    siteMetadata: any;
-  };
-}>;
-
-/**
- * About Self Introduce.
- * @param  {PageProps} data pageQuery
- * @returns {React.ReactElement} component
- */
-export default function Introduce({
-  data,
-  location,
-}: Props): React.ReactElement {
-  const metaData = data.site.siteMetadata;
-  metaData.title = `introduce`;
+const Introduce = ({ location }: PageProps) => {
+  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head metaData={metaData} />
+      <Head title={`自己紹介`} metaData={metaData} />
       <article className="introduce">
         <h2>Introduce</h2>
         <p>Q. あなたはどういう人ですか？</p>
@@ -124,29 +106,6 @@ export default function Introduce({
       </article>
     </Layout>
   );
-}
+};
 
-/**
- * Introduce Page.
- */
-export const pageQuery = graphql`
-  query IntroducePage {
-    site {
-      siteMetadata {
-        locale
-        title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
-      }
-    }
-  }
-`;
+export default Introduce;
