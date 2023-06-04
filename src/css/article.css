@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
-.article_container {
+.article-container {
   line-height: 1.5;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
 }

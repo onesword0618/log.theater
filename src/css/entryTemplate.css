@@ -3,17 +3,17 @@
 
 /** color scheme */
 :root {
-  --base-color:#FDDEA5;
-  --primary-color:#D8B26B;
-  --menu-color:#B7A481;
-  --logo-color:#555555;
-  --heder-color:#E5B762;
-  --sub-header-color:#FED589;
-  --side-bar-header-color:#FFEFD2;
-  --side-bar-background-color:#FFFAF0;
-  --font-color:#333333;
-  --link-color:#3366CC;
-  --visited-color:#765AC9;
+  --base-color: #fddea5;
+  --primary-color: #d8b26b;
+  --menu-color: #b7a481;
+  --logo-color: #555555;
+  --heder-color: #e5b762;
+  --sub-header-color: #fed589;
+  --side-bar-header-color: #ffefd2;
+  --side-bar-background-color: #fffaf0;
+  --font-color: #333333;
+  --link-color: #3366cc;
+  --visited-color: #765ac9;
 }
 
 *,
@@ -54,17 +54,17 @@ a:visited {
 }
 
 a:hover {
-  text-decoration:none;
+  text-decoration: none;
 }
 
 a:active {
-  background: #02552A;
-  color: #F2FFFE;
+  background: #02552a;
+  color: #f2fffe;
 }
 
 a:focus {
   border-bottom: 1px solid;
-  color: #0085F2;
+  color: #0085f2;
 }
 
 p {
