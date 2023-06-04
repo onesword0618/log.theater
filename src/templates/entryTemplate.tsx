@@ -1,85 +1,102 @@
-/* eslint-disable import/order */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Entry Page Template.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @see https://react.dev/reference/react-dom/components/common#common-props
+ * @see https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-aside-element
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import * as React from 'react';
-import { Layout } from '../components/layout';
-import { graphql, Link } from 'gatsby';
 
-// look-ahead font
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config, library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faArrowCircleLeft,
-  faArrowCircleRight,
-} from '@fortawesome/free-solid-svg-icons';
-config.autoAddCss = false;
-library.add(faArrowCircleLeft, faArrowCircleRight);
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { graphql, Link, PageProps } from 'gatsby';
+import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image';
 import { Date } from '../components/date';
 import { Head } from '../components/head';
+import { Layout } from '../components/layout';
+
 import { Tag } from '../components/tag';
+import { useSiteMetaData } from '../hooks/useSiteMetaData';
+import { ContentPageContext } from 'gatsby-node';
 
-type PageContext = {
-  previous: any;
-  next: any;
-};
-
-type Props = {
-  data: any;
-  pageContext: PageContext;
-};
-
-const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
-  const { markdownRemark, site } = data;
-  const metaData = site?.siteMetadata;
-  if (markdownRemark === undefined || markdownRemark === null) {
-    return <Layout> No Content </Layout>;
+const EntryTemplate = ({
+  data,
+  pageContext,
+}: PageProps<Queries.TemplateContentsQuery, ContentPageContext>) => {
+  if (!data.markdownRemark) {
+    throw new Error(`Need markdown content.`);
   }
 
-  const { frontmatter, html } = markdownRemark;
-  let title;
-  let entryDate;
-  let updateDate;
-  if (frontmatter !== undefined && frontmatter !== null) {
-    title =
-      frontmatter.title !== undefined && frontmatter.title !== null
-        ? frontmatter.title
-        : `No Title`;
-    metaData.title = title;
-    entryDate = frontmatter.entrytDate;
-    updateDate = frontmatter.updateDate;
+  if (!data.markdownRemark.frontmatter) {
+    throw new Error(`Need markdown frontmatter content.`);
   }
 
+  if (
+    !data.markdownRemark.frontmatter.path ||
+    !data.markdownRemark.frontmatter.title ||
+    !data.markdownRemark.frontmatter.created ||
+    !data.markdownRemark.frontmatter.updated ||
+    !data.markdownRemark.frontmatter.author ||
+    !data.markdownRemark.frontmatter.published ||
+    !data.markdownRemark.frontmatter.cover ||
+    !data.markdownRemark.frontmatter.cover.childImageSharp ||
+    !data.markdownRemark.excerpt ||
+    !data.markdownRemark.html
+  ) {
+    throw new Error(`Need markdown item content.`);
+  }
+
+  if (!data.markdownRemark.frontmatter.tags) {
+    throw new Error(`Need tags`);
+  }
   const tags: string[] = [];
-  if (frontmatter?.tags !== undefined && frontmatter?.tags !== null) {
-    for (const tag of frontmatter?.tags) {
-      if (tag !== undefined && tag !== null) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        tags.push(tag);
-      }
+  for (const tag of data.markdownRemark.frontmatter.tags) {
+    if (tag !== null) {
+      tags.push(tag);
     }
   }
 
+  const thumbnail = getImage(
+    data.markdownRemark.frontmatter.cover.childImageSharp,
+  );
+  if (thumbnail === undefined) {
+    throw new Error('no image');
+  }
+
+  const ogpImage = getSrc(
+    data.markdownRemark.frontmatter.cover.childImageSharp,
+  );
+  if (ogpImage === undefined) {
+    throw new Error('image path should be');
+  }
+
+  const metaData = useSiteMetaData();
   return (
     <Layout>
       <div className="container">
-        <Head metaData={metaData} />
+        <Head
+          title={data.markdownRemark.frontmatter.title}
+          description={data.markdownRemark.excerpt}
+          metaData={metaData}
+          image={ogpImage}
+          created={data.markdownRemark.frontmatter.created}
+          updated={data.markdownRemark.frontmatter.updated}
+        />
         <article className="entry">
-          <h1>{title}</h1>
+          <h1>{data.markdownRemark.frontmatter.title}</h1>
 
           <aside className="meta">
-            <Date className="entryDate" caption="投稿日" date={entryDate} />
+            <Date
+              className="entryDate"
+              caption="投稿日"
+              date={data.markdownRemark.frontmatter.created}
+            />
 
-            <Date className="updateDate" caption="更新日" date={updateDate} />
+            <Date
+              className="updateDate"
+              caption="更新日"
+              date={data.markdownRemark.frontmatter.updated}
+            />
 
             <ul className="category" style={{ listStyle: 'none' }}>
-              <div className="icon_container">
+              <div className="icon-container">
                 {tags.map((current, index) => (
                   <li className={`${current || 'none'}`} key={index}>
                     <Tag name={current} />
@@ -89,10 +106,18 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
             </ul>
           </aside>
 
+          <GatsbyImage
+            className="main-image"
+            imgClassName="visual"
+            image={thumbnail}
+            alt="thumbnail"
+            loading="eager"
+          />
+
           <div
             className="markdown-body"
             dangerouslySetInnerHTML={{
-              __html: `${html || 'no content'}`,
+              __html: `${data.markdownRemark.html}`,
             }}
           />
 
@@ -105,15 +130,10 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
             }}
           >
             {pageContext.previous?.frontmatter?.path && (
-              <i className="preview icon_container">
-                <FontAwesomeIcon
-                  icon={faArrowCircleLeft}
-                  size={'2x'}
-                  className="icon"
-                />
+              <i className="previous icon-container">
                 <Link
                   to={pageContext.previous.frontmatter.path}
-                  className="icon_heading"
+                  className="icon-heading"
                 >
                   {pageContext.previous.frontmatter?.title}
                 </Link>
@@ -121,18 +141,13 @@ const EntryTemplate: React.FC<Props> = ({ data, pageContext }: Props) => {
             )}
 
             {pageContext.next?.frontmatter?.path && (
-              <i className="next icon_container">
+              <i className="next icon-container">
                 <Link
                   to={pageContext.next.frontmatter.path}
-                  className="icon_heading"
+                  className="icon-heading"
                 >
                   {pageContext.next.frontmatter?.title}
                 </Link>
-                <FontAwesomeIcon
-                  icon={faArrowCircleRight}
-                  size={'2x'}
-                  className="icon"
-                />
               </i>
             )}
           </div>
@@ -153,34 +168,23 @@ export default EntryTemplate;
 export const entryQuery = graphql`
   query TemplateContents($id: String) {
     markdownRemark(id: { eq: $id }) {
-      excerpt(format: PLAIN, truncate: true)
+      id
       frontmatter {
-        entrytDate: created(formatString: "YYYY.MM.DD")
-        updateDate: updated(formatString: "YYYY.MM.DD")
+        path
         created
         updated
         title
+        cover {
+          childImageSharp {
+            gatsbyImageData(width: 1280, height: 700)
+          }
+        }
+        author
         tags
+        published
       }
-      id
       html
-    }
-    site {
-      siteMetadata {
-        locale
-        title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
-      }
+      excerpt(format: PLAIN, truncate: true)
     }
   }
 `;
