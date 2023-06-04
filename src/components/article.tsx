@@ -1,46 +1,73 @@
 /**
- * Article Component.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file The article element.
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-article-element
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
+ * @see https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link
+ * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { Link } from 'gatsby';
-import * as React from 'react';
-
+import { ComponentType } from 'react';
+import { Date } from './date';
 import { Tag } from './tag';
 
+type Content = {
+  readonly id: string;
+  readonly frontmatter: {
+    readonly path: string | null;
+    readonly created: string | null;
+    readonly updated: string | null;
+    readonly title: string | null;
+    readonly author: string | null;
+    readonly tags: readonly (string | null)[] | null;
+    readonly published: boolean | null;
+  } | null;
+  readonly excerpt: string | null;
+};
+
 type Props = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  content: any;
+  content: Content;
 };
 
 /**
- * Article.
- * @param {Props} content content
- * @returns {React.ReactElement} article
+ * Article Component Part.
+ * @param {{content: Content}} props content
+ * @returns {ComponentType} component
  */
-export const Article: React.FC<Props> = ({
-  content,
-}: Props): React.ReactElement => {
+export const Article: ComponentType<Props> = ({ content }) => {
+  if (
+    !content ||
+    !content.frontmatter ||
+    !content.excerpt ||
+    !content.frontmatter.tags
+  ) {
+    throw new Error('invalid content section.');
+  }
   return (
-    <div className="article_container">
+    <div className="article-container">
       <h2 className="title">
         <Link to={`${content.frontmatter.path || '/'}`}>
           {content.frontmatter.title}
         </Link>
       </h2>
 
-      <p className="tags icon_container">
+      <p className="tags icon-container">
         {content.frontmatter.tags.map(
-          (tag: string, index: React.Key | null | undefined) => (
-            <Tag name={tag} key={index} />
-          ),
+          (tag, index) => tag !== null && <Tag name={tag} key={index} />,
         )}
       </p>
 
       <p className="date">
-        投稿日 <time>{content.frontmatter.entrytDate}</time> 更新日{' '}
-        <time>{content.frontmatter.updateDate}</time>
+        <Date
+          className={`created`}
+          caption={`投稿日`}
+          date={content.frontmatter.created}
+        />
+        <Date
+          className={`updated`}
+          caption={`更新日`}
+          date={content.frontmatter.updated}
+        />
       </p>
 
       <p>{content.excerpt}</p>
