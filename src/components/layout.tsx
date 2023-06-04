@@ -1,5 +1,6 @@
 /**
  * @file The layout layer.
+ * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { ComponentType } from 'react';
@@ -16,7 +17,7 @@ type Props = {
  * @param {Props} props props
  * @returns {ComponentType} component
  */
-export const Layout: ComponentType<Props> = ({ pathName, children }: Props) => {
+export const Layout: ComponentType<Props> = ({ pathName, children }) => {
   return (
     <div className="layout">
       <Header url={pathName === undefined ? `` : pathName} />
