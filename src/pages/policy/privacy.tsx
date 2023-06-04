@@ -1,32 +1,20 @@
 /**
- * Privacy Policy Explain Content Component.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file Privacy Policy Explain Content Component.
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-article-element
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
+ * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { graphql, PageProps } from 'gatsby';
-import * as React from 'react';
+import { PageProps } from 'gatsby';
 import { Head } from '../../components/head';
 import { Layout } from '../../components/layout';
+import { useSiteMetaData } from '../../hooks/useSiteMetaData';
 
-type Props = PageProps<{
-  site: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    siteMetadata: any;
-  };
-}>;
-
-/**
- * Privacy Explain.
- * @param  {PageProps} data pageQuery
- * @returns {React.ReactElement} component
- */
-export default function Privacy({ data, location }: Props): React.ReactElement {
-  const metaData = data.site.siteMetadata;
-  metaData.title = `privacy policy`;
+const Privacy = ({ location }: PageProps) => {
+  const metaData = useSiteMetaData();
   return (
     <Layout pathName={location.pathname}>
-      <Head metaData={metaData} />
+      <Head title={`privacy policy`} metaData={metaData} />
       <article className="pricacy">
         <h2>Privacy Policy</h2>
         <p>
@@ -136,29 +124,6 @@ export default function Privacy({ data, location }: Props): React.ReactElement {
       </article>
     </Layout>
   );
-}
+};
 
-/**
- * Privacy Page.
- */
-export const pageQuery = graphql`
-  query PrivacyPage {
-    site {
-      siteMetadata {
-        locale
-        title
-        author {
-          name
-          excerpt
-        }
-        description
-        siteUrl
-        facebookApplicationId
-        social {
-          twitter
-          github
-        }
-      }
-    }
-  }
-`;
+export default Privacy;
