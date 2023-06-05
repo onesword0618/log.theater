@@ -106,11 +106,11 @@ export const HeadFactory: ComponentType<Props> = ({
       <meta name="twitter:image:alt" content={`site icon`} />
       <meta
         property="fb:app_id"
-        content={`${process.env.FACEBOOK_APPLICATION_ID}`}
+        content={process.env.FACEBOOK_APPLICATION_ID}
       />
       <meta
         name="google-site-verification"
-        content={`${process.env.DNS_TXT_CODE}`}
+        content={process.env.DNS_TXT_CODE}
       />
     </>
   );

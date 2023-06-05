@@ -6,7 +6,9 @@
  * @see https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#gatsby-configts
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
+import * as dotenv from 'dotenv';
 import type { GatsbyConfig } from 'gatsby';
+dotenv.config();
 
 // GraphiQL described in gatsby-config.ts does not perform automatic type generation.
 // Definition to pass type inspection.
