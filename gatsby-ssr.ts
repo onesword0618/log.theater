@@ -7,8 +7,8 @@
  */
 import type { GatsbySSR } from 'gatsby';
 
-const onRenderBody: GatsbySSR['onRenderBody'] = ({ setHtmlAttributes }) => {
+export const onRenderBody: GatsbySSR['onRenderBody'] = ({
+  setHtmlAttributes,
+}) => {
   setHtmlAttributes({ lang: `ja` });
 };
-
-export default onRenderBody;
