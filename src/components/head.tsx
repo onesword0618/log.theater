@@ -104,8 +104,14 @@ export const HeadFactory: ComponentType<Props> = ({
         }
       />
       <meta name="twitter:image:alt" content={`site icon`} />
-      <meta property="fb:app_id" content={metaData.facebookApplicationId} />
-      <meta name="google-site-verification" content={metaData.dnsTxtCode} />
+      <meta
+        property="fb:app_id"
+        content={`${process.env.FACEBOOK_APPLICATION_ID}`}
+      />
+      <meta
+        name="google-site-verification"
+        content={`${process.env.DNS_TXT_CODE}`}
+      />
     </>
   );
 };

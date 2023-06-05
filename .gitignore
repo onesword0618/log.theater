@@ -9,7 +9,7 @@ node_modules/
 public/
 
 # dotenv environment variable files
-.env*
+.env
 
 # Output of 'npm pack'
 *.tgz
