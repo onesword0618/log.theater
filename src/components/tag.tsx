@@ -7,6 +7,7 @@
 import { Link } from 'gatsby';
 import { ComponentType } from 'react';
 import { Icon } from './icon';
+import { container, heading } from './tag.module.css';
 
 type Props = {
   name: string;
@@ -19,11 +20,11 @@ type Props = {
  */
 export const Tag: ComponentType<Props> = ({ name }) => {
   return (
-    <div className="icon-container">
+    <div className={container}>
       <Link to={`/tag/${name}`} className={name} aria-label={name}>
         <Icon name={name} />
       </Link>
-      <p className="icon-heading">{name}</p>
+      <p className={heading}>{name}</p>
     </div>
   );
 };

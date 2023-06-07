@@ -7,7 +7,9 @@
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { Link } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { ComponentType } from 'react';
+import { container, icon } from './article.module.css';
 import { Date } from './date';
 import { Tag } from './tag';
 
@@ -21,6 +23,11 @@ type Content = {
     readonly author: string | null;
     readonly tags: readonly (string | null)[] | null;
     readonly published: boolean | null;
+    readonly cover: {
+      readonly childImageSharp: {
+        readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData;
+      } | null;
+    } | null;
   } | null;
   readonly excerpt: string | null;
 };
@@ -39,38 +46,39 @@ export const Article: ComponentType<Props> = ({ content }) => {
     !content ||
     !content.frontmatter ||
     !content.excerpt ||
-    !content.frontmatter.tags
+    !content.frontmatter.tags ||
+    !content.frontmatter?.cover
   ) {
     throw new Error('invalid content section.');
   }
+  const image = getImage(content.frontmatter.cover?.childImageSharp);
+  if (image === undefined) {
+    throw new Error('no image');
+  }
+
   return (
-    <div className="article-container">
+    <div className={container}>
+      <GatsbyImage image={image} alt="thumbnail" />
       <h2 className="title">
-        <Link to={`${content.frontmatter.path || '/'}`}>
+        <Link to={`${content.frontmatter.path}`}>
           {content.frontmatter.title}
         </Link>
       </h2>
-
-      <p className="tags icon-container">
+      <Date
+        className={`created`}
+        caption={`投稿日`}
+        date={content.frontmatter.created}
+      />
+      <Date
+        className={`updated`}
+        caption={`更新日`}
+        date={content.frontmatter.updated}
+      />
+      <p className={icon}>
         {content.frontmatter.tags.map(
           (tag, index) => tag !== null && <Tag name={tag} key={index} />,
         )}
       </p>
-
-      <p className="date">
-        <Date
-          className={`created`}
-          caption={`投稿日`}
-          date={content.frontmatter.created}
-        />
-        <Date
-          className={`updated`}
-          caption={`更新日`}
-          date={content.frontmatter.updated}
-        />
-      </p>
-
-      <p>{content.excerpt}</p>
     </div>
   );
 };

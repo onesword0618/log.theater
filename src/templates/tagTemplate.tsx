@@ -45,6 +45,11 @@ export const tagQuery = graphql`
           title
           author
           tags
+          cover {
+            childImageSharp {
+              gatsbyImageData(width: 300, height: 300, placeholder: BLURRED)
+            }
+          }
           published
         }
         excerpt(format: PLAIN, truncate: true, pruneLength: 40)

@@ -1,0 +1,13 @@
+/**
+ * https://www.gatsbyjs.com/docs/how-to/styling/built-in-css/
+ * https://www.gatsbyjs.com/docs/how-to/styling/css-modules
+ */
+
+.container {
+  background: #e6f4ff;
+}
+
+.icon {
+  display: flex;
+  padding: 8px;
+}

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@fontsource/noto-sans-jp": "^5.0.2",
+    "@mediacurrent/gatsby-plugin-silence-css-order-warning": "^1.0.0",
     "@react-icons/all-files": "^4.1.0",
     "date-fns": "^2.30.0",
     "dotenv": "^16.1.4",

@@ -50,6 +50,7 @@ const config: GatsbyConfig = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
+    `@mediacurrent/gatsby-plugin-silence-css-order-warning`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {

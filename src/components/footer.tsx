@@ -12,6 +12,18 @@
 
 import { Link } from 'gatsby';
 import { ComponentType } from 'react';
+import {
+  container,
+  contents,
+  item,
+  header,
+  sns,
+  ul,
+  list,
+  link,
+  creator,
+  year,
+} from './footer.module.css';
 import { Icon } from './icon';
 
 /**
@@ -20,40 +32,40 @@ import { Icon } from './icon';
  */
 export const Footer: ComponentType = () => {
   return (
-    <div className="footer-container">
+    <div className={container}>
       <footer>
-        <div className="footer-contents">
-          <div className="footer-item">
-            <p className="footer-item-header">Blog</p>
-            <ul className="footer-item-unordered-list">
-              <li className="footer-list">
-                <Link to="/about/" className="footer-link">
+        <div className={contents}>
+          <div className={item}>
+            <p className={header}>Blog</p>
+            <ul className={ul}>
+              <li className={list}>
+                <Link to="/about/" className={link}>
                   About
                 </Link>
               </li>
-              <li className="footer-list">
-                <Link to="/introduce/" className="footer-link">
+              <li className={list}>
+                <Link to="/introduce/" className={link}>
                   Introduce
                 </Link>
               </li>
-              <li className="footer-list">
-                <Link to="/activity/" className="footer-link">
+              <li className={list}>
+                <Link to="/activity/" className={link}>
                   Activity
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="footer-item">
-            <p className="footer-item-header">Policy</p>
-            <ul className="footer-item-unordered-list">
-              <li className="footer-list">
-                <Link to="/terms/" className="footer-link">
+          <div className={item}>
+            <p className={header}>Policy</p>
+            <ul className={ul}>
+              <li className={list}>
+                <Link to="/terms/" className={link}>
                   Term of Service
                 </Link>
               </li>
-              <li className="footer-list">
-                <Link to="/policy/privacy/" className="footer-link">
+              <li className={list}>
+                <Link to="/policy/privacy/" className={link}>
                   Privacy policy
                 </Link>
               </li>
@@ -61,7 +73,7 @@ export const Footer: ComponentType = () => {
           </div>
         </div>
 
-        <div className="footer-sns">
+        <div className={sns}>
           <a
             className="icon"
             href="https://twitter.com/onesword0618"
@@ -88,9 +100,9 @@ export const Footer: ComponentType = () => {
         </div>
 
         <div className="copyright">
-          <small className="year">
+          <small className={year}>
             © {new Date().getFullYear()},
-            <a className="creator" href="https://ja.gravatar.com/onesword0618">
+            <a className={creator} href="https://ja.gravatar.com/onesword0618">
               onesword0618
             </a>
           </small>

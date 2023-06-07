@@ -1,6 +1,4 @@
-@charset "UTF-8";
-
-header {
+.header {
   display: flex;
   flex-direction: column;
   justify-content: center;

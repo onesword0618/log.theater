@@ -2772,7 +2772,7 @@ type WebPOptions = {
 type ArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ArticlesQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null } | null }> } };
+type ArticlesQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null, readonly cover: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null }> } };
 
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
@@ -2810,7 +2810,7 @@ type TagContentsQueryVariables = Exact<{
 }>;
 
 
-type TagContentsQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null } | null }> } };
+type TagContentsQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly path: string | null, readonly created: string | null, readonly updated: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly published: boolean | null, readonly cover: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null }> } };
 
 type TemplateContentsQueryVariables = Exact<{
   id: InputMaybe<Scalars['String']>;

@@ -41,6 +41,11 @@ query Articles {
         author
         tags
         published
+        cover {
+          childImageSharp {
+            gatsbyImageData(width: 300, height: 300, placeholder: BLURRED)
+          }
+        }
       }
       excerpt(format: PLAIN, truncate: true, pruneLength: 40)
     }

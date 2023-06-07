@@ -7,6 +7,7 @@
 import { Link } from 'gatsby';
 import { ComponentType, createElement } from 'react';
 import { SiteMetadata, useSiteMetaData } from '../hooks/useSiteMetaData';
+import { header } from './header.module.css';
 
 type Props = {
   url: string;
@@ -20,7 +21,7 @@ type Props = {
 export const Header: ComponentType<Props> = ({ url }) => {
   const siteMetadata: SiteMetadata = useSiteMetaData();
   return (
-    <header>
+    <header className={header}>
       {createElement(
         url === `/` ? `h1` : `p`,
         {

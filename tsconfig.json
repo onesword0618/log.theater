@@ -5,7 +5,8 @@
     "./gatsby-config.ts",
     "./gatsby-browser.ts",
     "./gatsby-ssr.ts",
-    "./plugins/**/*"
+    "./plugins/**/*",
+    "./src/type.d.ts",
   ],
   "exclude": ["node_modules"],
   "compileOnSave": false,
