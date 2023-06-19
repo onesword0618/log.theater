@@ -11,9 +11,14 @@ import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image';
 import { Date } from '../components/date';
 import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
-
 import { Tag } from '../components/tag';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
+import {
+  container,
+  date,
+  icon,
+  pagenation,
+} from '../templates/entryTemplate.module.css';
 import { ContentPageContext } from 'gatsby-node';
 
 const EntryTemplate = ({
@@ -68,93 +73,72 @@ const EntryTemplate = ({
   }
 
   return (
-    <Layout>
-      <div className="container">
-        <article className="entry">
-          <h1>{data.markdownRemark.frontmatter.title}</h1>
+    <Layout metaData={useSiteMetaData()}>
+      <article className={container}>
+        <h1>{data.markdownRemark.frontmatter.title}</h1>
 
-          <aside className="meta">
-            <Date
-              className="entryDate"
-              caption="投稿日"
-              date={data.markdownRemark.frontmatter.created}
-            />
-
-            <Date
-              className="updateDate"
-              caption="更新日"
-              date={data.markdownRemark.frontmatter.updated}
-            />
-
-            <ul className="category" style={{ listStyle: 'none' }}>
-              <div className="icon-container">
-                {tags.map((current, index) => (
-                  <li className={`${current || 'none'}`} key={index}>
-                    <Tag name={current} />
-                  </li>
-                ))}
-              </div>
-            </ul>
-          </aside>
-
-          <GatsbyImage
-            className="main-image"
-            imgClassName="visual"
-            image={thumbnail}
-            alt="thumbnail"
-            loading="eager"
+        <div className={date}>
+          <Date
+            className="entryDate"
+            caption="公開日:"
+            date={data.markdownRemark.frontmatter.created}
           />
-
-          <div
-            className="markdown-body"
-            dangerouslySetInnerHTML={{
-              __html: `${data.markdownRemark.html}`,
-            }}
+          <Date
+            className="updateDate"
+            caption="更新日:"
+            date={data.markdownRemark.frontmatter.updated}
           />
+        </div>
 
-          <div
-            className="link"
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
+        <div className={icon}>
+          {tags.map((current, index) => (
+            <Tag name={current} key={index} />
+          ))}
+        </div>
+
+        <GatsbyImage
+          className={`image`}
+          imgClassName="visual"
+          image={thumbnail}
+          alt="thumbnail"
+          loading="eager"
+        />
+
+        <div
+          className={`markdown-body`}
+          dangerouslySetInnerHTML={{
+            __html: `${data.markdownRemark.html}`,
+          }}
+        />
+      </article>
+      {/** TODO ここをコンポーネントに切り出す */}
+      <section className={pagenation}>
+        {pageContext.previous?.frontmatter?.path && (
+          <Link
+            to={pageContext.previous.frontmatter.path}
+            className="icon-heading"
           >
-            {pageContext.previous?.frontmatter?.path && (
-              <i className="previous icon-container">
-                <Link
-                  to={pageContext.previous.frontmatter.path}
-                  className="icon-heading"
-                >
-                  {pageContext.previous.frontmatter?.title}
-                </Link>
-              </i>
-            )}
+            {pageContext.previous.frontmatter?.title}
+          </Link>
+        )}
 
-            {pageContext.next?.frontmatter?.path && (
-              <i className="next icon-container">
-                <Link
-                  to={pageContext.next.frontmatter.path}
-                  className="icon-heading"
-                >
-                  {pageContext.next.frontmatter?.title}
-                </Link>
-              </i>
-            )}
-          </div>
-        </article>
-      </div>
+        {pageContext.next?.frontmatter?.path && (
+          <Link to={pageContext.next.frontmatter.path} className="icon-heading">
+            {pageContext.next.frontmatter?.title}
+          </Link>
+        )}
+      </section>
     </Layout>
   );
 };
 
 /**
- * Entry Template.
+ * Entry Detail Template.
  */
 export default EntryTemplate;
 
 /**
- * Template Contents.
+ * Entry Detail Template Content.
  */
 export const entryQuery = graphql`
   query TemplateContents($id: String) {

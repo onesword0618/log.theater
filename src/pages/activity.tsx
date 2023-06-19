@@ -2,15 +2,14 @@
  * @file Activity Page.
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { PageProps } from 'gatsby';
 import { HeadFactory } from '../components/head';
 import { Icon } from '../components/icon';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-const Activity = ({ location }: PageProps) => {
+const Activity = () => {
   return (
-    <Layout pathName={location.pathname}>
+    <Layout metaData={useSiteMetaData()}>
       <article className="activity">
         <h2>Activity</h2>
         <ul style={{ listStyle: 'none' }}>

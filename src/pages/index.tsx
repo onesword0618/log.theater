@@ -7,15 +7,21 @@ import { Article } from '../components/article';
 import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
+import { container, content } from './index.module.css';
 
-const Application = ({ data, location }: PageProps<Queries.ArticlesQuery>) => {
-  const articles = data.allMarkdownRemark.nodes;
+const Application = ({ data }: PageProps<Queries.ArticlesQuery>) => {
   return (
-    <Layout pathName={location.pathname}>
-      <h2>Articles</h2>
-      {articles.map((content) => (
-        <Article content={content} key={content.id} />
-      ))}
+    <Layout metaData={useSiteMetaData()}>
+      <main>
+        <section className={container}>
+          <h2>Articles</h2>
+          <div className={content}>
+            {data.allMarkdownRemark.nodes.map((article) => (
+              <Article content={article} key={article.id} />
+            ))}
+          </div>
+        </section>
+      </main>
     </Layout>
   );
 };

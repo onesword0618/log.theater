@@ -4,11 +4,12 @@
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
 import { ComponentType } from 'react';
+import { SiteMetadata } from '../hooks/useSiteMetaData';
 import { Footer } from './footer';
 import { Header } from './header';
 
 type Props = {
-  pathName?: string;
+  metaData: SiteMetadata;
   children: React.ReactNode;
 };
 
@@ -17,12 +18,16 @@ type Props = {
  * @param {Props} props props
  * @returns {ComponentType} component
  */
-export const Layout: ComponentType<Props> = ({ pathName, children }) => {
+export const Layout: ComponentType<Props> = ({ metaData, children }) => {
   return (
-    <div className="layout">
-      <Header url={pathName === undefined ? `` : pathName} />
-      <main>{children}</main>
+    <>
+      <Header metaData={metaData} />
+      <main>
+        <section>
+          <article>{children}</article>
+        </section>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 };

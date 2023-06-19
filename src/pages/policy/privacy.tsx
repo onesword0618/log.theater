@@ -5,14 +5,13 @@
  * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { PageProps } from 'gatsby';
 import { HeadFactory } from '../../components/head';
 import { Layout } from '../../components/layout';
 import { useSiteMetaData } from '../../hooks/useSiteMetaData';
 
-const Privacy = ({ location }: PageProps) => {
+const Privacy = () => {
   return (
-    <Layout pathName={location.pathname}>
+    <Layout metaData={useSiteMetaData()}>
       <article className="pricacy">
         <h2>Privacy Policy</h2>
         <p>

@@ -2,14 +2,13 @@
  * @file Term Of Service Page.
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { PageProps } from 'gatsby';
 import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-const Terms = ({ location }: PageProps) => {
+const Terms = () => {
   return (
-    <Layout pathName={location.pathname}>
+    <Layout metaData={useSiteMetaData()}>
       <article className="terms">
         <h2>利用規約</h2>
         <p>

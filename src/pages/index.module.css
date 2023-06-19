@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: self-start;
+  margin: auto 1em;
+  gap: 1em;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  margin: auto 6em;
+  justify-items: center;
+}

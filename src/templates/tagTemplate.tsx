@@ -8,12 +8,9 @@ import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-const TagTemplate = ({
-  data,
-  location,
-}: PageProps<Queries.TagContentsQuery>) => {
+const TagTemplate = ({ data }: PageProps<Queries.TagContentsQuery>) => {
   return (
-    <Layout pathName={location.pathname}>
+    <Layout metaData={useSiteMetaData()}>
       <h2>Category</h2>
       {data.allMarkdownRemark.nodes.map((content) => (
         <Article content={content} key={content.id} />

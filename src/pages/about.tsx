@@ -7,15 +7,14 @@
  * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { PageProps } from 'gatsby';
 import { HeadFactory } from '../components/head';
 import { Icon } from '../components/icon';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-const About = ({ location }: PageProps) => {
+const About = () => {
   return (
-    <Layout pathName={location.pathname}>
+    <Layout metaData={useSiteMetaData()}>
       <article className="about">
         <h2>このサイトについて</h2>
         <div className="purpose">

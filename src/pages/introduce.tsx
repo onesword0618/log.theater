@@ -2,14 +2,13 @@
  * @file Author Page.
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import { PageProps } from 'gatsby';
 import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
 
-const Introduce = ({ location }: PageProps) => {
+const Introduce = () => {
   return (
-    <Layout pathName={location.pathname}>
+    <Layout metaData={useSiteMetaData()}>
       <article className="introduce">
         <h2>Introduce</h2>
         <p>Q. あなたはどういう人ですか？</p>

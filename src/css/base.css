@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/** 記事で表示する際のスタイルを定義している. */
 
 /** color scheme */
 :root {
@@ -14,19 +13,11 @@
   --font-color: #333333;
   --link-color: #3366cc;
   --visited-color: #765ac9;
+  --card-color: #e6f4ff;
 }
 
-*,
-*::before,
-*::marker,
-*::after {
-  box-sizing: inherit;
-}
-
-/** TODO: globalへ */
 html {
   background-color: var(--base-color);
-  box-sizing: border-box;
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-variant: normal;
@@ -35,9 +26,6 @@ html {
   text-transform: none;
   text-decoration: none;
   line-height: 1.5;
-  width: 100%;
-  /** TODO: 基準を決めたら相対にする. */
-  padding: 1.5em;
 }
 
 a {
