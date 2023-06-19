@@ -1,6 +1,13 @@
-/* .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-} */
+/**
+ * https://www.gatsbyjs.com/docs/how-to/styling/built-in-css/
+ * https://www.gatsbyjs.com/docs/how-to/styling/css-modules
+ * https://drafts.csswg.org/css-grid/#track-sizing
+ * https://drafts.csswg.org/css-display/#the-display-properties
+ * https://drafts.csswg.org/css-align/#place-content
+ * https://drafts.csswg.org/css-align/#place-items-property
+ */
+.header {
+  display: grid;
+  place-content: center;
+  place-items: center;
+}
