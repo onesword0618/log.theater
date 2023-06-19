@@ -10,8 +10,6 @@ export type SiteMetadata = {
   description: string;
   siteUrl: string;
   email: string;
-  facebookApplicationId: string;
-  dnsTxtCode: string;
   social: {
     twitter: string;
     github: string;
@@ -38,8 +36,6 @@ export function useSiteMetaData(): SiteMetadata {
             description
             siteUrl
             email
-            facebookApplicationId
-            dnsTxtCode
             social {
               twitter
               github
@@ -52,6 +48,7 @@ export function useSiteMetaData(): SiteMetadata {
   );
 
   const metadata = site?.siteMetadata;
+  // all required fields.
   if (
     !metadata?.title ||
     !metadata?.locale ||
@@ -61,14 +58,12 @@ export function useSiteMetaData(): SiteMetadata {
     !metadata?.description ||
     !metadata?.siteUrl ||
     !metadata?.email ||
-    !metadata?.facebookApplicationId ||
-    !metadata?.dnsTxtCode ||
     !metadata?.social ||
     !metadata?.social.github ||
     !metadata?.social.twitter ||
     !metadata?.siteIcon
   ) {
-    throw new Error('siteMetadata source is invalid.');
+    throw new Error(`checked ! gatsby-config.ts. Incomplete item.`);
   }
 
   const siteMetadata: SiteMetadata = {
@@ -81,8 +76,6 @@ export function useSiteMetaData(): SiteMetadata {
     description: metadata.description,
     siteUrl: metadata.siteUrl,
     email: metadata.email,
-    facebookApplicationId: metadata.facebookApplicationId,
-    dnsTxtCode: metadata.dnsTxtCode,
     social: {
       github: metadata.social.github,
       twitter: metadata.social.twitter,

@@ -36,8 +36,6 @@ const config: GatsbyConfig = {
     description: `log.theater は、Inoue Kenichi (@onesword0618) のブログです.`,
     siteUrl: `https://onesword0618.jp`,
     email: `ao.akua.leo@gmail.com`,
-    facebookApplicationId: `588287979288774`,
-    dnsTxtCode: `7tocuDO8uh5y587N2xWlBEsThHfZCc5V-iyItl3s2-k`,
     social: {
       twitter: `onesword0618`,
       github: `onesword0618`,
