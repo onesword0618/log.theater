@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: auto 3em;
+  gap: 1em;
+  font-feature-settings: 'palt';
+}
+
+.list {
+  list-style: square;
+  margin-left: 2em;
+}
+
+.noneList {
+  list-style: none;
+}
