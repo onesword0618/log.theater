@@ -5,25 +5,12 @@
  * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element
  * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element
  * @see https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link
- * @see https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element
  * @see https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element
  * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-
 import { Link } from 'gatsby';
 import { ComponentType } from 'react';
-import {
-  container,
-  contents,
-  item,
-  header,
-  sns,
-  ul,
-  list,
-  link,
-  creator,
-  year,
-} from './footer.module.css';
+import { container, item, header, sns, copyright } from './footer.module.css';
 import { Icon } from './icon';
 
 /**
@@ -33,79 +20,58 @@ import { Icon } from './icon';
 export const Footer: ComponentType = () => {
   return (
     <footer className={container}>
-      <div className={contents}>
-        <div className={item}>
-          <p className={header}>Blog</p>
-          <ul className={ul}>
-            <li className={list}>
-              <Link to="/about/" className={link}>
-                About
-              </Link>
-            </li>
-            <li className={list}>
-              <Link to="/introduce/" className={link}>
-                Introduce
-              </Link>
-            </li>
-            <li className={list}>
-              <Link to="/activity/" className={link}>
-                Activity
-              </Link>
-            </li>
-          </ul>
-        </div>
+      <div className={item}>
+        <p className={header}>Blog</p>
+        <ul>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/introduce">Introduce</Link>
+          </li>
+          <li>
+            <Link to="/activity">Activity</Link>
+          </li>
+        </ul>
 
-        <div className={item}>
-          <p className={header}>Policy</p>
-          <ul className={ul}>
-            <li className={list}>
-              <Link to="/terms/" className={link}>
-                Term of Service
-              </Link>
-            </li>
-            <li className={list}>
-              <Link to="/policy/privacy/" className={link}>
-                Privacy policy
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <p className={header}>Policy</p>
+        <ul>
+          <li>
+            <Link to="/terms" aria-label={`term-of-service`}>
+              Term of Service
+            </Link>
+          </li>
+          <li>
+            <Link to="/privacy/policy" aria-label={`privacy-policy`}>
+              Privacy policy
+            </Link>
+          </li>
+        </ul>
       </div>
 
       <div className={sns}>
-        <a
-          className="icon"
-          href="https://twitter.com/onesword0618"
-          aria-label="twitter"
-        >
+        <Link to="https://twitter.com/onesword0618" aria-label={`twitter`}>
           <Icon name={`twitter`} />
-        </a>
+        </Link>
 
-        <a
-          className="icon"
-          href="https://www.facebook.com/profile.php?id=100023464906058"
-          aria-label="facebook"
+        <Link
+          to="https://www.facebook.com/profile.php?id=100023464906058"
+          aria-label={`facebook`}
         >
           <Icon name={`facebook`} />
-        </a>
+        </Link>
 
-        <a
-          className="icon"
-          href="https://github.com/onesword0618"
-          aria-label="github"
-        >
+        <Link to="https://github.com/onesword0618" aria-label={`github`}>
           <Icon name={`github`} />
-        </a>
+        </Link>
       </div>
 
-      <div className="copyright">
-        <small className={year}>
-          © {new Date().getFullYear()},
-          <a className={creator} href="https://ja.gravatar.com/onesword0618">
-            onesword0618
-          </a>
-        </small>
-      </div>
+      <small className={copyright}>
+        © {new Date().getFullYear()},
+        <Link to="https://ja.gravatar.com/onesword0618" aria-label={`creator`}>
+          onesword0618
+        </Link>
+      </small>
     </footer>
   );
 };

@@ -1,25 +1,28 @@
-@charset "UTF-8";
+/**
+ * https://www.gatsbyjs.com/docs/how-to/styling/built-in-css/
+ * https://www.gatsbyjs.com/docs/how-to/styling/css-modules
+ * https://drafts.csswg.org/css-grid/#grid-shorthand
+ * https://drafts.csswg.org/css-grid/#track-sizing
+ * https://drafts.csswg.org/css-align/#justify-items-property
+ * https://drafts.csswg.org/css-align/#gap-shorthand
+ * https://drafts.csswg.org/css-align/#justify-self-property
+ */
+ul {
+  list-style: none;
+}
 
 .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  /** TODO: 基準を決めたら相対にする. */
-  margin-top: 0.5em;
-  background-color: aqua;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  place-content: center;
+  place-items: center;
 }
 
-.contents {
-  display: flex;
-  flex-direction: row;
-  line-height: 1.2;
-}
-
-.creator {
-  margin-top: 4px;
-  margin-bottom: 4px;
-  font-size: x-large;
-  padding: 8px;
+.item {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  column-gap: 2em;
 }
 
 .header {
@@ -27,33 +30,10 @@
   font-feature-settings: 'palt' 1;
 }
 
-.item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 0.9em;
-}
-
-.link {
-  line-height: 1.6;
-}
-
-.list {
-  margin-top: 4px;
-  margin-bottom: 4px;
-  font-size: x-large;
-}
-
 .sns {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  justify-self: end;
 }
 
-.ul {
-  list-style: none;
-}
-
-.year {
-  font-size: x-large;
+.copyright {
+  font-size: 1.4em;
 }
