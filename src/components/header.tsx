@@ -11,7 +11,6 @@ import { SiteMetadata } from '../hooks/useSiteMetaData';
 import { header } from './header.module.css';
 
 type Props = {
-  /** siteMetadata */
   metaData: SiteMetadata;
 };
 

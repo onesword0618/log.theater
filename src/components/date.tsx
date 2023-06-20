@@ -10,23 +10,20 @@ import { Icon } from './icon';
 type Props = {
   className: string;
   caption: string;
-  date?: string | null;
+  date: string;
 };
 
 /**
  * Date Component Part.
- * @param {{ className: string, caption: string, date?: string }} props time property
+ * @param {Props} props time property
  * @returns {ComponentType} component
  */
-export const Date: ComponentType<Props> = (props) => {
-  const { caption, className, date } = props;
+export const Date: ComponentType<Props> = ({ className, caption, date }) => {
   return (
-    <time
-      dateTime={className}
-      style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-    >
-      <Icon name={`clock`} size={`1em`} /> {caption}
-      <i className="clock">{date}</i>
+    <time dateTime={date} className={className}>
+      <Icon name={`clock`} size={`1em`} />
+      {caption}
+      <i>{date}</i>
     </time>
   );
 };
