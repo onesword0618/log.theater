@@ -48,7 +48,9 @@ export const Article: ComponentType<Props> = ({ content }) => {
     !content.frontmatter ||
     !content.excerpt ||
     !content.frontmatter.tags ||
-    !content.frontmatter?.cover
+    !content.frontmatter?.cover ||
+    !content.frontmatter?.created ||
+    !content.frontmatter?.updated
   ) {
     throw new Error('invalid content section.');
   }

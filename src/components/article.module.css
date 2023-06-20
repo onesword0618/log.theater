@@ -1,8 +1,12 @@
 /**
  * https://www.gatsbyjs.com/docs/how-to/styling/built-in-css/
  * https://www.gatsbyjs.com/docs/how-to/styling/css-modules
+ * https://drafts.csswg.org/css-grid/#grid-shorthand
  * https://drafts.csswg.org/css-grid/#track-sizing
  * https://drafts.csswg.org/css-align/#justify-items-property
+ * https://drafts.csswg.org/css-align/#gap-shorthand
+ * https://drafts.csswg.org/css-backgrounds/#the-background
+ * https://drafts.csswg.org/css-backgrounds/#border-radius
  */
 .container {
   display: grid;
@@ -25,7 +29,6 @@
 .date {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
-  margin-right: 1em;
   justify-items: self-end;
 }
 
