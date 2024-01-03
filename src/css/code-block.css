@@ -1,5 +1,5 @@
 @charset "UTF-8";
 
-pre[class*=language-] {
+pre[class*='language-'] {
   padding: 0px;
 }

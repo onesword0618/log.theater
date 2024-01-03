@@ -44,6 +44,10 @@
     "prettier"
   ],
   "settings": {
+    "import/resolver": {
+      "typescript": true,
+      "node": true
+    },
     "json/sort-package-json": "standard",
     "json/ignore-files": ["**/package-lock.json"],
     "json/json-with-comments-files": ["**/tsconfig.json", ".vscode/**"],
@@ -59,7 +63,19 @@
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-unsafe-call": "off",
-    "@typescript-eslint/restrict-template-expressions": "off"
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   },
   "globals": {}
 }

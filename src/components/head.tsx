@@ -1,115 +1,117 @@
 /**
- * Site Meta Component Parts.
+ * @file The Document Metadata elements.
+ * @see https://date-fns.org/v2.30.0/docs/Locale
+ * @see https://date-fns.org/v2.30.0/docs/parse
+ * @see https://html.spec.whatwg.org/multipage/semantics.html#the-html-element
+ * @see https://html.spec.whatwg.org/multipage/semantics.html#the-head-element
+ * @see https://html.spec.whatwg.org/multipage/semantics.html#the-title-element
+ * @see https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element
+ * @see https://ogp.me/
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-body-element
  *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * Support added in gatsby@4.19.0 -
+ * @see https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql, useStaticQuery } from 'gatsby';
-import { SiteMetadata } from '@types';
-import ogImage from '../../static/icon.png';
+import { parse } from 'date-fns';
+import ja from 'date-fns/locale/ja';
+import { ComponentType } from 'react';
+import { SiteMetadata } from '../hooks/useSiteMetaData';
 
 type Props = {
+  title?: string;
+  description?: string;
   metaData: SiteMetadata;
+  created?: string;
+  updated?: string;
+  image?: string;
+  type: `article` | `website`;
 };
 
 /**
  * Head Component Part.
- *
- * @param {Props} props meta
- * @returns {React.FC} component
+ * @param {Props} props meta data compose
+ * @returns {ComponentType} component
  */
-export const Head: React.FC<Props> = (props: Props) => {
-  const { metaData } = props;
-
-  const fetchMeta = useStaticQuery<GatsbyTypes.MetaQuery>(
-    graphql`
-      query Meta {
-        site {
-          siteMetadata {
-            locale
-            defaultTitle: title
-            author {
-              name
-              excerpt
-            }
-            defaultDescription: description
-            siteUrl
-            facebookApplicationId
-            social {
-              twitter
-              github
-            }
-            siteIcon
-          }
-        }
-      }
-    `,
-  );
-
-  const { site } = fetchMeta;
-  if (site === undefined || site === null) {
-    throw new Error('no site contents');
-  }
-
-  if (site.siteMetadata === undefined || site.siteMetadata === null) {
-    throw new Error('no siteMetadata contents');
-  }
-
-  if (
-    site.siteMetadata.defaultTitle === null ||
-    site.siteMetadata.defaultDescription === null ||
-    site.siteMetadata.locale === null ||
-    site.siteMetadata.facebookApplicationId === null ||
-    site.siteMetadata.siteIcon === null ||
-    site.siteMetadata.siteUrl === null
-  ) {
-    throw new Error('no contents');
-  }
-
-  const seo = {
-    title: metaData.title || site.siteMetadata.defaultTitle,
-    description: metaData.description || site.siteMetadata.defaultDescription,
-    url:
-      metaData.siteUrl !== site.siteMetadata.siteUrl
-        ? `${site.siteMetadata.siteUrl}${metaData.siteUrl}`
-        : site.siteMetadata.siteUrl,
-    locale: site.siteMetadata.locale,
-    facebookApplicationId: site.siteMetadata.facebookApplicationId,
-    icon: `${metaData.siteUrl}${ogImage}`,
-  };
+export const HeadFactory: ComponentType<Props> = ({
+  title,
+  description,
+  metaData,
+  image,
+  created,
+  updated,
+  type,
+}) => {
+  const published = !created
+    ? new Date(`July 16 2021`).toISOString()
+    : parse(created, `yyyy-MM-dd`, new Date(), { locale: ja });
+  const modified = !updated
+    ? new Date().toISOString()
+    : parse(updated, `yyyy-MM-dd`, new Date(), { locale: ja });
+  const baseDescription =
+    description !== undefined ? description : metaData.description;
 
   return (
-    <Helmet defer={false} title={seo.title}>
+    <>
       <html lang="ja-JP" />
+      <body />
+      <title>{title}</title>
       <meta charSet="utf-8" />
-      <meta name="description" content={seo.description} />
-      <meta
-        name="google-site-verification"
-        content="7tocuDO8uh5y587N2xWlBEsThHfZCc5V-iyItl3s2-k"
-      />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
       />
-      {/* TODO author */}
-      <meta property="og:site_name" content={site.siteMetadata.defaultTitle} />
-      <meta property="og:title" content={seo.title} />
-      <meta property="og:description" content={seo.description} />
-      <meta property="og:url" content={seo.url} />
-      <meta property="og:type" content="website" />
-      <meta property="og:locale" content={seo.locale} />
-      <meta property="fb:app_id" content={seo.facebookApplicationId} />
-      <meta property="og:image" content={seo.icon} />
+      <meta name="description" content={baseDescription} />
+      <meta property="og:site_name" content={metaData.title} />
+      <meta property="og:locale" content={metaData.locale} />
+      <meta
+        property="og:title"
+        content={title !== undefined ? title : metaData.title}
+      />
+      <meta property="og:description" content={baseDescription} />
+      <meta
+        property="og:image"
+        content={
+          image !== undefined
+            ? `${metaData.siteUrl}${image}`
+            : metaData.siteIcon
+        }
+      />
+      <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="640" />
-      {/* twitter */}
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={seo.title} />
-      <meta name="twitter:description" content={seo.description} />
-      <meta name="twitter:site" content={`@onesword0618`} />
-      <meta name="twitter:image" content={seo.icon} />
-    </Helmet>
+      <meta property="og:image:alt" content="thumbnail" />
+      <meta property="og:type" content={type} />
+      <meta property="article:published_time" content={`${published}`} />
+      <meta property="article:modified_time" content={`${modified}`} />
+      <meta property="article:author" content={metaData.author.name} />
+      <meta property="article:section" content={`Technology`} />
+      <meta property="og:article:tag" content={`blog`} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={metaData.title} />
+      <meta name="twitter:creator" content={metaData.author.name} />
+      <meta
+        name="twitter:title"
+        content={title !== undefined ? title : metaData.title}
+      />
+      <meta name="twitter:description" content={baseDescription} />
+      <meta
+        name="twitter:image"
+        content={
+          image !== undefined
+            ? `${metaData.siteUrl}${image}`
+            : metaData.siteIcon
+        }
+      />
+      <meta name="twitter:image:alt" content={`site icon`} />
+      <meta
+        property="fb:app_id"
+        content={process.env.FACEBOOK_APPLICATION_ID}
+      />
+      <meta
+        name="google-site-verification"
+        content={process.env.DNS_TXT_CODE}
+      />
+    </>
   );
 };

@@ -1,0 +1,39 @@
+/**
+ * https://www.gatsbyjs.com/docs/how-to/styling/built-in-css/
+ * https://www.gatsbyjs.com/docs/how-to/styling/css-modules
+ * https://drafts.csswg.org/css-grid/#grid-shorthand
+ * https://drafts.csswg.org/css-grid/#track-sizing
+ * https://drafts.csswg.org/css-align/#justify-items-property
+ * https://drafts.csswg.org/css-align/#gap-shorthand
+ * https://drafts.csswg.org/css-align/#justify-self-property
+ */
+ul {
+  list-style: none;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  place-content: center;
+  place-items: center;
+}
+
+.item {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  column-gap: 2em;
+}
+
+.header {
+  font-weight: bold;
+  font-feature-settings: 'palt' 1;
+}
+
+.sns {
+  justify-self: end;
+}
+
+.copyright {
+  font-size: 1.4em;
+}

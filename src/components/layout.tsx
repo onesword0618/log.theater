@@ -1,36 +1,33 @@
 /**
- * Blog Layout.
- * Common Component Parts.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file The layout layer.
+ * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import * as React from 'react';
-import { Header } from './header';
+import { ComponentType } from 'react';
+import { SiteMetadata } from '../hooks/useSiteMetaData';
 import { Footer } from './footer';
+import { Header } from './header';
 
 type Props = {
-  pathName?: string;
+  metaData: SiteMetadata;
   children: React.ReactNode;
 };
 
 /**
- *  Layout Component Part.
- *
- * @param {Props} props children: React.ReactNode
- * @returns {React.ReactElement} component
+ * Layout Component Part.
+ * @param {Props} props props
+ * @returns {ComponentType} component
  */
-export const Layout: React.FC<Props> = ({
-  pathName,
-  children,
-}: Props): React.ReactElement => {
-  const path = pathName === undefined ? `` : pathName;
-
+export const Layout: ComponentType<Props> = ({ metaData, children }) => {
   return (
-    <div className="layout">
-      <Header url={path} />
-      <main>{children}</main>
+    <>
+      <Header metaData={metaData} />
+      <main>
+        <section>
+          <article>{children}</article>
+        </section>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 };

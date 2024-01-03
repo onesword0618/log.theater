@@ -1,10 +1,21 @@
+# node
+package.json
+package-lock.json
+# prettier
+.prettierrc.json
+# eslint
+.eslintrc.json
+# babel
+babel.config.json
+# Type Script
+tsconfig.json
+# Visual Studio Code
+.vscode/settings.json
 # GatsbyJS
 .cache/
 public/
-types/
 static/
-gatsby-config.js
-
+src/gatsby-types.d.ts
 # Output
 build
 coverage

@@ -1,49 +1,30 @@
 /**
- * Blog Common Component Parts.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file The header element.
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-header-element
+ * @see https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
+ * @see https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import * as React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
+import { ComponentType } from 'react';
+import { SiteMetadata } from '../hooks/useSiteMetaData';
+import { header } from './header.module.css';
 
 type Props = {
-  url: string;
+  metaData: SiteMetadata;
 };
 
 /**
  * Header Component Part.
- *
- * @param {Props} url place
- * @returns {React.ReactElement} component
+ * @param {{metaData:SiteMetadata}} siteMetadata site meta data
+ * @returns {ComponentType} component
  */
-export const Header: React.FC<Props> = ({ url }: Props): React.ReactElement => {
-  const fetchHeader = useStaticQuery<GatsbyTypes.HeaderComponentQuery>(
-    graphql`
-      query HeaderComponent {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `,
-  );
-
-  const metaData = fetchHeader.site?.siteMetadata;
+export const Header: ComponentType<Props> = ({ metaData }) => {
   return (
-    <header>
-      {React.createElement(
-        url === `/` ? `h1` : `p`,
-        {
-          className: `title`,
-        },
-        [
-          <Link key="link" to="/">
-            {metaData?.title}
-          </Link>,
-        ],
-      )}
+    <header className={header}>
+      <h1>
+        <Link to="/">{metaData.title}</Link>
+      </h1>
     </header>
   );
 };

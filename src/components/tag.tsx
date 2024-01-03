@@ -1,75 +1,30 @@
 /**
- * Category.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file Classification of personal interests.
+ * @see https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link
+ * @see https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import * as React from 'react';
 import { Link } from 'gatsby';
-
-// look-ahead font
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config, library, IconProp } from '@fortawesome/fontawesome-svg-core';
-import {
-  faDatabase,
-  faFilter,
-  faFlask,
-  faObjectGroup,
-  faNoteSticky,
-  faBookOpenReader,
-} from '@fortawesome/free-solid-svg-icons';
-config.autoAddCss = false;
-library.add(faDatabase, faFilter, faFlask, faObjectGroup, faNoteSticky);
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ComponentType } from 'react';
+import { Icon } from './icon';
+import { container, heading } from './tag.module.css';
 
 type Props = {
   name: string;
 };
 
 /**
- * Category Icon.
- *
- * @param {Props} props name
- * @returns {React.FC} category
+ * Tag Type Component Part.
+ * @param {{ name: string }} name category name
+ * @returns {ComponentType} component
  */
-export const Tag: React.FC<Props> = ({ name }: Props) => {
-  let category: IconProp = faFilter;
-  switch (name) {
-    case `read`:
-      category = faBookOpenReader;
-      break;
-    case `note`:
-      category = faNoteSticky;
-      break;
-    case `test`:
-      category = faFlask;
-      break;
-    case `design`:
-      category = faObjectGroup;
-      break;
-    case `database`:
-      category = faDatabase;
-      break;
-    default:
-      break;
-  }
-
+export const Tag: ComponentType<Props> = ({ name }) => {
   return (
-    <>
-      {name && (
-        <div className="icon_container">
-          <Link to={`/tag/${name}`}>
-            <FontAwesomeIcon
-              icon={category}
-              size={'2x'}
-              title={name}
-              className="icon"
-            />
-          </Link>
-          <p className="icon_heading">{name}</p>
-        </div>
-      )}
-    </>
+    <div className={container}>
+      <Link to={`/tag/${name}`} className={name} aria-label={name}>
+        <Icon name={name} />
+      </Link>
+      <p className={heading}>{name}</p>
+    </div>
   );
 };

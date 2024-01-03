@@ -7,10 +7,9 @@ node_modules/
 # GatsbyJS
 .cache/
 public/
-types/graphql-types.d.ts
 
 # dotenv environment variable files
-.env*
+.env.*
 
 # Output of 'npm pack'
 *.tgz

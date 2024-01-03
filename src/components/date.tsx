@@ -1,31 +1,29 @@
 /**
- * Entry Templete Component Parts.
- *
- * Copyright (c) 2021.
- * Kenichi Inoue.
+ * @file The time element.
+ * @see https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element
+ * @see https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element
+ * @copyright @author Kenichi Inoue <ao.akua.leo@gmail.com> 2021.
  */
-import * as React from 'react';
+import { ComponentType } from 'react';
+import { Icon } from './icon';
 
 type Props = {
   className: string;
   caption: string;
-  date?: string | undefined;
+  date: string;
 };
 
 /**
- * Date Component Parts.
- *
- * @param {Props} props date
- * @returns {React.ReactElement} components
+ * Date Component Part.
+ * @param {Props} props time property
+ * @returns {ComponentType} component
  */
-export const Date: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { caption, className, date } = props;
+export const Date: ComponentType<Props> = ({ className, caption, date }) => {
   return (
-    <time
-      dateTime={className}
-      style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-    >
-      {caption} <i className="clock">{date}</i>
+    <time dateTime={date} className={className}>
+      <Icon name={`clock`} size={`1em`} />
+      {caption}
+      <i>{date}</i>
     </time>
   );
 };
