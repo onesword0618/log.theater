@@ -50,8 +50,8 @@ export const Footer: ComponentType = () => {
       </div>
 
       <div className={sns}>
-        <Link to="https://twitter.com/onesword0618" aria-label={`twitter`}>
-          <Icon name={`twitter`} />
+        <Link to="https://twitter.com/onesword0618" aria-label={`x`}>
+          <Icon name={`x`} />
         </Link>
 
         <Link

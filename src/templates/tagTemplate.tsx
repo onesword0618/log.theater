@@ -7,14 +7,24 @@ import { Article } from '../components/article';
 import { HeadFactory } from '../components/head';
 import { Layout } from '../components/layout';
 import { useSiteMetaData } from '../hooks/useSiteMetaData';
+import { container, content } from './tagTemplate.module.css';
 
 const TagTemplate = ({ data }: PageProps<Queries.TagContentsQuery>) => {
   return (
     <Layout metaData={useSiteMetaData()}>
-      <h2>Category</h2>
-      {data.allMarkdownRemark.nodes.map((content) => (
-        <Article content={content} key={content.id} />
-      ))}
+      <main>
+        <section className={container}>
+          <h2>Category</h2>
+          <div className={content}>
+            {data.allMarkdownRemark.nodes.map(
+              (article) =>
+                article !== null && (
+                  <Article content={article} key={article.id} />
+                ),
+            )}
+          </div>
+        </section>
+      </main>
     </Layout>
   );
 };
@@ -42,12 +52,12 @@ export const tagQuery = graphql`
           title
           author
           tags
+          published
           cover {
             childImageSharp {
-              gatsbyImageData(width: 300, height: 300, placeholder: BLURRED)
+              gatsbyImageData(width: 700, height: 300, placeholder: BLURRED)
             }
           }
-          published
         }
         excerpt(format: PLAIN, truncate: true, pruneLength: 40)
       }

@@ -8,8 +8,6 @@ import { ComponentType } from 'react';
 import { Icon } from './icon';
 
 type Props = {
-  className: string;
-  caption: string;
   date: string;
 };
 
@@ -18,11 +16,10 @@ type Props = {
  * @param {Props} props time property
  * @returns {ComponentType} component
  */
-export const Date: ComponentType<Props> = ({ className, caption, date }) => {
+export const Date: ComponentType<Props> = ({ date }) => {
   return (
-    <time dateTime={date} className={className}>
+    <time dateTime={date}>
       <Icon name={`clock`} size={`1em`} />
-      {caption}
       <i>{date}</i>
     </time>
   );

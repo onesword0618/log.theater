@@ -78,16 +78,7 @@ const EntryTemplate = ({
         <h1>{data.markdownRemark.frontmatter.title}</h1>
 
         <div className={date}>
-          <Date
-            className="entryDate"
-            caption="公開日:"
-            date={data.markdownRemark.frontmatter.created}
-          />
-          <Date
-            className="updateDate"
-            caption="更新日:"
-            date={data.markdownRemark.frontmatter.updated}
-          />
+          <Date date={data.markdownRemark.frontmatter.updated} />
         </div>
 
         <div className={icon}>
@@ -111,6 +102,7 @@ const EntryTemplate = ({
           }}
         />
       </article>
+
       {/** TODO ここをコンポーネントに切り出す */}
       <section className={pagenation}>
         {pageContext.previous?.frontmatter?.path && (
