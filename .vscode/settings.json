@@ -4,7 +4,7 @@
     "activityBar.inactiveForeground": "#FDDEA5"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   // using https://github.com/doi/fileheadercomment
   "fileHeaderComment.parameter": {
