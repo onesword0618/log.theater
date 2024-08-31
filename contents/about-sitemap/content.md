@@ -1,7 +1,7 @@
 ---
 path: /entry/about-sitemaps
 created: '2022-04-29'
-updated: '2024-08-24'
+updated: '2024-09-01'
 title: '「Sitemaps」について所感を述べる.'
 cover: './cover.png'
 author: 'onesword0618'
@@ -35,7 +35,7 @@ Google,Yahoo!,Microsoftからサポートを含めて広く採用しています
 
 「Sitemaps」は、Webサイト側から検索エンジンに対して自分のサイトのどのページが重要なページなのかを更新頻度を添えて伝えることにより検索エンジンのクロールの効率化を図るものでした。  
 
-![figure1-1](C:\Users\ichi\Dropbox\commonDoc\blog\about-sitemap\figure1-1.png)   
+![figure1-1](./figure1-1.png)   
 この仕組みがあるので以下のことを実現するために検索エンジンへ伝えることができます。  
 重要度を「0.0」-「1.0」の範囲で表現することができます。  
 Topページを「1.0」と設定し、他のページを「1.0」未満に設定します。  
