@@ -16,9 +16,12 @@ const Application = ({ data }: PageProps<Queries.ArticlesQuery>) => {
         <section className={container}>
           <h2>Articles</h2>
           <div className={content}>
-            {data.allMarkdownRemark.nodes.map((article) => (
-              <Article content={article} key={article.id} />
-            ))}
+            {data.allMarkdownRemark.nodes.map(
+              (article) =>
+                article !== null && (
+                  <Article content={article} key={article.id} />
+                ),
+            )}
           </div>
         </section>
       </main>
@@ -49,7 +52,7 @@ query Articles {
         published
         cover {
           childImageSharp {
-            gatsbyImageData(width: 300, height: 300, placeholder: BLURRED)
+            gatsbyImageData(width: 700, height: 300, placeholder: BLURRED)
           }
         }
       }

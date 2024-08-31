@@ -26,6 +26,8 @@ Personal Blog.
 [![EditorConfig](https://img.shields.io/badge/EditorConfig-333333?logo=editorconfig&logoColor=FEFEFE)](https://editorconfig.org/)
 [![NPM](https://img.shields.io/badge/npm-333333?logo=npm&logoColor=CB3837)](https://docs.npmjs.com/about-npm)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/00b3c0e4-f8d7-45e0-a617-5c0ee28697dc/deploy-status)](https://app.netlify.com/sites/onesword0618/deploys)
+
 ## For Development
 
 ### Requirement

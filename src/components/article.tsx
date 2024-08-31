@@ -10,7 +10,7 @@
 import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { ComponentType } from 'react';
-import { container, caption, hero, date, icon } from './article.module.css';
+import { container, date, icon } from './article.module.css';
 import { Date } from './date';
 import { Tag } from './tag';
 
@@ -49,7 +49,6 @@ export const Article: ComponentType<Props> = ({ content }) => {
     !content.excerpt ||
     !content.frontmatter.tags ||
     !content.frontmatter?.cover ||
-    !content.frontmatter?.created ||
     !content.frontmatter?.updated
   ) {
     throw new Error('invalid content section.');
@@ -64,30 +63,19 @@ export const Article: ComponentType<Props> = ({ content }) => {
       <article className={container}>
         <Link to={`${content.frontmatter.path}`}>
           <h2>
-            <GatsbyImage image={image} alt={`thumbnail`} className={hero} />
+            <GatsbyImage image={image} alt={`thumbnail`} />
           </h2>
         </Link>
-        <div className={caption}>
-          <Link to={`${content.frontmatter.path}`}>
-            {content.frontmatter.title}
-          </Link>
-          <div className={date}>
-            <Date
-              className={`published`}
-              caption={`公開日:`}
-              date={content.frontmatter.created}
-            />
-            <Date
-              className={`updated`}
-              caption={`更新日:`}
-              date={content.frontmatter.updated}
-            />
-          </div>
-          <div className={icon}>
-            {content.frontmatter.tags.map(
-              (tag, index) => tag !== null && <Tag name={tag} key={index} />,
-            )}
-          </div>
+        <div className={date}>
+          <Date date={content.frontmatter.updated} />
+        </div>
+        <Link to={`${content.frontmatter.path}`}>
+          {content.frontmatter.title}
+        </Link>
+        <div className={icon}>
+          {content.frontmatter.tags.map(
+            (tag, index) => tag !== null && <Tag name={tag} key={index} />,
+          )}
         </div>
       </article>
     </section>

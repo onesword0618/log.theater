@@ -22,30 +22,28 @@ export type SiteMetadata = {
  * @returns {SiteMetadata} execute query result.
  */
 export function useSiteMetaData(): SiteMetadata {
-  const { site }: Queries.SiteMetaDataQuery = useStaticQuery(
-    graphql`
-      query SiteMetaData {
-        site {
-          siteMetadata {
-            title
-            locale
-            author {
-              name
-              excerpt
-            }
-            description
-            siteUrl
-            email
-            social {
-              twitter
-              github
-            }
-            siteIcon
+  const { site }: Queries.SiteMetaDataQuery = useStaticQuery(graphql`
+    query SiteMetaData {
+      site {
+        siteMetadata {
+          title
+          locale
+          author {
+            name
+            excerpt
           }
+          description
+          siteUrl
+          email
+          social {
+            twitter
+            github
+          }
+          siteIcon
         }
       }
-    `,
-  );
+    }
+  `);
 
   const metadata = site?.siteMetadata;
   // all required fields.
