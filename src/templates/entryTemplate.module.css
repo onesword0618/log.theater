@@ -23,6 +23,27 @@
   column-gap: 0.5em;
 }
 
+@media (450px >= width) {
+  .container {
+    grid-template-columns: 1fr;
+    margin: auto;
+  }
+
+  .date {
+    display: grid;
+    justify-items: self-start;
+  }
+
+  .cover {
+    width: 450px;
+  }
+
+  .markdown {
+    width: 430px;
+    display: inline;
+  }
+}
+
 /** TODO ここをコンポーネントに切り出す */
 .pagenation {
   display: grid;

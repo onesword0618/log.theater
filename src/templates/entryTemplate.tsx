@@ -18,6 +18,8 @@ import {
   date,
   icon,
   pagenation,
+  cover,
+  markdown,
 } from '../templates/entryTemplate.module.css';
 import { ContentPageContext } from 'gatsby-node';
 
@@ -87,16 +89,18 @@ const EntryTemplate = ({
           ))}
         </div>
 
-        <GatsbyImage
-          className={`image`}
-          imgClassName="visual"
-          image={thumbnail}
-          alt="thumbnail"
-          loading="eager"
-        />
+        <div className={cover}>
+          <GatsbyImage
+            className={`image`}
+            imgClassName="visual"
+            image={thumbnail}
+            alt="thumbnail"
+            loading="eager"
+          />
+        </div>
 
         <div
-          className={`markdown-body`}
+          className={markdown}
           dangerouslySetInnerHTML={{
             __html: `${data.markdownRemark.html}`,
           }}
