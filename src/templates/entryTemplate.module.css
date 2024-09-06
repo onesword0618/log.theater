@@ -35,12 +35,24 @@
   }
 
   .cover {
-    width: 450px;
+    width: 100%;
   }
 
   .markdown {
     width: 430px;
     display: inline;
+  }
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  li {
+    word-wrap: break-word;
+    word-break: break-all;
   }
 }
 

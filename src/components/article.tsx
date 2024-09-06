@@ -10,7 +10,7 @@
 import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { ComponentType } from 'react';
-import { container, date, icon } from './article.module.css';
+import { container, date, icon, thumbnail } from './article.module.css';
 import { Date } from './date';
 import { Tag } from './tag';
 
@@ -63,15 +63,22 @@ export const Article: ComponentType<Props> = ({ content }) => {
       <article className={container}>
         <Link to={`${content.frontmatter.path}`}>
           <h2>
-            <GatsbyImage image={image} alt={`thumbnail`} />
+            <GatsbyImage
+              image={image}
+              alt={`thumbnail`}
+              className={thumbnail}
+            />
           </h2>
         </Link>
+
         <div className={date}>
           <Date date={content.frontmatter.updated} />
         </div>
+
         <Link to={`${content.frontmatter.path}`}>
           {content.frontmatter.title}
         </Link>
+
         <div className={icon}>
           {content.frontmatter.tags.map(
             (tag, index) => tag !== null && <Tag name={tag} key={index} />,
