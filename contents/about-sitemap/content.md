@@ -186,8 +186,9 @@ https://www.ietf.org/rfc/rfc3987.txt
 
 以下はサンプルです。
 
-```
-http://www.example.com/catalog?item=1 http://www.example.com/catalog?item=11
+```text
+http://www.example.com/catalog?item=1
+http://www.example.com/catalog?item=11
 ```
 
 ### 検索エンジンへの通知方法  
